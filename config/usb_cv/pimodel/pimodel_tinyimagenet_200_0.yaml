@@ -34,7 +34,6 @@ dataset: tinyimagenet
 train_sampler: RandomSampler
 num_classes: 10
 num_workers: 4
-seed: 0
 world_size: 1
 rank: 0
 multiprocessing_distributed: True

@@ -18,7 +18,7 @@ from .datasetbase import BasicDataset
 mean, std = {}, {}
 mean['tinyimagenet'] = [0.485, 0.456, 0.406]
 std['tinyimagenet'] = [0.229, 0.224, 0.225]
-img_size = 224
+img_size = 64
 
 
 def accimage_loader(path):
