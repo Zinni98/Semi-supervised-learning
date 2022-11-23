@@ -199,7 +199,7 @@ class ValTinyImagenetDataset(BasicDataset):
     
     def find_classes(self, directory):
         with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
-            classes = list(set([line for line in f.readlines()]))
+            classes = list(set([line.split()[1] for line in f.readlines()]))
         
         classes_to_idx = {cl: idx for idx, cl in enumerate(classes)}
 
@@ -234,7 +234,7 @@ class ValTinyImagenetDataset(BasicDataset):
                 return x.lower().endswith(extensions)
 
         lb_idx = {}
-        
+
         for target_class in sorted(class_to_idx.keys()):
             class_index = class_to_idx[target_class]
             for fnames in sorted(file_class[target_class]):
