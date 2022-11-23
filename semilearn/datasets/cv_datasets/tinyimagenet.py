@@ -80,7 +80,7 @@ def get_tinyimagenet(args, alg, name, num_labels, num_classes, data_dir='./data'
 
     ulb_dset = TinyImagenetDataset(root=os.path.join(data_dir, "train"), transform=transform_weak, alg=alg, ulb=True, strong_transform=transform_strong)
 
-    eval_dset = ValTinyImagenetDataset(root=os.path.join(data_dir, "val"), transform=transform_val, alg=alg, ulb=False)
+    eval_dset = TinyImagenetDataset(root=os.path.join(data_dir, "val"), transform=transform_val, alg=alg, ulb=False)
 
     return lb_dset, ulb_dset, eval_dset
     
@@ -162,58 +162,5 @@ class TinyImagenetDataset(BasicDataset, ImageFolder):
             with open('./sampled_label_idx.json', 'w') as f:
                 json.dump(lb_idx, f)
         del lb_idx
-        gc.collect()
-        return instances
-
-
-class ValTinyImagenetDataset(TinyImagenetDataset):
-    def __init__(self, root, transform, ulb, alg, strong_transform=None, num_labels=-1):
-        super().__init__(root, transform, alg, ulb, strong_transform, num_labels)
-    
-    def find_classes(self, directory):
-        with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
-            classes = list(set([line for line in f.readlines()]))
-        
-        classes_to_idx = {cl: idx for idx, cl in enumerate(classes)}
-
-        return classes, classes_to_idx
-    
-    
-    def make_dataset(
-            self,
-            directory,
-            class_to_idx,
-            extensions=None,
-            is_valid_file=None,
-    ):
-        # vocab in the form {class0: [file12, file51, ...]}
-        file_class = {}
-        with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
-            for line in f:
-                ln_split = line.split()
-                try:
-                    file_class[ln_split[1]].append(ln_split[0])
-                except:
-                    file_class[ln_split[1]] = []
-        instances = []
-        directory = os.path.join(directory, "images")
-        directory = os.path.expanduser(directory)
-        both_none = extensions is None and is_valid_file is None
-        both_something = extensions is not None and is_valid_file is not None
-        if both_none or both_something:
-            raise ValueError("Both extensions and is_valid_file cannot be None or not None at the same time")
-        if extensions is not None:
-            def is_valid_file(x: str) -> bool:
-                return x.lower().endswith(extensions)
-
-        for target_class in sorted(class_to_idx.keys()):
-            class_index = class_to_idx[target_class]
-            for fnames in sorted(file_class[target_class]):
-                random.shuffle(fnames)
-                for fname in fnames:
-                    path = os.path.join(directory, fname)
-                    if is_valid_file(path):
-                        item = path, class_index
-                        instances.append(item)
         gc.collect()
         return instances
