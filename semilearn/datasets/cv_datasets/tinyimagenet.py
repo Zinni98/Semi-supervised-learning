@@ -80,7 +80,7 @@ def get_tinyimagenet(args, alg, name, num_labels, num_classes, data_dir='./data'
 
     ulb_dset = TinyImagenetDataset(root=os.path.join(data_dir, "train"), transform=transform_weak, alg=alg, ulb=True, strong_transform=transform_strong)
 
-    eval_dset = TinyImagenetDataset(root=os.path.join(data_dir, "val"), transform=transform_val, alg=alg, ulb=False)
+    eval_dset = ValTinyImagenetDataset(root=os.path.join(data_dir, "val"), transform=transform_val, alg=alg, ulb=False)
 
     return lb_dset, ulb_dset, eval_dset
     
