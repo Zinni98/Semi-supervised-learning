@@ -222,6 +222,7 @@ class ValTinyImagenetDataset(BasicDataset):
                     file_class[ln_split[1]].append(ln_split[0])
                 except:
                     file_class[ln_split[1]] = []
+        print(file_class)
         instances = []
         directory = os.path.join(directory, "images")
         directory = os.path.expanduser(directory)
