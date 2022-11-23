@@ -168,7 +168,7 @@ class TinyImagenetDataset(BasicDataset, ImageFolder):
 
 class ValTinyImagenetDataset(TinyImagenetDataset):
     def __init__(self, root, transform, ulb, alg, strong_transform=None, num_labels=-1):
-        super().__init__(root, transform, ulb, alg, strong_transform, num_labels)
+        super().__init__(root, transform, alg, ulb, strong_transform, num_labels)
     
     def find_classes(self, directory):
         with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
