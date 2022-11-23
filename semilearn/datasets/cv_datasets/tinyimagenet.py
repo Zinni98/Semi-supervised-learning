@@ -222,7 +222,6 @@ class ValTinyImagenetDataset(BasicDataset):
                     file_class[ln_split[1]].append(ln_split[0])
                 except:
                     file_class[ln_split[1]] = []
-        print(file_class)
         instances = []
         directory = os.path.join(directory, "images")
         directory = os.path.expanduser(directory)
@@ -239,7 +238,9 @@ class ValTinyImagenetDataset(BasicDataset):
         for target_class in sorted(class_to_idx.keys()):
             class_index = class_to_idx[target_class]
             for fnames in sorted(file_class[target_class]):
+                print(fnames)
                 random.shuffle(fnames)
+                print("after")
                 if self.num_labels != -1:
                     fnames = fnames[:self.num_labels]
                 if self.num_labels != -1:
