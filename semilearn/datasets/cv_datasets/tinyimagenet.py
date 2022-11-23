@@ -165,7 +165,7 @@ class TinyImagenetDataset(BasicDataset, ImageFolder):
         gc.collect()
         return instances
 
-class ValTinyImagenetDataset(BasicDataset):
+class ValTinyImagenetDataset(BasicDataset, ):
     def __init__(self, root, transform, ulb, alg, strong_transform=None, num_labels=-1):
         self.alg = alg
         self.is_ulb = ulb
@@ -205,6 +205,10 @@ class ValTinyImagenetDataset(BasicDataset):
 
         return classes, classes_to_idx
     
+    def __sample__(self, index):
+        path, target = self.data[index]
+        sample = self.loader(path)
+        return sample, target
     
     def make_dataset(
             self,
@@ -254,3 +258,8 @@ class ValTinyImagenetDataset(BasicDataset):
         del lb_idx
         gc.collect()
         return instances
+
+
+if __name__ == "__main__":
+    a = ValTinyImagenetDataset("./../../../data/tiny-imagenet-200/val", 0, 0, 0)
+    print(a.__sample__(10))
