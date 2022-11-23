@@ -171,7 +171,7 @@ class ValTinyImagenetDataset(TinyImagenetDataset):
         super().__init__(root, transform, ulb, alg, strong_transform, num_labels)
     
     def find_classes(self, directory):
-        with open(os.path.join(directory, "val_annotaions.txt"), "r") as f:
+        with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
             classes = list(set([line for line in f.readlines()]))
         
         classes_to_idx = {cl: idx for idx, cl in enumerate(classes)}
@@ -188,7 +188,7 @@ class ValTinyImagenetDataset(TinyImagenetDataset):
     ):
         # vocab in the form {class0: [file12, file51, ...]}
         file_class = {}
-        with open(os.path.join(directory, "val_annotaions.txt"), "r") as f:
+        with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
             for line in f:
                 ln_split = line.split()
                 try:
