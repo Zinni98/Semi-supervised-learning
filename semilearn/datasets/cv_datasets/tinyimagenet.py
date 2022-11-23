@@ -164,3 +164,83 @@ class TinyImagenetDataset(BasicDataset, ImageFolder):
         del lb_idx
         gc.collect()
         return instances
+
+class ValTinyImagenetDataset(BasicDataset):
+    def __init__(self, root, transform, ulb, alg, strong_transform=None, num_labels=-1):
+        self.alg = alg
+        self.is_ulb = ulb
+        self.num_labels = num_labels
+        self.transform = transform
+        self.root = root
+
+        is_valid_file = None
+        extensions = ('.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif', '.tiff', '.webp')
+        classes, class_to_idx = self.find_classes(self.root)
+        samples = self.make_dataset(self.root, class_to_idx, extensions, is_valid_file)
+        if len(samples) == 0:
+            msg = "Found 0 files in subfolders of: {}\n".format(self.root)
+            if extensions is not None:
+                msg += "Supported extensions are: {}".format(",".join(extensions))
+            raise RuntimeError(msg)
+
+        self.loader = default_loader
+        self.extensions = extensions
+
+        self.classes = classes
+        self.class_to_idx = class_to_idx
+        self.data = samples
+        self.targets = [s[1] for s in samples]
+
+        self.strong_transform = strong_transform
+        if self.strong_transform is None:
+            if self.is_ulb:
+                assert self.alg not in ['fullysupervised', 'supervised', 'pseudolabel', 'vat', 'pimodel', 'meanteacher', 'mixmatch'], f"alg {self.alg} requires strong augmentation"
+
+    
+    def find_classes(self, directory):
+        with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
+            classes = list(set([line for line in f.readlines()]))
+        
+        classes_to_idx = {cl: idx for idx, cl in enumerate(classes)}
+
+        return classes, classes_to_idx
+    
+    
+    def make_dataset(
+            self,
+            directory,
+            class_to_idx,
+            extensions=None,
+            is_valid_file=None,
+    ):
+        # vocab in the form {class0: [file12, file51, ...]}
+        file_class = {}
+        with open(os.path.join(directory, "val_annotations.txt"), "r") as f:
+            for line in f:
+                ln_split = line.split()
+                try:
+                    file_class[ln_split[1]].append(ln_split[0])
+                except:
+                    file_class[ln_split[1]] = []
+        instances = []
+        directory = os.path.join(directory, "images")
+        directory = os.path.expanduser(directory)
+        both_none = extensions is None and is_valid_file is None
+        both_something = extensions is not None and is_valid_file is not None
+        if both_none or both_something:
+            raise ValueError("Both extensions and is_valid_file cannot be None or not None at the same time")
+        if extensions is not None:
+            def is_valid_file(x: str) -> bool:
+                return x.lower().endswith(extensions)
+
+        for target_class in sorted(class_to_idx.keys()):
+            class_index = class_to_idx[target_class]
+            for fnames in sorted(file_class[target_class]):
+                random.shuffle(fnames)
+                for fname in fnames:
+                    path = os.path.join(directory, fname)
+                    if is_valid_file(path):
+                        item = path, class_index
+                        instances.append(item)
+        gc.collect()
+        return instances
