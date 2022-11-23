@@ -237,19 +237,17 @@ class ValTinyImagenetDataset(BasicDataset):
 
         for target_class in sorted(class_to_idx.keys()):
             class_index = class_to_idx[target_class]
-            for fnames in sorted(file_class[target_class]):
-                print(fnames)
-                random.shuffle(fnames)
-                print("after")
-                if self.num_labels != -1:
-                    fnames = fnames[:self.num_labels]
-                if self.num_labels != -1:
-                    lb_idx[target_class] = fnames
-                for fname in fnames:
-                    path = os.path.join(directory, fname)
-                    if is_valid_file(path):
-                        item = path, class_index
-                        instances.append(item)
+            fnames = sorted(file_class[target_class])
+            random.shuffle(fnames)
+            if self.num_labels != -1:
+                fnames = fnames[:self.num_labels]
+            if self.num_labels != -1:
+                lb_idx[target_class] = fnames
+            for fname in fnames:
+                path = os.path.join(directory, fname)
+                if is_valid_file(path):
+                    item = path, class_index
+                    instances.append(item)
         if self.num_labels != -1:
             with open('./sampled_label_idx.json', 'w') as f:
                 json.dump(lb_idx, f)
