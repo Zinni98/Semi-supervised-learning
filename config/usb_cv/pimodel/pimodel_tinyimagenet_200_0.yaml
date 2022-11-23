@@ -17,7 +17,7 @@ uratio: 1
 ema_m: 0.0
 ulb_loss_ratio: 10
 unsup_warm_up: 0.4
-img_size: 64
+img_size: 32
 crop_ratio: 0.875
 optim: AdamW
 lr: 5e-05
