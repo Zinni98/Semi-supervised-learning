@@ -19,7 +19,8 @@ mean, std = {}, {}
 mean['tinyimagenet'] = [0.485, 0.456, 0.406]
 std['tinyimagenet'] = [0.229, 0.224, 0.225]
 
-
+img_size = 64
+crop_ratio = .875
 def accimage_loader(path):
     import accimage
     try:
@@ -79,8 +80,8 @@ def get_tinyimagenet(args, alg, name, num_labels, num_classes, data_dir='./data'
     lb_dset = TinyImagenetDataset(root=os.path.join(data_dir, "train"), transform=transform_weak, ulb=False, alg=alg, num_labels=num_labels)
 
     ulb_dset = TinyImagenetDataset(root=os.path.join(data_dir, "train"), transform=transform_weak, alg=alg, ulb=True, strong_transform=transform_strong)
-
-    eval_dset = ValTinyImagenetDataset(root=os.path.join(data_dir, "val"), transform=transform_val, alg=alg, ulb=False)
+    class_to_index = lb_dset.class_to_idx
+    eval_dset = ValTinyImagenetDataset(root=os.path.join(data_dir, "val"), transform=transform_val, alg=alg, ulb=False, class_to_idx=class_to_index)
 
     return lb_dset, ulb_dset, eval_dset
     
@@ -165,8 +166,8 @@ class TinyImagenetDataset(BasicDataset, ImageFolder):
         gc.collect()
         return instances
 
-class ValTinyImagenetDataset(BasicDataset, ):
-    def __init__(self, root, transform, ulb, alg, strong_transform=None, num_labels=-1):
+class ValTinyImagenetDataset(BasicDataset):
+    def __init__(self, root, transform, ulb, alg, strong_transform=None, num_labels=-1, class_to_idx=None):
         self.alg = alg
         self.is_ulb = ulb
         self.num_labels = num_labels
@@ -175,8 +176,13 @@ class ValTinyImagenetDataset(BasicDataset, ):
 
         is_valid_file = None
         extensions = ('.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif', '.tiff', '.webp')
-        classes, class_to_idx = self.find_classes(self.root)
-        samples = self.make_dataset(self.root, class_to_idx, extensions, is_valid_file)
+        if class_to_idx != None:
+            self.class_to_idx = class_to_idx
+        else:
+            classes, class_to_idx = self.find_classes(self.root)
+            self.classes = classes
+            self.class_to_idx = class_to_idx
+        samples = self.make_dataset(self.root, self.class_to_idx, extensions, is_valid_file)
         if len(samples) == 0:
             msg = "Found 0 files in subfolders of: {}\n".format(self.root)
             if extensions is not None:
@@ -186,8 +192,6 @@ class ValTinyImagenetDataset(BasicDataset, ):
         self.loader = default_loader
         self.extensions = extensions
 
-        self.classes = classes
-        self.class_to_idx = class_to_idx
         self.data = samples
         self.targets = [s[1] for s in samples]
 
@@ -260,6 +264,3 @@ class ValTinyImagenetDataset(BasicDataset, ):
         return instances
 
 
-if __name__ == "__main__":
-    a = ValTinyImagenetDataset("./../../../data/tiny-imagenet-200/val", 0, 0, 0)
-    print(a.__sample__(10))
