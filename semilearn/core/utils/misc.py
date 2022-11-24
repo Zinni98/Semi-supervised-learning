@@ -53,14 +53,14 @@ def send_model_cuda(args, model):
             model.cuda(args.gpu)
             model = nn.SyncBatchNorm.convert_sync_batchnorm(model)
             model = torch.nn.parallel.DistributedDataParallel(model, broadcast_buffers=False,
-                                                                     find_unused_parameters=True,
+                                                                     find_unused_parameters=False,
                                                                      device_ids=[args.gpu])
         else:
             # if arg.gpu is None, DDP will divide and allocate batch_size
             # to all available GPUs if device_ids are not set.
             model.cuda()
             model = torch.nn.parallel.DistributedDataParallel(model,  broadcast_buffers=False, 
-                                                                      find_unused_parameters=True)
+                                                                      find_unused_parameters=False)
     elif args.gpu is not None:
         torch.cuda.set_device(args.gpu)
         model = model.cuda(args.gpu)
