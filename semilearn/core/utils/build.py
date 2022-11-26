@@ -70,7 +70,7 @@ def get_dataset(args, algorithm, dataset, num_labels, num_classes, data_dir='./d
         seed: random seed
         data_dir: data folder
     """
-    from semilearn.datasets import get_eurosat, get_medmnist, get_semi_aves, get_cifar, get_svhn, get_stl10, get_imagenet, get_json_dset, get_pkl_dset, get_tinyimagenet
+    from semilearn.datasets import get_eurosat, get_medmnist, get_semi_aves, get_cifar, get_svhn, get_stl10, get_imagenet, get_json_dset, get_pkl_dset, get_tinyimagenet, get_adaptiope
 
     if dataset == "eurosat":
         lb_dset, ulb_dset, eval_dset = get_eurosat(args, algorithm, dataset, num_labels, num_classes, data_dir=data_dir, include_lb_to_ulb=include_lb_to_ulb)
@@ -98,6 +98,9 @@ def get_dataset(args, algorithm, dataset, num_labels, num_classes, data_dir='./d
         test_dset = None
     elif dataset == "tinyimagenet":
         lb_dset, ulb_dset, eval_dset = get_tinyimagenet(args, algorithm, "tiny-imagenet-200", num_labels, num_classes, data_dir=data_dir, include_lb_to_ulb=include_lb_to_ulb)
+        test_dset = None
+    elif dataset == "adaptiope":
+        lb_dset, ulb_dset, eval_dset = get_adaptiope(args, algorithm, "Adaptiope", num_labels, num_classes, data_dir=data_dir, include_lb_to_ulb=include_lb_to_ulb)
         test_dset = None
     # speech dataset
     elif dataset in ['esc50', 'fsdnoisy', 'gtzan', 'superbks', 'superbsi', 'urbansound8k']:
