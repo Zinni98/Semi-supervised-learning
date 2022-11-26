@@ -3,10 +3,11 @@
 
 import os
 import gc
+import numpy as np
 import copy
 import json
 import random
-from torchvision.datasets import ImageFolder
+from torchvision.datasets import ImageFolder, folder
 from PIL import Image
 from torchvision import transforms
 import math
@@ -19,6 +20,9 @@ mean, std = {}, {}
 mean['adaptiope'] = [0.485, 0.456, 0.406]
 std['adaptiope'] = [0.229, 0.224, 0.225]
 img_size = 224
+
+PRODUCT = "product_images"
+REAL = "real_life"
 
 
 def accimage_loader(path):
@@ -77,47 +81,36 @@ def get_adaptiope(args, alg, name, num_labels, num_classes, data_dir='./data', i
 
     data_dir = os.path.join(data_dir, name.lower())
 
-    print("SUGO")
-
     # Split filenames in train/val balanced
-    product_root = os.path.join(data_dir, "product")
-    classes, class_to_idx = ImageFolder.find_classes(product_root)
+    product_root = os.path.join(data_dir, PRODUCT)
+    classes, class_to_idx = folder.find_classes(product_root)
     directory = os.path.expanduser(product_root)
 
-    train_fnames = []
-    train_classes = []
-    val_fnames = []
-    val_classes = []
+    train_samples = []
+    val_samples = []
     TRAIN_PERCENTAGE = 0.8
 
     for target_class in sorted(class_to_idx.keys()):
         class_index = class_to_idx[target_class]
         target_dir = os.path.join(directory, target_class)
         if not os.path.isdir(target_dir):
-            continue 
+            continue
         for root, _, fnames in sorted(os.walk(target_dir, followlinks=True)):
             random.shuffle(fnames)
-            train_fnames.extend(fnames[:int(len(fnames)*TRAIN_PERCENTAGE)])
-            train_classes.extend([class_index]*int(len(fnames)*TRAIN_PERCENTAGE))
-            val_fnames.extend(fnames[int(len(fnames)*TRAIN_PERCENTAGE):])
-            val_classes.extend([class_index]*(len(fnames)-int(len(fnames)*TRAIN_PERCENTAGE)))
 
-            assert len(train_classes) == len(train_fnames)
-            assert len(val_classes) == len(val_fnames)
+            train_samples.extend((fname, target_class) for fname in fnames[:int(len(fnames)*TRAIN_PERCENTAGE)])
+            val_samples.extend((fname, target_class) for fname in fnames[int(len(fnames)*TRAIN_PERCENTAGE):])
 
+    lb_dset = AdaptiopeDataset(root=os.path.join(data_dir, PRODUCT), samples=train_samples, transform=transform_weak, ulb=False, alg=alg, num_labels=num_labels)
 
-    lb_dset = AdaptiopeDataset(root=os.path.join(data_dir, "product"), samples=(train_fnames, train_classes), transform=transform_weak, ulb=False, alg=alg, num_labels=num_labels)
+    ulb_dset = AdaptiopeDataset(root=os.path.join(data_dir, REAL), transform=transform_weak, alg=alg, ulb=True, strong_transform=transform_strong)
 
-    ulb_dset = AdaptiopeDataset(root=os.path.join(data_dir, "real"), transform=transform_weak, alg=alg, ulb=True, strong_transform=transform_strong)
-
-    eval_dset = AdaptiopeDataset(root=os.path.join(data_dir, "product"), samples=(val_fnames, val_classes), transform=transform_val, alg=alg, ulb=False)
-
+    eval_dset = AdaptiopeDataset(root=os.path.join(data_dir, PRODUCT), samples=val_samples, split="eval", transform=transform_val, alg=alg, ulb=False)
     return lb_dset, ulb_dset, eval_dset
-    
 
 
 class AdaptiopeDataset(BasicDataset, ImageFolder):
-    def __init__(self, root, transform, ulb, alg, samples=None, strong_transform=None, num_labels=-1):
+    def __init__(self, root, transform, ulb, alg, samples=None, strong_transform=None, num_labels=-1, split=None):
         self.alg = alg
         self.is_ulb = ulb
         self.num_labels = num_labels
@@ -129,7 +122,7 @@ class AdaptiopeDataset(BasicDataset, ImageFolder):
         is_valid_file = None
         extensions = ('.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif', '.tiff', '.webp')
         classes, class_to_idx = self.find_classes(self.root)
-        samples = self.make_dataset(self.root, class_to_idx, extensions, is_valid_file, samples)
+        samples = self.make_dataset(self.root, class_to_idx, extensions, is_valid_file, samples, split)
         if len(samples) == 0:
             msg = "Found 0 files in subfolders of: {}\n".format(self.root)
             if extensions is not None:
@@ -149,7 +142,6 @@ class AdaptiopeDataset(BasicDataset, ImageFolder):
             if self.is_ulb:
                 assert self.alg not in ['fullysupervised', 'supervised', 'pseudolabel', 'vat', 'pimodel', 'meanteacher', 'mixmatch'], f"alg {self.alg} requires strong augmentation"
 
-
     def __sample__(self, index):
         path, target = self.data[index]
         sample = self.loader(path)
@@ -162,6 +154,7 @@ class AdaptiopeDataset(BasicDataset, ImageFolder):
             extensions=None,
             is_valid_file=None,
             samples=None,
+            split=None
     ):
         instances = []
         directory = os.path.expanduser(directory)
@@ -176,11 +169,21 @@ class AdaptiopeDataset(BasicDataset, ImageFolder):
         lb_idx = {}
 
         if samples is not None:
-            for fname, target in zip(samples):
-                path = os.path.join(root, target, fname)
-                if is_valid_file(path):
-                    item = (path, target)
-                    instances.append(item)
+            if split == "eval":
+                for fname, target in samples:
+                    path = os.path.join(directory, target, fname)
+                    if is_valid_file(path):
+                        item = (path, class_to_idx[target])
+                        instances.append(item)
+            else:
+                chunks = np.array_split(samples, len(class_to_idx.keys()))
+                for ch_samples in chunks:
+                    random.shuffle(ch_samples)
+                    for fname, target in ch_samples[:self.num_labels]:
+                        path = os.path.join(directory, target, fname)
+                        if is_valid_file(path):
+                            item = (path, class_to_idx[target])
+                            instances.append(item)
         else:
             for target_class in sorted(class_to_idx.keys()):
                 class_index = class_to_idx[target_class]
