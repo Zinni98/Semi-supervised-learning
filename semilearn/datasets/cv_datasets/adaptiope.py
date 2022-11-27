@@ -17,8 +17,10 @@ from .datasetbase import BasicDataset
 
 
 mean, std = {}, {}
-mean['adaptiope'] = [0.485, 0.456, 0.406]
-std['adaptiope'] = [0.229, 0.224, 0.225]
+mean['adaptiope-product'] = [0.8082, 0.7995, 0.7967]
+std['adaptiope-product'] = [0.3176, 0.3218, 0.3244]
+mean['adaptiope-real'] = [0.4948, 0.4466, 0.4028]
+std['adaptiope-real'] = [0.2760, 0.2638, 0.2616]
 img_size = 224
 
 PRODUCT = "product_images"
@@ -55,28 +57,35 @@ def get_adaptiope(args, alg, name, num_labels, num_classes, data_dir='./data', i
     img_size = args.img_size
     crop_ratio = args.crop_ratio
 
-    transform_weak = transforms.Compose([
+    transform_weak_product = transforms.Compose([
         transforms.Resize((int(math.floor(img_size / crop_ratio)), int(math.floor(img_size / crop_ratio)))),
         transforms.RandomCrop((img_size, img_size)),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize(mean['adaptiope'], std['adaptiope'])
+        transforms.Normalize(mean['adaptiope-product'], std['adaptiope-product'])
+    ])
+    transform_weak_real = transforms.Compose([
+        transforms.Resize((int(math.floor(img_size / crop_ratio)), int(math.floor(img_size / crop_ratio)))),
+        transforms.RandomCrop((img_size, img_size)),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize(mean['adaptiope-real'], std['adaptiope-real'])
     ])
 
-    transform_strong = transforms.Compose([
+    transform_strong_real = transforms.Compose([
         transforms.Resize((int(math.floor(img_size / crop_ratio)), int(math.floor(img_size / crop_ratio)))),
         RandomResizedCropAndInterpolation((img_size, img_size)),
         transforms.RandomHorizontalFlip(),
         RandAugment(3, 10),
         transforms.ToTensor(),
-        transforms.Normalize(mean['adaptiope'], std['adaptiope'])
+        transforms.Normalize(mean['adaptiope-real'], std['adaptiope-real'])
     ])
 
-    transform_val = transforms.Compose([
+    transform_val_product = transforms.Compose([
         transforms.Resize(math.floor(int(img_size / crop_ratio))),
         transforms.CenterCrop(img_size),
         transforms.ToTensor(),
-        transforms.Normalize(mean['adaptiope'], std['adaptiope'])
+        transforms.Normalize(mean['adaptiope-product'], std['adaptiope-product'])
     ])
 
     data_dir = os.path.join(data_dir, name.lower())
@@ -101,11 +110,11 @@ def get_adaptiope(args, alg, name, num_labels, num_classes, data_dir='./data', i
             train_samples.extend((fname, target_class) for fname in fnames[:int(len(fnames)*TRAIN_PERCENTAGE)])
             val_samples.extend((fname, target_class) for fname in fnames[int(len(fnames)*TRAIN_PERCENTAGE):])
 
-    lb_dset = AdaptiopeDataset(root=os.path.join(data_dir, PRODUCT), samples=train_samples, transform=transform_weak, ulb=False, alg=alg, num_labels=num_labels)
+    lb_dset = AdaptiopeDataset(root=os.path.join(data_dir, PRODUCT), samples=train_samples, transform=transform_weak_product, ulb=False, alg=alg, num_labels=num_labels)
 
-    ulb_dset = AdaptiopeDataset(root=os.path.join(data_dir, REAL), transform=transform_weak, alg=alg, ulb=True, strong_transform=transform_strong)
+    ulb_dset = AdaptiopeDataset(root=os.path.join(data_dir, REAL), transform=transform_weak_real, alg=alg, ulb=True, strong_transform=transform_strong_real)
 
-    eval_dset = AdaptiopeDataset(root=os.path.join(data_dir, PRODUCT), samples=val_samples, split="eval", transform=transform_val, alg=alg, ulb=False)
+    eval_dset = AdaptiopeDataset(root=os.path.join(data_dir, PRODUCT), samples=val_samples, split="eval", transform=transform_val_product, alg=alg, ulb=False)
     return lb_dset, ulb_dset, eval_dset
 
 

@@ -16,8 +16,8 @@ from .datasetbase import BasicDataset
 
 
 mean, std = {}, {}
-mean['tinyimagenet'] = [0.485, 0.456, 0.406]
-std['tinyimagenet'] = [0.229, 0.224, 0.225]
+mean['tinyimagenet'] = [0.4802, 0.4481, 0.3974]
+std['tinyimagenet'] = [0.2764, 0.2688, 0.2816]
 
 img_size = 64
 crop_ratio = .875
