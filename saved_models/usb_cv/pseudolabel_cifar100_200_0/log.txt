@@ -1,0 +1,185 @@
+[2022-11-22 11:33:26,661 INFO] Use GPU: 0 for training
+[2022-11-22 11:33:37,204 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:34:20,985 INFO] Create train and test data loaders
+[2022-11-22 11:34:21,005 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:35:04,788 INFO] Create optimizer and scheduler
+[2022-11-22 11:35:04,792 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:35:05,868 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:23672', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:35:05,868 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:35:05,868 INFO] Model training
+[2022-11-22 11:40:16,778 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 4.2348737716674805, 'train/unsup_loss': 0.0, 'train/total_loss': 4.2348737716674805, 'train/mask_ratio': 0.0, 'lr': 5e-05, 'train/prefecth_time': 0.037096736907958984, 'train/run_time': 0.4802442321777344}
+[2022-11-22 11:44:19,320 INFO] Use GPU: 0 for training
+[2022-11-22 11:44:21,148 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:44:22,612 INFO] Create train and test data loaders
+[2022-11-22 11:44:22,613 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:44:23,278 INFO] Create optimizer and scheduler
+[2022-11-22 11:44:23,282 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:44:23,363 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:15240', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:44:23,363 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:44:23,364 INFO] Model training
+[2022-11-22 11:52:47,784 INFO] Use GPU: 0 for training
+[2022-11-22 11:52:49,605 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:52:51,113 INFO] Create train and test data loaders
+[2022-11-22 11:52:51,114 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:52:51,772 INFO] Create optimizer and scheduler
+[2022-11-22 11:52:51,776 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:52:51,858 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:28547', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:52:51,858 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:52:51,858 INFO] Model training
+[2022-11-22 11:53:40,335 INFO] Use GPU: 0 for training
+[2022-11-22 11:53:42,138 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:53:43,610 INFO] Create train and test data loaders
+[2022-11-22 11:53:43,611 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:53:44,246 INFO] Create optimizer and scheduler
+[2022-11-22 11:53:44,250 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:53:44,329 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:25561', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:53:44,329 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:53:44,329 INFO] Model training
+[2022-11-22 11:54:23,814 INFO] Use GPU: 0 for training
+[2022-11-22 11:54:31,032 INFO] Use GPU: 0 for training
+[2022-11-22 11:54:32,856 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:54:34,361 INFO] Create train and test data loaders
+[2022-11-22 11:54:34,362 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:54:35,007 INFO] Create optimizer and scheduler
+[2022-11-22 11:54:35,011 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:54:35,098 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:29255', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:54:35,098 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:54:35,098 INFO] Model training
+[2022-11-22 11:55:40,791 INFO] Use GPU: 0 for training
+[2022-11-22 11:55:42,611 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:55:44,077 INFO] Create train and test data loaders
+[2022-11-22 11:55:44,078 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:55:44,717 INFO] Create optimizer and scheduler
+[2022-11-22 11:55:44,721 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:55:44,798 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:20519', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:55:44,798 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:55:44,798 INFO] Model training
+[2022-11-22 11:56:55,122 INFO] Use GPU: 0 for training
+[2022-11-22 11:56:56,961 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 11:56:58,463 INFO] Create train and test data loaders
+[2022-11-22 11:56:58,464 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 11:56:59,107 INFO] Create optimizer and scheduler
+[2022-11-22 11:56:59,111 INFO] Number of Trainable Params: 21436900
+[2022-11-22 11:56:59,194 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:26356', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 11:56:59,194 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 11:56:59,194 INFO] Model training
+[2022-11-22 12:01:52,350 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 4.2348737716674805, 'train/unsup_loss': 0.0, 'train/total_loss': 4.2348737716674805, 'train/mask_ratio': 0.0, 'lr': 5e-05, 'train/prefecth_time': 0.03599977493286133, 'train/run_time': 0.4735577697753906}
+[2022-11-22 12:06:19,882 INFO] 1024 iteration, USE_EMA: False, {'train/sup_loss': 3.0338053703308105, 'train/unsup_loss': 0.0, 'train/total_loss': 3.0338053703308105, 'train/mask_ratio': 0.0, 'lr': 0.0001, 'train/prefecth_time': 0.03587071990966797, 'train/run_time': 0.4861146240234375}
+[2022-11-22 12:11:18,099 INFO] 1536 iteration, USE_EMA: False, {'train/sup_loss': 0.9735814332962036, 'train/unsup_loss': 0.0, 'train/total_loss': 0.9735814332962036, 'train/mask_ratio': 0.0, 'lr': 0.00015, 'train/prefecth_time': 0.03701504135131836, 'train/run_time': 0.4829221496582031}
+[2022-11-22 12:15:46,085 INFO] validating...
+[2022-11-22 12:17:39,500 INFO] confusion matrix:
+[[0.76 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.75 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.59 ... 0.   0.05 0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.05 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.88]]
+[2022-11-22 12:17:40,043 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 12:17:40,568 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/model_best.pth
+[2022-11-22 12:17:40,568 INFO] 2048 iteration, USE_EMA: False, {'train/sup_loss': 0.21684880554676056, 'train/unsup_loss': 0.0, 'train/total_loss': 0.21684880554676056, 'train/mask_ratio': 0.0, 'lr': 0.0002, 'train/prefecth_time': 0.035898719787597656, 'train/run_time': 0.4918314208984375, 'eval/loss': 1.688807229423523, 'eval/top-1-acc': 0.6202, 'eval/balanced_acc': 0.6202000000000001, 'eval/precision': 0.6186915360637406, 'eval/recall': 0.6202000000000001, 'eval/F1': 0.6047253221403401}, BEST_EVAL_ACC: 0.6202, at 2048 iters
+[2022-11-22 12:22:38,625 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 0.6034554243087769, 'train/unsup_loss': 0.0020894045010209084, 'train/total_loss': 0.6035206913948059, 'train/mask_ratio': 0.125, 'lr': 0.00025, 'train/prefecth_time': 0.03671414566040039, 'train/run_time': 0.4854969482421875}
+[2022-11-22 12:27:06,781 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 0.01392646599560976, 'train/unsup_loss': 0.003885566256940365, 'train/total_loss': 0.014072127640247345, 'train/mask_ratio': 0.125, 'lr': 0.0003, 'train/prefecth_time': 0.03528208160400391, 'train/run_time': 0.4901517639160156}
+[2022-11-22 12:32:05,195 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 0.4721904993057251, 'train/unsup_loss': 0.0013200726825743914, 'train/total_loss': 0.47224822640419006, 'train/mask_ratio': 0.125, 'lr': 0.00035, 'train/prefecth_time': 0.0465975341796875, 'train/run_time': 0.489959228515625}
+[2022-11-22 12:36:33,294 INFO] validating...
+[2022-11-22 12:38:26,333 INFO] confusion matrix:
+[[0.81 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.74 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.51 ... 0.   0.05 0.  ]
+ ...
+ [0.   0.   0.   ... 0.92 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.07 0.01]
+ [0.   0.   0.   ... 0.   0.   0.93]]
+[2022-11-22 12:38:34,804 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 12:38:48,323 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/model_best.pth
+[2022-11-22 12:38:48,323 INFO] 4096 iteration, USE_EMA: False, {'train/sup_loss': 0.008638260886073112, 'train/unsup_loss': 0.002168336184695363, 'train/total_loss': 0.008746651001274586, 'train/mask_ratio': 0.125, 'lr': 0.0004, 'train/prefecth_time': 0.03447465515136719, 'train/run_time': 0.4849104309082031, 'eval/loss': 1.5060098035812377, 'eval/top-1-acc': 0.6471, 'eval/balanced_acc': 0.6471000000000001, 'eval/precision': 0.6468809134764062, 'eval/recall': 0.6471000000000001, 'eval/F1': 0.6298841924533736}, BEST_EVAL_ACC: 0.6471, at 4096 iters
+[2022-11-22 12:43:46,523 INFO] 4608 iteration, USE_EMA: False, {'train/sup_loss': 0.05559014901518822, 'train/unsup_loss': 0.001819213037379086, 'train/total_loss': 0.05569245666265488, 'train/mask_ratio': 0.375, 'lr': 0.00045000000000000004, 'train/prefecth_time': 0.03545702362060547, 'train/run_time': 0.4886478271484375}
+[2022-11-22 12:48:15,525 INFO] 5120 iteration, USE_EMA: False, {'train/sup_loss': 0.007330994587391615, 'train/unsup_loss': 0.0004628789611160755, 'train/total_loss': 0.007359918672591448, 'train/mask_ratio': 0.375, 'lr': 0.0005, 'train/prefecth_time': 0.042630142211914065, 'train/run_time': 0.48986416625976564}
+[2022-11-22 12:53:14,590 INFO] 5632 iteration, USE_EMA: False, {'train/sup_loss': 0.0010402117623016238, 'train/unsup_loss': 0.0006984276697039604, 'train/total_loss': 0.0010882201604545116, 'train/mask_ratio': 0.25, 'lr': 0.0004999968949671069, 'train/prefecth_time': 0.03571376037597656, 'train/run_time': 0.4873638610839844}
+[2022-11-22 12:57:43,763 INFO] validating...
+[2022-11-22 12:59:36,970 INFO] confusion matrix:
+[[0.71 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.83 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.51 ... 0.   0.02 0.  ]
+ ...
+ [0.   0.   0.   ... 0.91 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.03 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.93]]
+[2022-11-22 12:59:46,933 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 12:59:46,933 INFO] 6144 iteration, USE_EMA: False, {'train/sup_loss': 0.1780000925064087, 'train/unsup_loss': 0.0011813066666945815, 'train/total_loss': 0.17808867990970612, 'train/mask_ratio': 0.375, 'lr': 0.0004999875799069926, 'train/prefecth_time': 0.03523324966430664, 'train/run_time': 0.48272509765625, 'eval/loss': 1.6346887784600257, 'eval/top-1-acc': 0.6461, 'eval/balanced_acc': 0.6461, 'eval/precision': 0.6457688546843358, 'eval/recall': 0.6461, 'eval/F1': 0.6265229951655344}, BEST_EVAL_ACC: 0.6471, at 4096 iters
+[2022-11-22 13:04:45,672 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 0.0001762372994562611, 'train/unsup_loss': 0.00936661846935749, 'train/total_loss': 0.0009371607447974384, 'train/mask_ratio': 0.5, 'lr': 0.0004999720549353513, 'train/prefecth_time': 0.03527231979370117, 'train/run_time': 0.4863352966308594}
+[2022-11-22 13:09:15,526 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 0.002460491145029664, 'train/unsup_loss': 0.006988572422415018, 'train/total_loss': 0.0030719060450792313, 'train/mask_ratio': 0.625, 'lr': 0.0004999503202450052, 'train/prefecth_time': 0.042519454956054685, 'train/run_time': 0.4928943786621094}
+[2022-11-22 13:14:15,523 INFO] 7680 iteration, USE_EMA: False, {'train/sup_loss': 0.0060623567551374435, 'train/unsup_loss': 0.0037099746987223625, 'train/total_loss': 0.006410121452063322, 'train/mask_ratio': 0.375, 'lr': 0.000499922376105902, 'train/prefecth_time': 0.035796478271484376, 'train/run_time': 0.4930315246582031}
+[2022-11-22 13:18:44,935 INFO] validating...
+[2022-11-22 13:20:38,274 INFO] confusion matrix:
+[[0.69 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.81 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.55 ... 0.   0.02 0.  ]
+ ...
+ [0.   0.   0.   ... 0.93 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.07 0.02]
+ [0.   0.   0.   ... 0.   0.   0.95]]
+[2022-11-22 13:20:53,494 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 13:21:08,625 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/model_best.pth
+[2022-11-22 13:21:08,626 INFO] 8192 iteration, USE_EMA: False, {'train/sup_loss': 0.0025033277925103903, 'train/unsup_loss': 0.004034251440316439, 'train/total_loss': 0.0029067036230117083, 'train/mask_ratio': 0.75, 'lr': 0.0004998882228651117, 'train/prefecth_time': 0.03449462509155273, 'train/run_time': 0.49396112060546876, 'eval/loss': 1.82701073833704, 'eval/top-1-acc': 0.6502, 'eval/balanced_acc': 0.6502, 'eval/precision': 0.6429905791822196, 'eval/recall': 0.6502, 'eval/F1': 0.6232910763181504}, BEST_EVAL_ACC: 0.6502, at 8192 iters
+[2022-11-22 13:26:07,486 INFO] 8704 iteration, USE_EMA: False, {'train/sup_loss': 0.10906525701284409, 'train/unsup_loss': 0.011505325324833393, 'train/total_loss': 0.11028755456209183, 'train/mask_ratio': 0.5, 'lr': 0.0004998478609468219, 'train/prefecth_time': 0.03562601470947266, 'train/run_time': 0.48571536254882813}
+[2022-11-22 13:30:37,108 INFO] 9216 iteration, USE_EMA: False, {'train/sup_loss': 0.0001314474066020921, 'train/unsup_loss': 0.00021383950661402196, 'train/total_loss': 0.00015550173702649772, 'train/mask_ratio': 0.375, 'lr': 0.000499801290852333, 'train/prefecth_time': 0.03483030319213867, 'train/run_time': 0.492512451171875}
+[2022-11-22 13:35:37,474 INFO] 9728 iteration, USE_EMA: False, {'train/sup_loss': 0.0006555133732035756, 'train/unsup_loss': 0.0058375997468829155, 'train/total_loss': 0.0013486570678651333, 'train/mask_ratio': 0.625, 'lr': 0.0004997485131600516, 'train/prefecth_time': 0.03631526565551758, 'train/run_time': 0.4918641967773438}
+[2022-11-22 13:40:07,254 INFO] validating...
+[2022-11-22 13:42:00,564 INFO] confusion matrix:
+[[0.82 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.82 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.59 ... 0.   0.06 0.  ]
+ ...
+ [0.   0.   0.   ... 0.93 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.15 0.01]
+ [0.   0.   0.   ... 0.   0.   0.85]]
+[2022-11-22 13:42:10,626 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 13:42:10,627 INFO] 10240 iteration, USE_EMA: False, {'train/sup_loss': 9.201733337249607e-05, 'train/unsup_loss': 0.005571743473410606, 'train/total_loss': 0.0007884172955527902, 'train/mask_ratio': 0.25, 'lr': 0.0004996895285254838, 'train/prefecth_time': 0.03535244750976563, 'train/run_time': 0.48321578979492186, 'eval/loss': 2.1162375995248555, 'eval/top-1-acc': 0.6482, 'eval/balanced_acc': 0.6481999999999999, 'eval/precision': 0.6529192870896893, 'eval/recall': 0.6481999999999999, 'eval/F1': 0.6246169349426927}, BEST_EVAL_ACC: 0.6502, at 8192 iters
+[2022-11-22 13:47:10,687 INFO] 10752 iteration, USE_EMA: False, {'train/sup_loss': 3.069625790885766e-06, 'train/unsup_loss': 0.005673275329172611, 'train/total_loss': 0.0007476177415810525, 'train/mask_ratio': 0.75, 'lr': 0.0004996243376812264, 'train/prefecth_time': 0.03519065475463867, 'train/run_time': 0.49405838012695313}
+[2022-11-22 13:51:40,626 INFO] 11264 iteration, USE_EMA: False, {'train/sup_loss': 5.930601219006348e-06, 'train/unsup_loss': 0.004247620701789856, 'train/total_loss': 0.0005899266107007861, 'train/mask_ratio': 0.5, 'lr': 0.0004995529414369582, 'train/prefecth_time': 0.03579292678833008, 'train/run_time': 0.4936779479980469}
+[2022-11-22 13:56:41,082 INFO] 11776 iteration, USE_EMA: False, {'train/sup_loss': 1.6300935385515913e-05, 'train/unsup_loss': 0.005586955230683088, 'train/total_loss': 0.0008193575777113438, 'train/mask_ratio': 0.875, 'lr': 0.0004994753406794301, 'train/prefecth_time': 0.03515763092041015, 'train/run_time': 0.49682061767578123}
+[2022-11-22 14:01:10,985 INFO] validating...
+[2022-11-22 14:03:04,163 INFO] confusion matrix:
+[[0.77 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.77 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.71 ... 0.   0.06 0.  ]
+ ...
+ [0.   0.   0.   ... 0.9  0.   0.  ]
+ [0.   0.   0.07 ... 0.   0.15 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.9 ]]
+[2022-11-22 14:03:11,657 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 14:03:21,949 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/model_best.pth
+[2022-11-22 14:03:21,950 INFO] 12288 iteration, USE_EMA: False, {'train/sup_loss': 4.276570962247206e-06, 'train/unsup_loss': 0.0001725158654153347, 'train/total_loss': 3.0151844839565456e-05, 'train/mask_ratio': 0.375, 'lr': 0.0004993915363724536, 'train/prefecth_time': 0.033860702514648434, 'train/run_time': 0.4924413146972656, 'eval/loss': 2.622661143522337, 'eval/top-1-acc': 0.653, 'eval/balanced_acc': 0.6530000000000001, 'eval/precision': 0.6481530249025673, 'eval/recall': 0.6530000000000001, 'eval/F1': 0.6249417278066587}, BEST_EVAL_ACC: 0.653, at 12288 iters
+[2022-11-22 14:08:22,053 INFO] 12800 iteration, USE_EMA: False, {'train/sup_loss': 1.7285238982367446e-06, 'train/unsup_loss': 0.006000574212521315, 'train/total_loss': 0.0009392450447194278, 'train/mask_ratio': 0.375, 'lr': 0.0004993015295568891, 'train/prefecth_time': 0.03517814254760742, 'train/run_time': 0.485821533203125}
+[2022-11-22 14:12:52,458 INFO] 13312 iteration, USE_EMA: False, {'train/sup_loss': 1.609225364518352e-05, 'train/unsup_loss': 0.0063055651262402534, 'train/total_loss': 0.0010406695073470473, 'train/mask_ratio': 0.5, 'lr': 0.0004992053213506333, 'train/prefecth_time': 0.03491507339477539, 'train/run_time': 0.49365902709960935}
+[2022-11-22 14:17:54,148 INFO] 13824 iteration, USE_EMA: False, {'train/sup_loss': 7.167264811869245e-06, 'train/unsup_loss': 0.003010059939697385, 'train/total_loss': 0.0005150781944394112, 'train/mask_ratio': 0.625, 'lr': 0.0004991029129486048, 'train/prefecth_time': 0.0350398063659668, 'train/run_time': 0.4905701904296875}
+[2022-11-22 14:22:24,516 INFO] validating...
+[2022-11-22 14:24:17,709 INFO] confusion matrix:
+[[0.96 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.76 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.71 ... 0.   0.05 0.  ]
+ ...
+ [0.   0.   0.   ... 0.92 0.   0.  ]
+ [0.   0.   0.05 ... 0.   0.14 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.89]]
+[2022-11-22 14:24:30,113 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 14:24:40,971 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/model_best.pth
+[2022-11-22 14:24:40,972 INFO] 14336 iteration, USE_EMA: False, {'train/sup_loss': 1.8775415355776204e-06, 'train/unsup_loss': 0.0011211334494873881, 'train/total_loss': 0.00019806221826002002, 'train/mask_ratio': 0.25, 'lr': 0.0004989943056227294, 'train/prefecth_time': 0.03592380905151367, 'train/run_time': 0.49189453125, 'eval/loss': 2.6551869511485098, 'eval/top-1-acc': 0.6621, 'eval/balanced_acc': 0.6620999999999999, 'eval/precision': 0.6555135947299562, 'eval/recall': 0.6620999999999999, 'eval/F1': 0.6331010745006503}, BEST_EVAL_ACC: 0.6621, at 14336 iters
+[2022-11-22 14:29:41,162 INFO] 14848 iteration, USE_EMA: False, {'train/sup_loss': 0.0002661846810951829, 'train/unsup_loss': 1.6152149328263476e-05, 'train/total_loss': 0.000269112060777843, 'train/mask_ratio': 0.375, 'lr': 0.0004988795007219241, 'train/prefecth_time': 0.037147647857666014, 'train/run_time': 0.48535479736328124}
+[2022-11-22 14:34:11,743 INFO] 15360 iteration, USE_EMA: False, {'train/sup_loss': 0.0401499979197979, 'train/unsup_loss': 4.7683656134722696e-07, 'train/total_loss': 0.04015008732676506, 'train/mask_ratio': 0.625, 'lr': 0.0004987584996720814, 'train/prefecth_time': 0.035051296234130856, 'train/run_time': 0.4943531494140625}
+[2022-11-22 14:39:12,537 INFO] 15872 iteration, USE_EMA: False, {'train/sup_loss': 4.321334472479066e-07, 'train/unsup_loss': 0.005172098986804485, 'train/total_loss': 0.0010024631628766656, 'train/mask_ratio': 0.875, 'lr': 0.0004986313039760497, 'train/prefecth_time': 0.03584249496459961, 'train/run_time': 0.49531137084960936}
+[2022-11-22 14:43:43,105 INFO] validating...
+[2022-11-22 14:45:36,269 INFO] confusion matrix:
+[[0.95 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.55 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.74 ... 0.   0.01 0.  ]
+ ...
+ [0.   0.   0.   ... 0.93 0.   0.  ]
+ [0.   0.   0.08 ... 0.   0.   0.  ]
+ [0.   0.   0.   ... 0.   0.   0.74]]
+[2022-11-22 14:45:40,321 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/latest_model.pth
+[2022-11-22 14:45:48,554 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_200_0/model_best.pth
+[2022-11-22 14:45:48,554 INFO] 16384 iteration, USE_EMA: False, {'train/sup_loss': 0.0014134441735222936, 'train/unsup_loss': 0.00926333386451006, 'train/total_loss': 0.0032659978605806828, 'train/mask_ratio': 0.75, 'lr': 0.0004984979152136166, 'train/prefecth_time': 0.035331775665283206, 'train/run_time': 0.4964812927246094, 'eval/loss': 3.180347955393791, 'eval/top-1-acc': 0.6684, 'eval/balanced_acc': 0.6684, 'eval/precision': 0.6693257707830136, 'eval/recall': 0.6684, 'eval/F1': 0.6349599511417401}, BEST_EVAL_ACC: 0.6684, at 16384 iters
+[2022-11-22 14:50:49,603 INFO] 16896 iteration, USE_EMA: False, {'train/sup_loss': 8.493644827467506e-07, 'train/unsup_loss': 0.0008710910915397108, 'train/total_loss': 0.0001805012725526467, 'train/mask_ratio': 0.5, 'lr': 0.000498358335041488, 'train/prefecth_time': 0.03597449493408203, 'train/run_time': 0.49349337768554685}
+[2022-11-22 14:55:20,253 INFO] 17408 iteration, USE_EMA: False, {'train/sup_loss': 2.2351724737745826e-07, 'train/unsup_loss': 0.0048086619935929775, 'train/total_loss': 0.0010220054537057877, 'train/mask_ratio': 0.625, 'lr': 0.0004982125651932681, 'train/prefecth_time': 0.03626646423339844, 'train/run_time': 0.49057534790039065}

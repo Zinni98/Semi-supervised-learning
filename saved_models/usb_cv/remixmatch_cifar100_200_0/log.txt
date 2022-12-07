@@ -1,0 +1,89 @@
+[2022-11-22 19:06:34,582 INFO] Use GPU: 0 for training
+[2022-11-22 19:06:51,967 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-22 19:07:21,442 INFO] Create train and test data loaders
+[2022-11-22 19:07:21,469 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 19:07:48,383 INFO] Create optimizer and scheduler
+[2022-11-22 19:07:48,480 INFO] Number of Trainable Params: 21438440
+[2022-11-22 19:07:48,738 INFO] Arguments: Namespace(T=0.5, algorithm='remixmatch', amp=False, batch_size=8, c='config/usb_cv/remixmatch/remixmatch_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:22318', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, kl_loss_ratio=0.5, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//remixmatch_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, mixup_alpha=0.75, mixup_manifold=False, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, rot_loss_ratio=0.5, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='remixmatch_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.5, ulb_num_labels=None, unsup_warm_up=0.015625, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 19:07:48,739 INFO] Resume load path ./saved_models/usb_cv//remixmatch_cifar100_200_0/latest_model.pth does not exist
+[2022-11-22 19:07:48,739 INFO] Model training
+[2022-11-22 19:22:47,583 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 4.616558358284175, 'train/unsup_loss': 5.239066852795256, 'train/total_loss': 7.034509496933853, 'lr': 5e-05, 'train/prefecth_time': 0.03806108856201172, 'train/run_time': 1.65473291015625}
+[2022-11-22 19:37:11,513 INFO] 1024 iteration, USE_EMA: False, {'train/sup_loss': 4.160229501063361, 'train/unsup_loss': 4.247045929417139, 'train/total_loss': 7.62438709564036, 'lr': 0.0001, 'train/prefecth_time': 0.034447265625, 'train/run_time': 1.6549808349609374}
+[2022-11-22 19:52:08,810 INFO] 1536 iteration, USE_EMA: False, {'train/sup_loss': 1.6699492975463017, 'train/unsup_loss': 2.7277619883029915, 'train/total_loss': 5.168968871918542, 'lr': 0.00015, 'train/prefecth_time': 0.03701401519775391, 'train/run_time': 1.65586083984375}
+[2022-11-22 20:06:32,994 INFO] validating...
+[2022-11-22 20:08:22,455 INFO] confusion matrix:
+[[0.17 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.75 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.49 ... 0.   0.08 0.  ]
+ ...
+ [0.   0.   0.   ... 0.93 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.01 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.85]]
+[2022-11-22 20:08:23,019 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/latest_model.pth
+[2022-11-22 20:08:23,526 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/model_best.pth
+[2022-11-22 20:08:23,526 INFO] 2048 iteration, USE_EMA: False, {'train/sup_loss': 3.0059462129297496, 'train/unsup_loss': 3.800373714458639, 'train/total_loss': 8.245733787752986, 'lr': 0.0002, 'train/prefecth_time': 0.03743532943725586, 'train/run_time': 1.6430218505859375, 'eval/loss': 1.7277765449523925, 'eval/top-1-acc': 0.5975, 'eval/balanced_acc': 0.5974999999999999, 'eval/precision': 0.6294055091464924, 'eval/recall': 0.5974999999999999, 'eval/F1': 0.5607374436413441}, BEST_EVAL_ACC: 0.5975, at 2048 iters
+[2022-11-22 20:23:17,774 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 3.433121487136271, 'train/unsup_loss': 3.215673694378869, 'train/total_loss': 8.689000112297016, 'lr': 0.00025, 'train/prefecth_time': 0.035719646453857425, 'train/run_time': 1.64851513671875}
+[2022-11-22 20:37:41,899 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 1.0428035993356892, 'train/unsup_loss': 1.674714581274527, 'train/total_loss': 4.44060512144095, 'lr': 0.0003, 'train/prefecth_time': 0.03486377716064453, 'train/run_time': 1.6421812744140625}
+[2022-11-22 20:52:36,226 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 2.426630440056956, 'train/unsup_loss': 3.336475099819304, 'train/total_loss': 8.968739855871878, 'lr': 0.00035, 'train/prefecth_time': 0.03603481674194336, 'train/run_time': 1.650462646484375}
+[2022-11-22 21:07:00,539 INFO] validating...
+[2022-11-22 21:08:49,329 INFO] confusion matrix:
+[[0.73 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.85 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.49 ... 0.   0.36 0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.59 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.81]]
+[2022-11-22 21:08:57,571 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/latest_model.pth
+[2022-11-22 21:09:01,066 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/model_best.pth
+[2022-11-22 21:09:01,067 INFO] 4096 iteration, USE_EMA: False, {'train/sup_loss': 1.4237202665458548, 'train/unsup_loss': 2.4951511881674326, 'train/total_loss': 6.376715086307747, 'lr': 0.0004, 'train/prefecth_time': 0.035977535247802735, 'train/run_time': 1.6516484375, 'eval/loss': 1.2320189466953277, 'eval/top-1-acc': 0.689, 'eval/balanced_acc': 0.689, 'eval/precision': 0.7028194713809275, 'eval/recall': 0.689, 'eval/F1': 0.6588744150909559}, BEST_EVAL_ACC: 0.689, at 4096 iters
+[2022-11-22 21:23:56,034 INFO] 4608 iteration, USE_EMA: False, {'train/sup_loss': 1.6711586557248284, 'train/unsup_loss': 2.035793311393098, 'train/total_loss': 5.666151733453278, 'lr': 0.00045000000000000004, 'train/prefecth_time': 0.03743587112426758, 'train/run_time': 1.6462757568359374}
+[2022-11-22 21:38:20,356 INFO] 5120 iteration, USE_EMA: False, {'train/sup_loss': 1.7866106937019763, 'train/unsup_loss': 3.084035161802559, 'train/total_loss': 7.872048778870558, 'lr': 0.0005, 'train/prefecth_time': 0.035374977111816405, 'train/run_time': 1.6561741943359376}
+[2022-11-22 21:53:14,452 INFO] 5632 iteration, USE_EMA: False, {'train/sup_loss': 2.5414119236292856, 'train/unsup_loss': 2.837689541736131, 'train/total_loss': 8.349007595788073, 'lr': 0.0004999968949671069, 'train/prefecth_time': 0.03661324691772461, 'train/run_time': 1.644520751953125}
+[2022-11-22 22:07:38,396 INFO] validating...
+[2022-11-22 22:09:26,790 INFO] confusion matrix:
+[[0.73 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.82 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.9  ... 0.   0.01 0.  ]
+ ...
+ [0.   0.   0.   ... 0.97 0.   0.  ]
+ [0.   0.   0.26 ... 0.   0.31 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.88]]
+[2022-11-22 22:09:30,858 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/latest_model.pth
+[2022-11-22 22:09:39,631 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/model_best.pth
+[2022-11-22 22:09:39,631 INFO] 6144 iteration, USE_EMA: False, {'train/sup_loss': 0.07257196329032341, 'train/unsup_loss': 1.1373002377564063, 'train/total_loss': 3.0583937908761776, 'lr': 0.0004999875799069926, 'train/prefecth_time': 0.034966625213623044, 'train/run_time': 1.65401220703125, 'eval/loss': 1.1260372397184373, 'eval/top-1-acc': 0.7201, 'eval/balanced_acc': 0.7201, 'eval/precision': 0.7244312501826842, 'eval/recall': 0.7201, 'eval/F1': 0.6982574727925069}, BEST_EVAL_ACC: 0.7201, at 6144 iters
+[2022-11-22 22:24:34,268 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 1.563036878329413, 'train/unsup_loss': 2.0550194344958577, 'train/total_loss': 5.630095051521505, 'lr': 0.0004999720549353513, 'train/prefecth_time': 0.037685791015625, 'train/run_time': 1.6490806884765625}
+[2022-11-22 22:38:58,219 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 1.44933432853397, 'train/unsup_loss': 2.1556753005301954, 'train/total_loss': 5.351612454990622, 'lr': 0.0004999503202450052, 'train/prefecth_time': 0.03604086303710938, 'train/run_time': 1.654269287109375}
+[2022-11-22 22:53:52,660 INFO] 7680 iteration, USE_EMA: False, {'train/sup_loss': 2.7064573671227814, 'train/unsup_loss': 3.168723392292507, 'train/total_loss': 8.72298223304876, 'lr': 0.000499922376105902, 'train/prefecth_time': 0.036366527557373046, 'train/run_time': 1.6484444580078126}
+[2022-11-22 23:08:16,618 INFO] validating...
+[2022-11-22 23:10:05,290 INFO] confusion matrix:
+[[0.93 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.87 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.76 ... 0.   0.1  0.  ]
+ ...
+ [0.   0.   0.   ... 0.93 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.45 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.87]]
+[2022-11-22 23:10:09,190 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/latest_model.pth
+[2022-11-22 23:10:14,267 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_200_0/model_best.pth
+[2022-11-22 23:10:14,268 INFO] 8192 iteration, USE_EMA: False, {'train/sup_loss': 1.10534329630152, 'train/unsup_loss': 1.9431817284027384, 'train/total_loss': 4.990476194837723, 'lr': 0.0004998882228651117, 'train/prefecth_time': 0.041944671630859375, 'train/run_time': 1.6433126220703125, 'eval/loss': 1.0604544680595398, 'eval/top-1-acc': 0.7283, 'eval/balanced_acc': 0.7283, 'eval/precision': 0.7412347822950912, 'eval/recall': 0.7283, 'eval/F1': 0.7152773670619201}, BEST_EVAL_ACC: 0.7283, at 8192 iters
+[2022-11-23 10:14:42,577 INFO] Use GPU: 0 for training
+[2022-11-23 10:15:21,260 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-23 10:16:07,274 INFO] Create train and test data loaders
+[2022-11-23 10:16:07,477 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 10:16:30,717 INFO] Create optimizer and scheduler
+[2022-11-23 10:16:30,858 INFO] Number of Trainable Params: 21438440
+[2022-11-23 10:16:30,938 INFO] Arguments: Namespace(T=0.5, algorithm='remixmatch', amp=False, batch_size=8, c='config/usb_cv/remixmatch/remixmatch_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:16010', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, kl_loss_ratio=0.5, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//remixmatch_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, mixup_alpha=0.75, mixup_manifold=False, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, rot_loss_ratio=0.5, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='remixmatch_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.5, ulb_num_labels=None, unsup_warm_up=0.015625, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 10:17:05,191 INFO] Fail to resume load path ./saved_models/usb_cv//remixmatch_cifar100_200_0/latest_model.pth
+[2022-11-23 10:17:05,192 INFO] Model training
+[2022-11-23 10:18:31,241 INFO] Use GPU: 0 for training
+[2022-11-23 10:18:33,062 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-11-23 10:18:34,541 INFO] Create train and test data loaders
+[2022-11-23 10:18:34,542 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 10:18:35,209 INFO] Create optimizer and scheduler
+[2022-11-23 10:18:35,215 INFO] Number of Trainable Params: 21438440
+[2022-11-23 10:18:35,294 INFO] Arguments: Namespace(T=0.5, algorithm='remixmatch', amp=False, batch_size=8, c='config/usb_cv/remixmatch/remixmatch_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:20742', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, kl_loss_ratio=0.5, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//remixmatch_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, mixup_alpha=0.75, mixup_manifold=False, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, rot_loss_ratio=0.5, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='remixmatch_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.5, ulb_num_labels=None, unsup_warm_up=0.015625, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 10:18:35,612 INFO] model loaded
+[2022-11-23 10:18:35,613 INFO] Model training
+[2022-11-23 10:33:52,736 INFO] 8704 iteration, USE_EMA: False, {'train/sup_loss': 1.221432704802592, 'train/unsup_loss': 1.7204621121699364, 'train/total_loss': 4.58375028468426, 'lr': 0.0004998478609468219, 'train/prefecth_time': 0.039283103942871093, 'train/run_time': 1.70695849609375}
+[2022-11-23 10:48:44,080 INFO] 9216 iteration, USE_EMA: False, {'train/sup_loss': 1.5673882349762305, 'train/unsup_loss': 2.316555709278373, 'train/total_loss': 5.978968439070913, 'lr': 0.000499801290852333, 'train/prefecth_time': 0.03650182342529297, 'train/run_time': 1.70551953125}

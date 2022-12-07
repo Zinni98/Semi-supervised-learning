@@ -1,0 +1,128 @@
+[2022-11-22 15:33:52,997 INFO] Use GPU: 0 for training
+[2022-11-22 15:33:54,817 INFO] unlabeled data number: 50000, labeled data number 400
+[2022-11-22 15:33:56,304 INFO] Create train and test data loaders
+[2022-11-22 15:33:56,305 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-22 15:33:56,946 INFO] Create optimizer and scheduler
+[2022-11-22 15:33:56,949 INFO] Number of Trainable Params: 21436900
+[2022-11-22 15:33:57,028 INFO] Arguments: Namespace(algorithm='pseudolabel', amp=False, batch_size=8, c='config/usb_cv/pseudolabel/pseudolabel_cifar100_400_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:28346', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=400, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pseudolabel_cifar100_400_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=400, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pseudolabel_cifar100_400_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-22 15:33:57,028 INFO] Resume load path ./saved_models/usb_cv//pseudolabel_cifar100_400_0/latest_model.pth does not exist
+[2022-11-22 15:33:57,028 INFO] Model training
+[2022-11-22 15:38:49,980 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 5.057068824768066, 'train/unsup_loss': 0.0, 'train/total_loss': 5.057068824768066, 'train/mask_ratio': 0.0, 'lr': 5e-05, 'train/prefecth_time': 0.0350909423828125, 'train/run_time': 0.48190597534179686}
+[2022-11-22 15:43:16,372 INFO] 1024 iteration, USE_EMA: False, {'train/sup_loss': 2.4657387733459473, 'train/unsup_loss': 0.0, 'train/total_loss': 2.4657387733459473, 'train/mask_ratio': 0.0, 'lr': 0.0001, 'train/prefecth_time': 0.03421273422241211, 'train/run_time': 0.4823372497558594}
+[2022-11-22 15:48:14,037 INFO] 1536 iteration, USE_EMA: False, {'train/sup_loss': 1.1644922494888306, 'train/unsup_loss': 0.0, 'train/total_loss': 1.1644922494888306, 'train/mask_ratio': 0.0, 'lr': 0.00015, 'train/prefecth_time': 0.03688988876342773, 'train/run_time': 0.484589111328125}
+[2022-11-22 15:52:42,130 INFO] validating...
+[2022-11-22 15:54:35,224 INFO] confusion matrix:
+[[0.85 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.86 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.63 ... 0.   0.07 0.  ]
+ ...
+ [0.   0.   0.   ... 0.97 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.23 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.86]]
+[2022-11-22 15:54:35,769 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 15:54:36,308 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/model_best.pth
+[2022-11-22 15:54:36,309 INFO] 2048 iteration, USE_EMA: False, {'train/sup_loss': 0.15560096502304077, 'train/unsup_loss': 0.0, 'train/total_loss': 0.15560096502304077, 'train/mask_ratio': 0.0, 'lr': 0.0002, 'train/prefecth_time': 0.035968288421630856, 'train/run_time': 0.48707009887695313, 'eval/loss': 1.2023754125595092, 'eval/top-1-acc': 0.717, 'eval/balanced_acc': 0.7170000000000001, 'eval/precision': 0.717919558156841, 'eval/recall': 0.7170000000000001, 'eval/F1': 0.7071086489793317}, BEST_EVAL_ACC: 0.717, at 2048 iters
+[2022-11-22 15:59:34,240 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 0.6969577074050903, 'train/unsup_loss': 0.005249822977930307, 'train/total_loss': 0.6971216797828674, 'train/mask_ratio': 0.25, 'lr': 0.00025, 'train/prefecth_time': 0.047191551208496094, 'train/run_time': 0.4917183532714844}
+[2022-11-22 16:04:02,248 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 0.06356152892112732, 'train/unsup_loss': 0.007795184850692749, 'train/total_loss': 0.06385375559329987, 'train/mask_ratio': 0.375, 'lr': 0.0003, 'train/prefecth_time': 0.03723593521118164, 'train/run_time': 0.4874757080078125}
+[2022-11-22 16:09:01,040 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 0.8156229853630066, 'train/unsup_loss': 0.0038432623259723186, 'train/total_loss': 0.8157910704612732, 'train/mask_ratio': 0.375, 'lr': 0.00035, 'train/prefecth_time': 0.03538784027099609, 'train/run_time': 0.48583636474609376}
+[2022-11-22 16:13:29,440 INFO] validating...
+[2022-11-22 16:15:22,345 INFO] confusion matrix:
+[[0.88 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.81 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.65 ... 0.   0.04 0.  ]
+ ...
+ [0.   0.   0.   ... 0.95 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.14 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.83]]
+[2022-11-22 16:15:28,219 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 16:15:36,155 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/model_best.pth
+[2022-11-22 16:15:36,156 INFO] 4096 iteration, USE_EMA: False, {'train/sup_loss': 0.019310928881168365, 'train/unsup_loss': 0.011607855558395386, 'train/total_loss': 0.019891180098056793, 'train/mask_ratio': 0.5, 'lr': 0.0004, 'train/prefecth_time': 0.03517168045043945, 'train/run_time': 0.4886961669921875, 'eval/loss': 1.007028185749054, 'eval/top-1-acc': 0.7356, 'eval/balanced_acc': 0.7356, 'eval/precision': 0.7414083778465222, 'eval/recall': 0.7356, 'eval/F1': 0.7272099966693777}, BEST_EVAL_ACC: 0.7356, at 4096 iters
+[2022-11-22 16:20:35,077 INFO] 4608 iteration, USE_EMA: False, {'train/sup_loss': 0.44439810514450073, 'train/unsup_loss': 0.0015468797646462917, 'train/total_loss': 0.4444850981235504, 'train/mask_ratio': 0.25, 'lr': 0.00045000000000000004, 'train/prefecth_time': 0.03499209594726563, 'train/run_time': 0.49312850952148435}
+[2022-11-22 16:25:04,057 INFO] 5120 iteration, USE_EMA: False, {'train/sup_loss': 0.0034038454759866, 'train/unsup_loss': 0.0010270322673022747, 'train/total_loss': 0.0034680224489420652, 'train/mask_ratio': 0.5, 'lr': 0.0005, 'train/prefecth_time': 0.03485776138305664, 'train/run_time': 0.48508242797851564}
+[2022-11-22 16:30:03,728 INFO] 5632 iteration, USE_EMA: False, {'train/sup_loss': 0.0077716694213449955, 'train/unsup_loss': 0.0005636609857901931, 'train/total_loss': 0.007810414303094149, 'train/mask_ratio': 0.25, 'lr': 0.0004999968949671069, 'train/prefecth_time': 0.03711209487915039, 'train/run_time': 0.49252923583984376}
+[2022-11-22 16:34:33,364 INFO] validating...
+[2022-11-22 16:36:26,368 INFO] confusion matrix:
+[[0.83 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.9  0.   ... 0.   0.   0.  ]
+ [0.   0.   0.62 ... 0.   0.03 0.  ]
+ ...
+ [0.   0.   0.   ... 0.94 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.11 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.84]]
+[2022-11-22 16:36:35,970 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 16:36:43,856 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/model_best.pth
+[2022-11-22 16:36:43,857 INFO] 6144 iteration, USE_EMA: False, {'train/sup_loss': 0.3416340947151184, 'train/unsup_loss': 0.005526219494640827, 'train/total_loss': 0.3420484960079193, 'train/mask_ratio': 0.25, 'lr': 0.0004999875799069926, 'train/prefecth_time': 0.034453697204589843, 'train/run_time': 0.48771737670898435, 'eval/loss': 1.1323176557898522, 'eval/top-1-acc': 0.74, 'eval/balanced_acc': 0.7399999999999999, 'eval/precision': 0.7460079662263824, 'eval/recall': 0.7399999999999999, 'eval/F1': 0.7301432291075426}, BEST_EVAL_ACC: 0.74, at 6144 iters
+[2022-11-22 16:41:43,865 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 0.00026149340556003153, 'train/unsup_loss': 0.004462385084480047, 'train/total_loss': 0.0006240077200345695, 'train/mask_ratio': 0.5, 'lr': 0.0004999720549353513, 'train/prefecth_time': 0.03586867141723633, 'train/run_time': 0.48766336059570314}
+[2022-11-22 16:46:13,408 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 0.003772515570744872, 'train/unsup_loss': 0.016040146350860596, 'train/total_loss': 0.005175832659006119, 'train/mask_ratio': 0.625, 'lr': 0.0004999503202450052, 'train/prefecth_time': 0.034253982543945315, 'train/run_time': 0.4920967102050781}
+[2022-11-22 16:51:13,665 INFO] 7680 iteration, USE_EMA: False, {'train/sup_loss': 0.019414782524108887, 'train/unsup_loss': 0.00035488649155013263, 'train/total_loss': 0.01944804936647415, 'train/mask_ratio': 0.625, 'lr': 0.000499922376105902, 'train/prefecth_time': 0.035153057098388674, 'train/run_time': 0.49786019897460937}
+[2022-11-22 16:55:43,275 INFO] validating...
+[2022-11-22 16:57:36,241 INFO] confusion matrix:
+[[0.83 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.75 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.68 ... 0.   0.02 0.  ]
+ ...
+ [0.   0.   0.   ... 0.95 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.2  0.  ]
+ [0.   0.   0.   ... 0.   0.   0.87]]
+[2022-11-22 16:57:43,643 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 16:57:43,644 INFO] 8192 iteration, USE_EMA: False, {'train/sup_loss': 0.002063089283183217, 'train/unsup_loss': 0.0019251012708991766, 'train/total_loss': 0.0022555759642273188, 'train/mask_ratio': 0.625, 'lr': 0.0004998882228651117, 'train/prefecth_time': 0.03688700866699219, 'train/run_time': 0.48929296875, 'eval/loss': 1.3348291802167893, 'eval/top-1-acc': 0.7316, 'eval/balanced_acc': 0.7316000000000001, 'eval/precision': 0.7391002001461225, 'eval/recall': 0.7316000000000001, 'eval/F1': 0.7219451619165305}, BEST_EVAL_ACC: 0.74, at 6144 iters
+[2022-11-22 17:02:43,860 INFO] 8704 iteration, USE_EMA: False, {'train/sup_loss': 0.6503925919532776, 'train/unsup_loss': 0.001953765284270048, 'train/total_loss': 0.6506001353263855, 'train/mask_ratio': 0.25, 'lr': 0.0004998478609468219, 'train/prefecth_time': 0.03652627182006836, 'train/run_time': 0.48995443725585935}
+[2022-11-22 17:07:14,776 INFO] 9216 iteration, USE_EMA: False, {'train/sup_loss': 4.5340017095441e-05, 'train/unsup_loss': 0.004757408518344164, 'train/total_loss': 0.0005804904503747821, 'train/mask_ratio': 0.75, 'lr': 0.000499801290852333, 'train/prefecth_time': 0.034699745178222656, 'train/run_time': 0.4908758544921875}
+[2022-11-22 17:12:15,202 INFO] 9728 iteration, USE_EMA: False, {'train/sup_loss': 0.0006662234081886709, 'train/unsup_loss': 1.0564756848907564e-05, 'train/total_loss': 0.000667477841489017, 'train/mask_ratio': 0.5, 'lr': 0.0004997485131600516, 'train/prefecth_time': 0.035525726318359374, 'train/run_time': 0.4882444763183594}
+[2022-11-22 17:16:45,621 INFO] validating...
+[2022-11-22 17:18:38,546 INFO] confusion matrix:
+[[0.92 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.78 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.77 ... 0.   0.02 0.  ]
+ ...
+ [0.   0.   0.   ... 0.94 0.   0.  ]
+ [0.   0.   0.04 ... 0.   0.16 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.75]]
+[2022-11-22 17:18:43,059 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 17:18:46,422 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/model_best.pth
+[2022-11-22 17:18:46,423 INFO] 10240 iteration, USE_EMA: False, {'train/sup_loss': 0.0008523156284354627, 'train/unsup_loss': 0.006780338939279318, 'train/total_loss': 0.0016997752245515585, 'train/mask_ratio': 0.5, 'lr': 0.0004996895285254838, 'train/prefecth_time': 0.04765158462524414, 'train/run_time': 0.48821163940429685, 'eval/loss': 1.4464129977881908, 'eval/top-1-acc': 0.7405, 'eval/balanced_acc': 0.7404999999999999, 'eval/precision': 0.7444384712319012, 'eval/recall': 0.7404999999999999, 'eval/F1': 0.7301728926480655}, BEST_EVAL_ACC: 0.7405, at 10240 iters
+[2022-11-22 17:23:46,995 INFO] 10752 iteration, USE_EMA: False, {'train/sup_loss': 9.685664736025501e-06, 'train/unsup_loss': 0.001711288234218955, 'train/total_loss': 0.0002342713560210541, 'train/mask_ratio': 0.5, 'lr': 0.0004996243376812264, 'train/prefecth_time': 0.04345388793945312, 'train/run_time': 0.4884845886230469}
+[2022-11-22 17:28:17,426 INFO] 11264 iteration, USE_EMA: False, {'train/sup_loss': 0.0001362004259135574, 'train/unsup_loss': 0.004609015770256519, 'train/total_loss': 0.0007698838599026203, 'train/mask_ratio': 0.625, 'lr': 0.0004995529414369582, 'train/prefecth_time': 0.03560953521728515, 'train/run_time': 0.4911495361328125}
+[2022-11-22 17:33:17,834 INFO] 11776 iteration, USE_EMA: False, {'train/sup_loss': 0.00022507982794195414, 'train/unsup_loss': 0.0018270192667841911, 'train/total_loss': 0.00048769154818728566, 'train/mask_ratio': 0.75, 'lr': 0.0004994753406794301, 'train/prefecth_time': 0.03539875030517578, 'train/run_time': 0.49389263916015624}
+[2022-11-22 17:37:48,449 INFO] validating...
+[2022-11-22 17:39:41,452 INFO] confusion matrix:
+[[0.87 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.76 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.73 ... 0.   0.03 0.  ]
+ ...
+ [0.   0.   0.   ... 0.92 0.   0.  ]
+ [0.   0.   0.03 ... 0.   0.1  0.  ]
+ [0.   0.   0.   ... 0.   0.   0.8 ]]
+[2022-11-22 17:39:45,712 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 17:39:45,713 INFO] 12288 iteration, USE_EMA: False, {'train/sup_loss': 0.00016795862757135183, 'train/unsup_loss': 0.00024370917526539415, 'train/total_loss': 0.0002045120345428586, 'train/mask_ratio': 0.125, 'lr': 0.0004993915363724536, 'train/prefecth_time': 0.03471587371826172, 'train/run_time': 0.48855551147460935, 'eval/loss': 1.6008618033051492, 'eval/top-1-acc': 0.7354, 'eval/balanced_acc': 0.7353999999999999, 'eval/precision': 0.7393090470771254, 'eval/recall': 0.7353999999999999, 'eval/F1': 0.7230460775408247}, BEST_EVAL_ACC: 0.7405, at 10240 iters
+[2022-11-22 17:44:46,122 INFO] 12800 iteration, USE_EMA: False, {'train/sup_loss': 5.63257526664529e-06, 'train/unsup_loss': 0.002795285079628229, 'train/total_loss': 0.0004423617501743138, 'train/mask_ratio': 0.625, 'lr': 0.0004993015295568891, 'train/prefecth_time': 0.03540492630004883, 'train/run_time': 0.4912578125}
+[2022-11-22 17:49:16,494 INFO] 13312 iteration, USE_EMA: False, {'train/sup_loss': 1.62118740263395e-05, 'train/unsup_loss': 0.010149908252060413, 'train/total_loss': 0.0016654480714350939, 'train/mask_ratio': 0.875, 'lr': 0.0004992053213506333, 'train/prefecth_time': 0.035359649658203124, 'train/run_time': 0.49889254760742185}
+[2022-11-22 17:54:18,353 INFO] 13824 iteration, USE_EMA: False, {'train/sup_loss': 5.811444339087757e-07, 'train/unsup_loss': 0.0002889600000344217, 'train/total_loss': 4.933961827191524e-05, 'train/mask_ratio': 0.625, 'lr': 0.0004991029129486048, 'train/prefecth_time': 0.04247548675537109, 'train/run_time': 0.49049639892578123}
+[2022-11-22 17:58:48,376 INFO] validating...
+[2022-11-22 18:00:41,354 INFO] confusion matrix:
+[[0.89 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.76 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.67 ... 0.   0.03 0.  ]
+ ...
+ [0.   0.   0.   ... 0.94 0.   0.  ]
+ [0.   0.   0.03 ... 0.   0.08 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.8 ]]
+[2022-11-22 18:00:45,696 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 18:00:45,696 INFO] 14336 iteration, USE_EMA: False, {'train/sup_loss': 0.0002762601070571691, 'train/unsup_loss': 0.01123807206749916, 'train/total_loss': 0.0022427854128181934, 'train/mask_ratio': 0.875, 'lr': 0.0004989943056227294, 'train/prefecth_time': 0.034817726135253906, 'train/run_time': 0.5003988647460937, 'eval/loss': 1.7774978612318635, 'eval/top-1-acc': 0.7368, 'eval/balanced_acc': 0.7367999999999999, 'eval/precision': 0.7440208719093571, 'eval/recall': 0.7367999999999999, 'eval/F1': 0.7259018588232182}, BEST_EVAL_ACC: 0.7405, at 10240 iters
+[2022-11-22 18:05:47,045 INFO] 14848 iteration, USE_EMA: False, {'train/sup_loss': 7.872330752434209e-05, 'train/unsup_loss': 0.003227627370506525, 'train/total_loss': 0.0006636913167312741, 'train/mask_ratio': 0.5, 'lr': 0.0004988795007219241, 'train/prefecth_time': 0.03617753601074219, 'train/run_time': 0.4946983947753906}
+[2022-11-22 18:10:17,497 INFO] 15360 iteration, USE_EMA: False, {'train/sup_loss': 1.2769814020430204e-05, 'train/unsup_loss': 0.0025424379855394363, 'train/total_loss': 0.0004894459270872176, 'train/mask_ratio': 0.75, 'lr': 0.0004987584996720814, 'train/prefecth_time': 0.03652569580078125, 'train/run_time': 0.4895648193359375}
+[2022-11-22 18:15:18,163 INFO] 15872 iteration, USE_EMA: False, {'train/sup_loss': 2.07125412998721e-06, 'train/unsup_loss': 0.0025364221073687077, 'train/total_loss': 0.0004934720927849412, 'train/mask_ratio': 0.625, 'lr': 0.0004986313039760497, 'train/prefecth_time': 0.03582563018798828, 'train/run_time': 0.49288385009765623}
+[2022-11-22 18:19:48,314 INFO] validating...
+[2022-11-22 18:21:41,306 INFO] confusion matrix:
+[[0.9  0.   0.   ... 0.   0.   0.  ]
+ [0.   0.79 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.66 ... 0.   0.02 0.  ]
+ ...
+ [0.   0.   0.   ... 0.91 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.15 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.59]]
+[2022-11-22 18:21:47,493 INFO] model saved: ./saved_models/usb_cv/pseudolabel_cifar100_400_0/latest_model.pth
+[2022-11-22 18:21:47,494 INFO] 16384 iteration, USE_EMA: False, {'train/sup_loss': 9.44538478506729e-05, 'train/unsup_loss': 0.0005057682865299284, 'train/total_loss': 0.0001956013438757509, 'train/mask_ratio': 0.375, 'lr': 0.0004984979152136166, 'train/prefecth_time': 0.03517567825317383, 'train/run_time': 0.4837702331542969, 'eval/loss': 1.8839270005933941, 'eval/top-1-acc': 0.737, 'eval/balanced_acc': 0.737, 'eval/precision': 0.7449118526111629, 'eval/recall': 0.737, 'eval/F1': 0.726345853560409}, BEST_EVAL_ACC: 0.7405, at 10240 iters
+[2022-11-22 18:26:48,400 INFO] 16896 iteration, USE_EMA: False, {'train/sup_loss': 3.8903272070456296e-05, 'train/unsup_loss': 0.00021950199152342975, 'train/total_loss': 8.417287608608603e-05, 'train/mask_ratio': 0.625, 'lr': 0.000498358335041488, 'train/prefecth_time': 0.035165599822998043, 'train/run_time': 0.49755181884765626}
+[2022-11-22 18:31:19,205 INFO] 17408 iteration, USE_EMA: False, {'train/sup_loss': 9.938715265889186e-06, 'train/unsup_loss': 0.0034824050962924957, 'train/total_loss': 0.0007499072817154229, 'train/mask_ratio': 0.625, 'lr': 0.0004982125651932681, 'train/prefecth_time': 0.03613033676147461, 'train/run_time': 0.48830538940429685}
+[2022-11-22 18:36:21,158 INFO] 17920 iteration, USE_EMA: False, {'train/sup_loss': 0.0002682356280274689, 'train/unsup_loss': 0.0005910245818085968, 'train/total_loss': 0.00039751504664309323, 'train/mask_ratio': 0.75, 'lr': 0.0004980606074794375, 'train/prefecth_time': 0.03503091049194336, 'train/run_time': 0.4869985656738281}
