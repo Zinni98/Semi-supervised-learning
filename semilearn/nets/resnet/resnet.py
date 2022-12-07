@@ -262,5 +262,10 @@ class ResNet50(nn.Module):
         return nwd
 
 def resnet50(pretrained=False, pretrained_path=None, **kwargs):
-    model = ResNet50(**kwargs)
+    model = ResNet50(pretrained, pretrained_path, **kwargs)
+    if pretrained and pretrained_path is not None:
+        model.fc = nn.Linear(512 * Bottleneck.expansion, 1000)
+        model.load_state_dict(torch.load(pretrained_path))
+        model.fc = nn.Linear(512 * Bottleneck.expansion, kwargs["num_classes"])
+        print("Loaded Pretrained Weights")
     return model
