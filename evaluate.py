@@ -1,3 +1,8 @@
+"""
+Author: Thomas De Min
+GitHub: tdemin16
+"""
+
 import argparse
 import matplotlib as mpl
 import numpy as np
