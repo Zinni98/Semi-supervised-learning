@@ -5,13 +5,13 @@ resume: True
 load_path: ./saved_models/usb_cv//fixmatch_cifar100_400_0/latest_model.pth
 overwrite: True
 use_tensorboard: True
-epoch: 200
-num_train_iter: 204800
+epoch: 20
+num_train_iter: 20480
 num_log_iter: 512
 num_eval_iter: 2048
 batch_size: 8
 eval_batch_size: 16
-num_warmup_iter: 5120
+num_warmup_iter: 2560
 num_labels: 400
 uratio: 1
 ema_m: 0.0
@@ -42,6 +42,6 @@ rank: 0
 multiprocessing_distributed: True
 dist_url: tcp://127.0.0.1:10006
 dist_backend: nccl
-gpu: None
+gpu: 0
 use_pretrain: True
 pretrain_path: https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth
