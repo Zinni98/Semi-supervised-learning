@@ -9,6 +9,7 @@ from matplotlib import pyplot as plt
 from semilearn.core.utils import get_net_builder, get_dataset
 from torch.utils.data import DataLoader
 from torchmetrics.classification import MulticlassConfusionMatrix
+from torchvision.utils import save_image
 from tqdm import tqdm
 
 # n_images, size, classes
@@ -51,27 +52,54 @@ def fix_weights(state_dict):
     return new_state_dict
 
 
+def save(args, imgs, name):
+    path = os.path.join(args.save_path, args.dataset, name)
+    make_if_required(path)
+
+    for i, img in enumerate(imgs):
+        img_path = os.path.join(path, str(i).zfill(3) + '.png')
+        save_image(img.squeeze(0), img_path)
+
+
 @torch.no_grad()
 def eval(args, model, dl, ds_len):
     acc = 0
     estimates = []
     ground_truths = []
 
+    imgs_to_return = None
+
     for data in tqdm(dl):
         X = data['x_lb']
         y = data['y_lb']
 
         X = X.type(torch.FloatTensor).cuda()
+        y = y.cuda()
         logits = model(X)['logits']
         y_hat = logits.argmax(1)
 
-        acc += y_hat.cpu().eq(y).numpy().sum()
+        acc += y_hat.cpu().eq(y.cpu()).numpy().sum()
 
         estimates.extend(y_hat.cpu())
         ground_truths.extend(y.cpu())
 
+        if args.save_wrongs is not None:
+            i = (y_hat == int(args.save_wrongs[2]))
+            j = (y == int(args.save_wrongs[1]))
+            k = torch.logical_and(i, j)
+            if imgs_to_return is None:
+                imgs_to_return = X[k]
+            else:
+                imgs_to_return = torch.cat((imgs_to_return, X[k]), dim=0)
+        
+        if args.dev:
+            break
+
     estimates = torch.tensor(estimates)
     ground_truths = torch.tensor(ground_truths)
+
+    if args.save_wrongs is not None:
+        save(args, imgs_to_return, args.save_wrongs[0])
 
     return acc / ds_len, estimates, ground_truths
 
@@ -146,6 +174,7 @@ def main(args):
 
     try:
         labels = get_labels(args.dataset)
+        print([(i, l) for i, l in enumerate(labels)])
     except NotImplementedError:
         labels = range(0, args.num_classes)
 
@@ -167,6 +196,8 @@ if __name__ == "__main__":
     parser.add_argument("--num_workers", type=int, default=NUM_WORKERS)
     parser.add_argument("--device", type=str, default=DEVICE)
     parser.add_argument("--save_path", type=str, default=SAVE_PATH)
+    parser.add_argument("--dev", action="store_true")
+    parser.add_argument("--save_wrongs", nargs=3)
 
     # workaround to add stuff to args
     tmp_args, _ = parser.parse_known_args()
