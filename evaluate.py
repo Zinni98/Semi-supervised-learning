@@ -13,7 +13,7 @@ from torchvision import transforms
 from torchvision.utils import save_image
 from tqdm import tqdm
 
-# n_images, size, classes
+#! Insert here new datasets, follow the format of cifar100
 DATASET_IMGS = {
     "cifar100": {
         "num_imgs": 60000,
@@ -24,6 +24,8 @@ DATASET_IMGS = {
     },
 }
 
+#! Default values. Change them to avoid using args,
+#! otherwise keep them as they are
 METHOD = "fixmatch"
 DATASET = "cifar100"
 DATASET_DIR = "data"
@@ -40,13 +42,19 @@ DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 def make_if_required(path):
+    """
+    Create :path: if do not exists.
+    """
     if not os.path.isdir(path):
         os.makedirs(path)
 
 
 def fix_weights(state_dict):
     """
-    Copied from usb
+    Copied from usb. It removes "module" in front of some weights
+    in :state_dict:.
+
+    Returns the sanitized :state_dict:
     """
     new_state_dict = {}
     for key, item in state_dict.items():
@@ -60,6 +68,9 @@ def fix_weights(state_dict):
 
 
 def inverse_norm(args):
+    """
+    Compose the inverse normalize from mean and std in args.
+    """
     return transforms.Compose([
         transforms.Normalize(mean=[0., 0., 0.],
                              std=[1 / x for x in args.std]),
@@ -69,6 +80,12 @@ def inverse_norm(args):
 
 
 def save(args, imgs):
+    """
+    Save images in path: 
+        args.save_path/args.dataset/args.save_wrongs[0]_args.save_wrongs[1]/###.png
+    
+    :imgs: tensor of shape [*, 3, img_size, img_size]
+    """
     name = args.save_wrongs[0] + '_' + args.save_wrongs[1]
     path = os.path.join(args.save_path, args.dataset, name)
     make_if_required(path)
@@ -83,6 +100,12 @@ def save(args, imgs):
 
 @torch.no_grad()
 def eval(args, model, dl, labels):
+    """
+    Evaluate :model: on dataloader :dl:. 
+    :labels: list of labels ordered according to integer annotations.
+
+    If args.save_wrongs is defined, save images according to :save: docstring.
+    """
     acc = 0
     count = 0
     estimates = []
@@ -90,6 +113,7 @@ def eval(args, model, dl, labels):
 
     imgs_to_return = None
 
+    # indexes to track
     pred_indx = labels.index(args.save_wrongs[1])
     gt_index = labels.index(args.save_wrongs[0])
 
@@ -109,9 +133,11 @@ def eval(args, model, dl, labels):
         ground_truths.extend(y.cpu())
 
         if args.save_wrongs is not None:
+            # get all predictions and labels that match indexes to track
             pred_match = (y_hat == pred_indx)
             gt_match = (y == gt_index)
             pred_gt_match = torch.logical_and(pred_match, gt_match)
+            
             if imgs_to_return is None:
                 imgs_to_return = X[pred_gt_match]
             else:
@@ -130,6 +156,7 @@ def eval(args, model, dl, labels):
 
 
 def get_labels(dataset):
+    # open meta file and get cifar lables
     if dataset == "cifar100":
         with open(os.path.join(DATASET_DIR, "cifar100/cifar-100-python/meta"), 'rb') as fp:
             ds = pickle.load(fp)
@@ -138,30 +165,11 @@ def get_labels(dataset):
         raise NotImplementedError
 
 
-def confusionmatrix(args, estimates, ground_truths):
-    cm = MulticlassConfusionMatrix(num_classes=args.num_classes)
-    conf_matrix = cm(estimates, ground_truths).numpy()
-
-    path = os.path.join(
-        args.save_path,
-        args.dataset
-    )
-    make_if_required(path)
-    
-    fig, ax = plt.subplots(figsize=(45, 45))
-    ax.matshow(conf_matrix, cmap=mpl.colormaps['magma'], alpha=0.3)
-    for i in range(conf_matrix.shape[0]):
-        for j in range(conf_matrix.shape[1]):
-            ax.text(x=j, y=i, s=conf_matrix[i, j], va='center', ha='center', size='xx-large')
-    plt.xlabel('Predictions', fontsize=25)
-    plt.ylabel('Actuals', fontsize=25)
-    plt.xticks(np.arange(0, args.num_classes-1))
-    plt.yticks(np.arange(0, args.num_classes-1))
-    plt.title('Confusion Matrix', fontsize=25)
-    plt.savefig(os.path.join(path, f"{args.method}.png"))
-
-
-def confusionmatrix_seaborn(args, estimates, ground_truths, labels):
+def confusionmatrix(args, estimates, ground_truths, labels):
+    """
+    Compute confusion matrix from :estimates: and :ground_truths:
+    using :labels: as ticks.
+    """
     cm = MulticlassConfusionMatrix(num_classes=args.num_classes)
     conf_matrix = cm(estimates, ground_truths).numpy()
 
@@ -202,7 +210,7 @@ def main(args):
     acc, estimates, ground_truths = eval(args, model, val_dl, labels)
     print(f"\nAccuracy: {acc*100}%")
 
-    confusionmatrix_seaborn(args, estimates, ground_truths, labels)
+    confusionmatrix(args, estimates, ground_truths, labels)
 
 
 if __name__ == "__main__":
