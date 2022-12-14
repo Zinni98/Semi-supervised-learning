@@ -57,6 +57,7 @@ def sample_labeled_unlabeled_data(args, data, target, num_classes,
     samples for labeled data
     (sampling with balanced ratio over classes)
     '''
+    # Name here is correct (i.e. cifaros#) since is taken from args and not from name
     dump_dir = os.path.join(base_dir, 'data', args.dataset, 'labeled_idx')
     os.makedirs(dump_dir, exist_ok=True)
     lb_dump_path = os.path.join(dump_dir, f'lb_labels{args.num_labels}_seed{args.seed}_idx.npy')
@@ -124,8 +125,6 @@ def make_imbalance_data(max_num_labels, num_classes, gamma):
     if gamma < 0:
         samples_per_class = samples_per_class[::-1]
     return samples_per_class
-
-
 
 
 
