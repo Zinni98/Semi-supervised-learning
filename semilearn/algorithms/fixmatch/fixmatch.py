@@ -6,7 +6,7 @@
 import torch
 from semilearn.core.algorithmbase import AlgorithmBase
 from semilearn.algorithms.hooks import PseudoLabelingHook, FixedThresholdingHook
-from semilearn.algorithms.utils import ce_loss, consistency_loss,  SSL_Argument, str2bool
+from semilearn.algorithms.utils import ce_loss, consistency_loss, SSL_Argument, str2bool, contrastive_domain_discrepancy
 
 
 class FixMatch(AlgorithmBase):
@@ -44,7 +44,7 @@ class FixMatch(AlgorithmBase):
         self.register_hook(FixedThresholdingHook(), "MaskingHook")
         super().set_hooks()
 
-    def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s):
+    def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s, y_ulb=None):
         num_lb = y_lb.shape[0]
 
         # inference and calculate sup/unsup losses
@@ -54,14 +54,20 @@ class FixMatch(AlgorithmBase):
                 outputs = self.model(inputs)
                 logits_x_lb = outputs['logits'][:num_lb]
                 logits_x_ulb_w, logits_x_ulb_s = outputs['logits'][num_lb:].chunk(2)
+                
+                feat_x_lb = outputs['feat'][:num_lb]
+                feat_x_ulb_w, logits_x_ulb_s = outputs['feat'][num_lb:].chunk(2)
+
             else:
                 outs_x_lb = self.model(x_lb) 
                 logits_x_lb = outs_x_lb['logits']
+                feat_x_lb = outs_x_lb['feat']
                 outs_x_ulb_s = self.model(x_ulb_s)
                 logits_x_ulb_s = outs_x_ulb_s['logits']
                 with torch.no_grad():
                     outs_x_ulb_w = self.model(x_ulb_w)
                     logits_x_ulb_w = outs_x_ulb_w['logits']
+                    feat_x_ulb_w = outs_x_ulb_w['feat']
 
             sup_loss = ce_loss(logits_x_lb, y_lb, reduction='mean')
             
@@ -81,18 +87,24 @@ class FixMatch(AlgorithmBase):
                                           T=self.T,
                                           softmax=False)
 
+            cdd_loss = contrastive_domain_discrepancy(feat_x_lb, feat_x_ulb_w, 
+                                                      y_lb, pseudo_label, 
+                                                      list(range(self.dataset_dict['train_lb'].num_classes)),
+                                                      beta=0.3)
+
             unsup_loss = consistency_loss(logits_x_ulb_s,
                                           pseudo_label,
                                           'ce',
                                           mask=mask)
 
-            total_loss = sup_loss + self.lambda_u * unsup_loss
+            total_loss = sup_loss + self.lambda_u * unsup_loss + cdd_loss
 
         self.call_hook("param_update", "ParamUpdateHook", loss=total_loss)
 
         tb_dict = {}
         tb_dict['train/sup_loss'] = sup_loss.item()
         tb_dict['train/unsup_loss'] = unsup_loss.item()
+        tb_dict['train/cdd_loss'] = cdd_loss.item()
         tb_dict['train/total_loss'] = total_loss.item()
         tb_dict['train/mask_ratio'] = mask.float().mean().item()
         return tb_dict

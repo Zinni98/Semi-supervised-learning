@@ -65,3 +65,49 @@ def consistency_loss(logits, targets, name='ce', mask=None):
         loss = loss * mask
 
     return loss.mean()
+
+
+def contrastive_domain_discrepancy(lb_phis, ulb_phis, lb_labels, ulb_labels, classes, beta):
+    def rbf_kernel(X, Y=None, gamma=None):
+        if Y is None:
+            Y = torch.clone(X)
+        if gamma is None:
+            gamma = 1.0 / X.size(1)
+        K = torch.cdist(X, Y, compute_mode="use_mm_for_euclid_dist").square()
+        K = torch.mul(K, -gamma)
+        return torch.exp(K)  # exponentiate K in-place
+
+    def D_cdd(phi_source, y_source, phi_target, y_target, classes):
+        num_classes = len(classes)
+        intra_sum = torch.tensor(0.).cuda()
+        inter_sum = torch.tensor(0.).cuda()
+        for c in classes:
+            intra_sum = torch.add(intra_sum, domain_discrepancy(c, c, phi_source, y_source, phi_target, y_target))
+        intra = torch.div(intra_sum, num_classes)
+        for c in classes:
+            for c_prime in classes:
+                if c != c_prime:
+                    inter_sum = torch.add(inter_sum, domain_discrepancy(c, c_prime, phi_source, y_source, phi_target, y_target))
+        inter = torch.div(inter_sum, (num_classes*(num_classes-1)))
+        return torch.sub(intra, inter)
+
+    def domain_discrepancy(c, c_prime, phi_source, y_source, phi_target, y_target):
+        intra = torch.add(
+            e(c, c, phi_source, y_source, phi_source, y_source),
+            e(c_prime, c_prime, phi_target, y_target, phi_target, y_target)
+        )
+        inter = torch.mul(-2, e(c, c_prime, phi_source, y_source, phi_target, y_target))
+        return torch.add(intra, inter)
+
+    def e(c, c_prime, phi, y, phi_prime, y_prime):
+        kernel_covariance = rbf_kernel(phi, phi_prime)
+        A = (y == c).unsqueeze(1).expand(-1, y_prime.size(0))
+        B = (y_prime == c_prime).unsqueeze(0)
+        mask = (A & B)
+        masked = kernel_covariance*mask
+        similarity = torch.sum(masked)
+        count = torch.count_nonzero(masked)
+
+        return torch.div(similarity, count) if count > 0 else torch.tensor(0.).cuda()
+
+    return torch.mul(beta, D_cdd(lb_phis, lb_labels, ulb_phis, ulb_labels, classes))
