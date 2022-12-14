@@ -79,16 +79,18 @@ def contrastive_domain_discrepancy(lb_phis, ulb_phis, lb_labels, ulb_labels, cla
 
     def D_cdd(phi_source, y_source, phi_target, y_target, classes):
         num_classes = len(classes)
-        intra_sum = torch.tensor(0.).cuda()
-        inter_sum = torch.tensor(0.).cuda()
-        for c in classes:
-            intra_sum = torch.add(intra_sum, domain_discrepancy(c, c, phi_source, y_source, phi_target, y_target))
-        intra = torch.div(intra_sum, num_classes)
-        for c in classes:
-            for c_prime in classes:
-                if c != c_prime:
-                    inter_sum = torch.add(inter_sum, domain_discrepancy(c, c_prime, phi_source, y_source, phi_target, y_target))
-        inter = torch.div(inter_sum, (num_classes*(num_classes-1)))
+        
+        intra_sum = [domain_discrepancy(c, c, phi_source, y_source, phi_target, y_target)  
+                     for c in classes]
+ 
+        intra = torch.stack(intra_sum, dim=0).cuda().mean()
+
+        inter_sum = [domain_discrepancy(c, c_prime, phi_source, y_source, phi_target, y_target) 
+                     for c in classes 
+                        for c_prime in classes 
+                            if c != c_prime]
+        inter = torch.stack(inter_sum, dim=0).cuda().mean()
+
         return torch.sub(intra, inter)
 
     def domain_discrepancy(c, c_prime, phi_source, y_source, phi_target, y_target):
@@ -100,7 +102,8 @@ def contrastive_domain_discrepancy(lb_phis, ulb_phis, lb_labels, ulb_labels, cla
         return torch.add(intra, inter)
 
     def e(c, c_prime, phi, y, phi_prime, y_prime):
-        kernel_covariance = rbf_kernel(phi, phi_prime)
+        #kernel_covariance = rbf_kernel(phi, phi_prime)
+        kernel_covariance = torch.cosine_similarity(phi, phi_prime)
         A = (y == c).unsqueeze(1).expand(-1, y_prime.size(0))
         B = (y_prime == c_prime).unsqueeze(0)
         mask = (A & B)

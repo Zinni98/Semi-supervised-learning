@@ -86,7 +86,6 @@ class FixMatch(AlgorithmBase):
                                           use_hard_label=self.use_hard_label,
                                           T=self.T,
                                           softmax=False)
-
             cdd_loss = contrastive_domain_discrepancy(feat_x_lb, feat_x_ulb_w, 
                                                       y_lb, pseudo_label, 
                                                       list(range(self.dataset_dict['train_lb'].num_classes)),
@@ -99,6 +98,8 @@ class FixMatch(AlgorithmBase):
 
             total_loss = sup_loss + self.lambda_u * unsup_loss + cdd_loss
 
+            labels = (pseudo_label, y_lb)
+            
         self.call_hook("param_update", "ParamUpdateHook", loss=total_loss)
 
         tb_dict = {}
@@ -107,6 +108,7 @@ class FixMatch(AlgorithmBase):
         tb_dict['train/cdd_loss'] = cdd_loss.item()
         tb_dict['train/total_loss'] = total_loss.item()
         tb_dict['train/mask_ratio'] = mask.float().mean().item()
+        tb_dict['train/labels'] = labels
         return tb_dict
 
     @staticmethod

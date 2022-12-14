@@ -11,6 +11,7 @@ from sklearn.metrics import accuracy_score, balanced_accuracy_score, precision_s
 import torch
 import torch.nn.functional as F
 from torch.cuda.amp import autocast, GradScaler
+from torchmetrics.classification import MulticlassAccuracy
 
 from semilearn.core.hooks import Hook, get_priority, CheckpointHook, TimerHook, LoggingHook, DistSamplerSeedHook, ParamUpdateHook, EvaluationHook, EMAHook
 from semilearn.core.utils import get_dataset, get_data_loader, get_optimizer, get_cosine_schedule_with_warmup, Bn_Controller
@@ -240,14 +241,35 @@ class AlgorithmBase:
             
             self.call_hook("before_train_epoch")
 
-            for data_lb, data_ulb in zip(self.loader_dict['train_lb'],
-                                         self.loader_dict['train_ulb']):
+            labels = {
+                "pseudo": [],
+                "target": []
+            }
+
+            n_steps = max(len(self.loader_dict['train_lb']), len(self.loader_dict['train_ulb']))
+
+            for i, (data_lb, data_ulb) in enumerate(zip(self.loader_dict['train_lb'],
+                                         self.loader_dict['train_ulb'])):
                 # prevent the training iterations exceed args.num_train_iter
                 if self.it >= self.num_train_iter:
                     break
 
                 self.call_hook("before_train_step")
                 self.tb_dict = self.train_step(**self.process_batch(**data_lb, **data_ulb))
+
+                curr_labels = self.tb_dict["train/labels"]
+                labels["pseudo"].append(curr_labels[0])
+                labels["target"].append(curr_labels[1])
+                del self.tb_dict["train/labels"]
+                
+                print(i, "/", n_steps)
+
+                if i == n_steps - 1:
+                    pseudo = torch.cat(labels["pseudo"], dim=0)
+                    target = torch.cat(labels["target"], dim=0)
+                    acc = MulticlassAccuracy(self.dataset_dict['train_lb'].num_classes)(pseudo, target)
+                    self.tb_dict["train/pseudo_acc"] = acc
+
                 self.call_hook("after_train_step")
                 self.it += 1
             
