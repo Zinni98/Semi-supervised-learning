@@ -1,6 +1,8 @@
 data_statistics/
 data/
-saved_models/
+saved_models/*/*/*
+!saved_models/*/*/tensorboard
+!saved_models/*/*/log.txt
 pretrained_weights/
 ssl_nlp_datasets/
 back_translate_models/
@@ -140,3 +142,5 @@ dmypy.json
 
 # MacOS system file
 .DS_Store
+
+assets/*

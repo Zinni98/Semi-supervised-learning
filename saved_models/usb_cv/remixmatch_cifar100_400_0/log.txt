@@ -1,0 +1,181 @@
+[2022-11-23 10:52:09,043 INFO] Use GPU: 0 for training
+[2022-11-23 10:52:10,861 INFO] unlabeled data number: 50000, labeled data number 400
+[2022-11-23 10:52:12,342 INFO] Create train and test data loaders
+[2022-11-23 10:52:12,343 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 10:52:12,979 INFO] Create optimizer and scheduler
+[2022-11-23 10:52:12,985 INFO] Number of Trainable Params: 21438440
+[2022-11-23 10:52:13,065 INFO] Arguments: Namespace(T=0.5, algorithm='remixmatch', amp=False, batch_size=8, c='config/usb_cv/remixmatch/remixmatch_cifar100_400_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:18641', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, kl_loss_ratio=0.5, layer_decay=0.5, lb_dest_len=400, lb_imb_ratio=1, load_path='./saved_models/usb_cv//remixmatch_cifar100_400_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, mixup_alpha=0.75, mixup_manifold=False, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=400, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, rot_loss_ratio=0.5, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='remixmatch_cifar100_400_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.5, ulb_num_labels=None, unsup_warm_up=0.015625, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 10:52:13,065 INFO] Resume load path ./saved_models/usb_cv//remixmatch_cifar100_400_0/latest_model.pth does not exist
+[2022-11-23 10:52:13,065 INFO] Model training
+[2022-11-23 10:57:45,512 INFO] Use GPU: 0 for training
+[2022-11-23 10:57:47,332 INFO] unlabeled data number: 50000, labeled data number 400
+[2022-11-23 10:57:48,796 INFO] Create train and test data loaders
+[2022-11-23 10:57:48,797 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 10:57:49,450 INFO] Create optimizer and scheduler
+[2022-11-23 10:57:49,455 INFO] Number of Trainable Params: 21438440
+[2022-11-23 10:57:49,534 INFO] Arguments: Namespace(T=0.5, algorithm='remixmatch', amp=False, batch_size=8, c='config/usb_cv/remixmatch/remixmatch_cifar100_400_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:15821', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, kl_loss_ratio=0.5, layer_decay=0.5, lb_dest_len=400, lb_imb_ratio=1, load_path='./saved_models/usb_cv//remixmatch_cifar100_400_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, mixup_alpha=0.75, mixup_manifold=False, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=400, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, rot_loss_ratio=0.5, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='remixmatch_cifar100_400_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.5, ulb_num_labels=None, unsup_warm_up=0.015625, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 10:57:49,534 INFO] Resume load path ./saved_models/usb_cv//remixmatch_cifar100_400_0/latest_model.pth does not exist
+[2022-11-23 10:57:49,534 INFO] Model training
+[2022-11-23 11:13:03,835 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 5.123839381821322, 'train/unsup_loss': 5.265149050063588, 'train/total_loss': 7.443573577457964, 'lr': 5e-05, 'train/prefecth_time': 0.040560001373291014, 'train/run_time': 1.6989244384765625}
+[2022-11-23 11:27:54,341 INFO] 1024 iteration, USE_EMA: False, {'train/sup_loss': 3.6515164915599136, 'train/unsup_loss': 1.7552558074261306, 'train/total_loss': 5.398774188367954, 'lr': 0.0001, 'train/prefecth_time': 0.036877696990966796, 'train/run_time': 1.705216796875}
+[2022-11-23 11:43:13,484 INFO] 1536 iteration, USE_EMA: False, {'train/sup_loss': 2.5939438192451583, 'train/unsup_loss': 1.7845559362353929, 'train/total_loss': 5.072393459404942, 'lr': 0.00015, 'train/prefecth_time': 0.03814652633666992, 'train/run_time': 1.7028541259765626}
+[2022-11-23 11:58:04,054 INFO] validating...
+[2022-11-23 11:59:56,599 INFO] confusion matrix:
+[[0.57 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.88 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.81 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.93 0.   0.  ]
+ [0.   0.   0.06 ... 0.   0.03 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.88]]
+[2022-11-23 11:59:57,130 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 11:59:57,654 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 11:59:57,655 INFO] 2048 iteration, USE_EMA: False, {'train/sup_loss': 3.2812688926233546, 'train/unsup_loss': 3.9545557333061483, 'train/total_loss': 8.784513838913863, 'lr': 0.0002, 'train/prefecth_time': 0.039790016174316406, 'train/run_time': 1.6910172119140625, 'eval/loss': 1.3411363050937652, 'eval/top-1-acc': 0.6747, 'eval/balanced_acc': 0.6747, 'eval/precision': 0.7039868789022399, 'eval/recall': 0.6747, 'eval/F1': 0.6487922190311198}, BEST_EVAL_ACC: 0.6747, at 2048 iters
+[2022-11-23 12:15:17,775 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 3.2647461933787993, 'train/unsup_loss': 3.2675313517272415, 'train/total_loss': 8.630595034741681, 'lr': 0.00025, 'train/prefecth_time': 0.03966060638427735, 'train/run_time': 1.6922958984375}
+[2022-11-23 12:30:08,534 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 0.9301496507468536, 'train/unsup_loss': 2.1121212352453718, 'train/total_loss': 5.231527727617001, 'lr': 0.0003, 'train/prefecth_time': 0.03838259124755859, 'train/run_time': 1.705519287109375}
+[2022-11-23 12:45:28,352 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 2.6024314198699523, 'train/unsup_loss': 2.650177837696653, 'train/total_loss': 7.484088105971329, 'lr': 0.00035, 'train/prefecth_time': 0.038167488098144534, 'train/run_time': 1.703328369140625}
+[2022-11-23 13:00:18,957 INFO] validating...
+[2022-11-23 13:02:11,742 INFO] confusion matrix:
+[[0.72 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.87 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.86 ... 0.   0.01 0.  ]
+ ...
+ [0.   0.   0.   ... 0.92 0.   0.  ]
+ [0.   0.   0.08 ... 0.   0.01 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.8 ]]
+[2022-11-23 13:02:18,416 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 13:02:22,484 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 13:02:22,484 INFO] 4096 iteration, USE_EMA: False, {'train/sup_loss': 1.6623937137636977, 'train/unsup_loss': 2.1998442021718025, 'train/total_loss': 6.116375162575249, 'lr': 0.0004, 'train/prefecth_time': 0.038283615112304686, 'train/run_time': 1.70584033203125, 'eval/loss': 0.8361293074250221, 'eval/top-1-acc': 0.764, 'eval/balanced_acc': 0.764, 'eval/precision': 0.7693087707814631, 'eval/recall': 0.764, 'eval/F1': 0.7516194196438767}, BEST_EVAL_ACC: 0.764, at 4096 iters
+[2022-11-23 13:17:42,403 INFO] 4608 iteration, USE_EMA: False, {'train/sup_loss': 1.5869867805058042, 'train/unsup_loss': 2.283659002746798, 'train/total_loss': 6.208767220087049, 'lr': 0.00045000000000000004, 'train/prefecth_time': 0.038021568298339845, 'train/run_time': 1.6983846435546874}
+[2022-11-23 13:32:33,290 INFO] 5120 iteration, USE_EMA: False, {'train/sup_loss': 2.569956447776703, 'train/unsup_loss': 2.695923948619248, 'train/total_loss': 8.265866340115588, 'lr': 0.0005, 'train/prefecth_time': 0.03942921447753906, 'train/run_time': 1.70260791015625}
+[2022-11-23 13:47:52,992 INFO] 5632 iteration, USE_EMA: False, {'train/sup_loss': 2.169721013514616, 'train/unsup_loss': 3.073955277341524, 'train/total_loss': 8.545750809683538, 'lr': 0.0004999968949671069, 'train/prefecth_time': 0.039513118743896486, 'train/run_time': 1.7020736083984376}
+[2022-11-23 14:02:44,065 INFO] validating...
+[2022-11-23 14:04:36,977 INFO] confusion matrix:
+[[0.82 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.95 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.57 ... 0.   0.24 0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.49 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.9 ]]
+[2022-11-23 14:04:41,498 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 14:04:45,947 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 14:04:45,947 INFO] 6144 iteration, USE_EMA: False, {'train/sup_loss': 0.11436312809030973, 'train/unsup_loss': 1.4796373372513192, 'train/total_loss': 3.5476201466729353, 'lr': 0.0004999875799069926, 'train/prefecth_time': 0.03805535888671875, 'train/run_time': 1.6988974609375, 'eval/loss': 0.8190709668755531, 'eval/top-1-acc': 0.7731, 'eval/balanced_acc': 0.7730999999999999, 'eval/precision': 0.7874550464648677, 'eval/recall': 0.7730999999999999, 'eval/F1': 0.7641187013361832}, BEST_EVAL_ACC: 0.7731, at 6144 iters
+[2022-11-23 14:20:05,429 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 1.2114354514395667, 'train/unsup_loss': 1.4889028997006264, 'train/total_loss': 4.202144446451471, 'lr': 0.0004999720549353513, 'train/prefecth_time': 0.05128467178344726, 'train/run_time': 1.687629150390625}
+[2022-11-23 14:34:55,937 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 1.5000162707417086, 'train/unsup_loss': 2.421155572861128, 'train/total_loss': 6.123160966947695, 'lr': 0.0004999503202450052, 'train/prefecth_time': 0.03790451049804688, 'train/run_time': 1.6963912353515624}
+[2022-11-23 14:50:14,962 INFO] 7680 iteration, USE_EMA: False, {'train/sup_loss': 2.500162756100323, 'train/unsup_loss': 3.3020404946778816, 'train/total_loss': 8.444735926240826, 'lr': 0.000499922376105902, 'train/prefecth_time': 0.03848316955566406, 'train/run_time': 1.694565185546875}
+[2022-11-23 15:05:05,327 INFO] validating...
+[2022-11-23 15:06:57,927 INFO] confusion matrix:
+[[0.84 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.92 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.64 ... 0.   0.17 0.  ]
+ ...
+ [0.   0.   0.   ... 0.95 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.31 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.87]]
+[2022-11-23 15:07:01,577 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 15:07:11,735 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 15:07:11,736 INFO] 8192 iteration, USE_EMA: False, {'train/sup_loss': 1.3079433860231726, 'train/unsup_loss': 2.117691611583459, 'train/total_loss': 5.604745409218003, 'lr': 0.0004998882228651117, 'train/prefecth_time': 0.03690057754516601, 'train/run_time': 1.7033516845703125, 'eval/loss': 0.788247114777565, 'eval/top-1-acc': 0.7821, 'eval/balanced_acc': 0.7821000000000001, 'eval/precision': 0.7964985057231171, 'eval/recall': 0.7821000000000001, 'eval/F1': 0.7759747421298744}, BEST_EVAL_ACC: 0.7821, at 8192 iters
+[2022-11-23 15:22:31,250 INFO] 8704 iteration, USE_EMA: False, {'train/sup_loss': 1.297695255521304, 'train/unsup_loss': 2.4621295860473187, 'train/total_loss': 6.416763586209264, 'lr': 0.0004998478609468219, 'train/prefecth_time': 0.038021438598632815, 'train/run_time': 1.7060220947265625}
+[2022-11-23 15:37:21,619 INFO] 9216 iteration, USE_EMA: False, {'train/sup_loss': 1.1578962936415687, 'train/unsup_loss': 1.8322594415386624, 'train/total_loss': 4.820990504401066, 'lr': 0.000499801290852333, 'train/prefecth_time': 0.03847209548950195, 'train/run_time': 1.6954202880859375}
+[2022-11-23 15:52:41,144 INFO] 9728 iteration, USE_EMA: False, {'train/sup_loss': 1.354786103535779, 'train/unsup_loss': 1.9592392773023835, 'train/total_loss': 5.15254976555185, 'lr': 0.0004997485131600516, 'train/prefecth_time': 0.03972643280029297, 'train/run_time': 1.700177001953125}
+[2022-11-23 16:07:31,595 INFO] validating...
+[2022-11-23 16:09:24,393 INFO] confusion matrix:
+[[0.84 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.94 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.81 ... 0.   0.1  0.  ]
+ ...
+ [0.   0.   0.   ... 0.97 0.   0.  ]
+ [0.   0.   0.03 ... 0.   0.16 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.87]]
+[2022-11-23 16:09:28,318 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 16:09:31,449 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 16:09:31,450 INFO] 10240 iteration, USE_EMA: False, {'train/sup_loss': 1.6864836854499696, 'train/unsup_loss': 2.404641512114088, 'train/total_loss': 6.6275642786818665, 'lr': 0.0004996895285254838, 'train/prefecth_time': 0.03781702423095703, 'train/run_time': 1.703630615234375, 'eval/loss': 0.7813949962735176, 'eval/top-1-acc': 0.7948, 'eval/balanced_acc': 0.7948, 'eval/precision': 0.8004217070142177, 'eval/recall': 0.7948, 'eval/F1': 0.786870016373338}, BEST_EVAL_ACC: 0.7948, at 10240 iters
+[2022-11-23 16:24:51,092 INFO] 10752 iteration, USE_EMA: False, {'train/sup_loss': 0.9711087971903755, 'train/unsup_loss': 2.103331071919634, 'train/total_loss': 5.324849001976377, 'lr': 0.0004996243376812264, 'train/prefecth_time': 0.03918096160888672, 'train/run_time': 1.7027777099609376}
+[2022-11-23 16:39:41,613 INFO] 11264 iteration, USE_EMA: False, {'train/sup_loss': 1.4837469619996377, 'train/unsup_loss': 1.9525458151543416, 'train/total_loss': 5.492855346434873, 'lr': 0.0004995529414369582, 'train/prefecth_time': 0.03975027084350586, 'train/run_time': 1.6957947998046874}
+[2022-11-23 16:55:01,332 INFO] 11776 iteration, USE_EMA: False, {'train/sup_loss': 2.8140844299719716, 'train/unsup_loss': 2.3963667074210244, 'train/total_loss': 7.322648082126471, 'lr': 0.0004994753406794301, 'train/prefecth_time': 0.03927027130126953, 'train/run_time': 1.69768603515625}
+[2022-11-23 17:09:51,714 INFO] validating...
+[2022-11-23 17:11:44,333 INFO] confusion matrix:
+[[0.94 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.95 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.69 ... 0.   0.09 0.  ]
+ ...
+ [0.   0.   0.   ... 0.91 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.08 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.85]]
+[2022-11-23 17:11:48,741 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 17:11:52,840 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 17:11:52,845 INFO] 12288 iteration, USE_EMA: False, {'train/sup_loss': 0.15205591056735104, 'train/unsup_loss': 1.4954684994962215, 'train/total_loss': 3.574926147278327, 'lr': 0.0004993915363724536, 'train/prefecth_time': 0.040129344940185545, 'train/run_time': 1.70182861328125, 'eval/loss': 0.76726183989048, 'eval/top-1-acc': 0.7967, 'eval/balanced_acc': 0.7966999999999999, 'eval/precision': 0.8037228947496046, 'eval/recall': 0.7966999999999999, 'eval/F1': 0.7928601826508468}, BEST_EVAL_ACC: 0.7967, at 12288 iters
+[2022-11-23 17:27:12,993 INFO] 12800 iteration, USE_EMA: False, {'train/sup_loss': 1.9288069751377317, 'train/unsup_loss': 2.6665397070988814, 'train/total_loss': 7.2523659013423245, 'lr': 0.0004993015295568891, 'train/prefecth_time': 0.03770211029052734, 'train/run_time': 1.6871795654296875}
+[2022-11-23 17:42:03,439 INFO] 13312 iteration, USE_EMA: False, {'train/sup_loss': 0.1342264625205679, 'train/unsup_loss': 0.354491661887727, 'train/total_loss': 1.318855240496695, 'lr': 0.0004992053213506333, 'train/prefecth_time': 0.03912694549560547, 'train/run_time': 1.703844970703125}
+[2022-11-23 17:57:22,813 INFO] 13824 iteration, USE_EMA: False, {'train/sup_loss': 0.38118502428220963, 'train/unsup_loss': 1.084470623360565, 'train/total_loss': 3.207505495563873, 'lr': 0.0004991029129486048, 'train/prefecth_time': 0.040306785583496096, 'train/run_time': 1.69380419921875}
+[2022-11-23 18:12:13,202 INFO] validating...
+[2022-11-23 18:14:06,076 INFO] confusion matrix:
+[[0.88 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.94 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.65 ... 0.   0.22 0.  ]
+ ...
+ [0.   0.   0.   ... 0.95 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.29 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.87]]
+[2022-11-23 18:14:09,533 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 18:14:09,534 INFO] 14336 iteration, USE_EMA: False, {'train/sup_loss': 0.8663901865467666, 'train/unsup_loss': 1.6546612218296053, 'train/total_loss': 4.3202064979311565, 'lr': 0.0004989943056227294, 'train/prefecth_time': 0.040804832458496094, 'train/run_time': 1.703454833984375, 'eval/loss': 0.8004052157640457, 'eval/top-1-acc': 0.7958, 'eval/balanced_acc': 0.7958000000000002, 'eval/precision': 0.8120822481676124, 'eval/recall': 0.7958000000000002, 'eval/F1': 0.7921121980429592}, BEST_EVAL_ACC: 0.7967, at 12288 iters
+[2022-11-23 18:29:29,092 INFO] 14848 iteration, USE_EMA: False, {'train/sup_loss': 1.8166217513334075, 'train/unsup_loss': 2.542682186040553, 'train/total_loss': 7.447443691486524, 'lr': 0.0004988795007219241, 'train/prefecth_time': 0.03916255950927734, 'train/run_time': 1.7038973388671874}
+[2022-11-23 18:44:19,775 INFO] 15360 iteration, USE_EMA: False, {'train/sup_loss': 1.3279219520906285, 'train/unsup_loss': 2.0948432001076367, 'train/total_loss': 5.059215913759221, 'lr': 0.0004987584996720814, 'train/prefecth_time': 0.04009142303466797, 'train/run_time': 1.706906005859375}
+[2022-11-23 18:59:39,073 INFO] 15872 iteration, USE_EMA: False, {'train/sup_loss': 0.15733890888231922, 'train/unsup_loss': 0.8944060452870597, 'train/total_loss': 2.14541367552175, 'lr': 0.0004986313039760497, 'train/prefecth_time': 0.040020961761474606, 'train/run_time': 1.7048858642578124}
+[2022-11-23 19:14:29,544 INFO] validating...
+[2022-11-23 19:16:22,253 INFO] confusion matrix:
+[[0.98 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.93 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.71 ... 0.   0.1  0.  ]
+ ...
+ [0.   0.   0.   ... 0.92 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.06 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.94]]
+[2022-11-23 19:16:23,437 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 19:16:32,518 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 19:16:32,519 INFO] 16384 iteration, USE_EMA: False, {'train/sup_loss': 0.8411443430851889, 'train/unsup_loss': 2.0036252551035862, 'train/total_loss': 4.868386670971962, 'lr': 0.0004984979152136166, 'train/prefecth_time': 0.03941513442993164, 'train/run_time': 1.6946466064453125, 'eval/loss': 0.7768828973293305, 'eval/top-1-acc': 0.8032, 'eval/balanced_acc': 0.8031999999999999, 'eval/precision': 0.8144205964392137, 'eval/recall': 0.8031999999999999, 'eval/F1': 0.8009136705641619}, BEST_EVAL_ACC: 0.8032, at 16384 iters
+[2022-11-23 19:31:51,911 INFO] 16896 iteration, USE_EMA: False, {'train/sup_loss': 1.2293922304890759, 'train/unsup_loss': 1.5292575310576588, 'train/total_loss': 4.488953549372357, 'lr': 0.000498358335041488, 'train/prefecth_time': 0.03842307281494141, 'train/run_time': 1.69128125}
+[2022-11-23 19:46:42,402 INFO] 17408 iteration, USE_EMA: False, {'train/sup_loss': 1.1911232537691447, 'train/unsup_loss': 2.339882568929049, 'train/total_loss': 5.809019656444282, 'lr': 0.0004982125651932681, 'train/prefecth_time': 0.03771075057983399, 'train/run_time': 1.701895751953125}
+[2022-11-23 20:02:01,861 INFO] 17920 iteration, USE_EMA: False, {'train/sup_loss': 1.7414157263556873, 'train/unsup_loss': 1.8516179577021292, 'train/total_loss': 5.330285295905548, 'lr': 0.0004980606074794375, 'train/prefecth_time': 0.04010575866699219, 'train/run_time': 1.702355712890625}
+[2022-11-23 20:16:52,533 INFO] validating...
+[2022-11-23 20:18:45,200 INFO] confusion matrix:
+[[1.   0.   0.   ... 0.   0.   0.  ]
+ [0.   0.97 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.75 ... 0.   0.15 0.  ]
+ ...
+ [0.   0.   0.   ... 0.91 0.   0.  ]
+ [0.   0.   0.01 ... 0.   0.15 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.9 ]]
+[2022-11-23 20:18:49,079 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 20:18:49,080 INFO] 18432 iteration, USE_EMA: False, {'train/sup_loss': 0.8117660324606191, 'train/unsup_loss': 1.4080261827249014, 'train/total_loss': 3.9985160370199107, 'lr': 0.0004979024637873309, 'train/prefecth_time': 0.037262718200683595, 'train/run_time': 1.6991766357421876, 'eval/loss': 0.7810660377621651, 'eval/top-1-acc': 0.8017, 'eval/balanced_acc': 0.8017, 'eval/precision': 0.8115900923481952, 'eval/recall': 0.8017, 'eval/F1': 0.8007250924855004}, BEST_EVAL_ACC: 0.8032, at 16384 iters
+[2022-11-23 20:34:08,543 INFO] 18944 iteration, USE_EMA: False, {'train/sup_loss': 0.13499059453163462, 'train/unsup_loss': 1.3964829248322197, 'train/total_loss': 3.428682930717615, 'lr': 0.0004977381360811139, 'train/prefecth_time': 0.03910649490356445, 'train/run_time': 1.706369140625}
+[2022-11-23 20:48:58,843 INFO] 19456 iteration, USE_EMA: False, {'train/sup_loss': 0.1708720352068635, 'train/unsup_loss': 1.287701290396575, 'train/total_loss': 2.935202032467136, 'lr': 0.0004975676264017582, 'train/prefecth_time': 0.03889353561401367, 'train/run_time': 1.6950494384765624}
+[2022-11-23 21:04:18,338 INFO] 19968 iteration, USE_EMA: False, {'train/sup_loss': 2.0287626956283593, 'train/unsup_loss': 2.6565978203942446, 'train/total_loss': 7.179246543135386, 'lr': 0.0004973909368670166, 'train/prefecth_time': 0.03827900695800781, 'train/run_time': 1.7058350830078124}
+[2022-11-23 21:19:08,916 INFO] validating...
+[2022-11-23 21:21:01,532 INFO] confusion matrix:
+[[0.98 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.99 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.72 ... 0.   0.04 0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.  ]
+ [0.   0.   0.02 ... 0.   0.04 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.9 ]]
+[2022-11-23 21:21:06,422 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 21:21:11,753 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/model_best.pth
+[2022-11-23 21:21:11,753 INFO] 20480 iteration, USE_EMA: False, {'train/sup_loss': 0.9275915366217263, 'train/unsup_loss': 1.5783533578918143, 'train/total_loss': 4.267074852905358, 'lr': 0.0004972080696713961, 'train/prefecth_time': 0.03775107192993164, 'train/run_time': 1.707633056640625, 'eval/loss': 0.7616781289577484, 'eval/top-1-acc': 0.8076, 'eval/balanced_acc': 0.8076000000000002, 'eval/precision': 0.8108882348635349, 'eval/recall': 0.8076000000000002, 'eval/F1': 0.8046320705766624}, BEST_EVAL_ACC: 0.8076, at 20480 iters
+[2022-11-23 21:36:31,166 INFO] 20992 iteration, USE_EMA: False, {'train/sup_loss': 1.5290538604843227, 'train/unsup_loss': 1.7499369593821452, 'train/total_loss': 5.021037017298909, 'lr': 0.0004970190270861315, 'train/prefecth_time': 0.03857497787475586, 'train/run_time': 1.6978951416015624}
+[2022-11-23 21:51:21,137 INFO] 21504 iteration, USE_EMA: False, {'train/sup_loss': 1.2129104351020796, 'train/unsup_loss': 2.3662855649723564, 'train/total_loss': 5.477304773899915, 'lr': 0.0004968238114591565, 'train/prefecth_time': 0.038044864654541016, 'train/run_time': 1.68257958984375}
+[2022-11-23 22:06:41,033 INFO] 22016 iteration, USE_EMA: False, {'train/sup_loss': 0.23558354093000441, 'train/unsup_loss': 0.5431962787860394, 'train/total_loss': 1.6750113456090985, 'lr': 0.0004966224252150749, 'train/prefecth_time': 0.0387949104309082, 'train/run_time': 1.7004725341796876}
+[2022-11-23 22:21:31,409 INFO] validating...
+[2022-11-23 22:23:23,934 INFO] confusion matrix:
+[[0.99 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.95 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.8  ... 0.   0.1  0.  ]
+ ...
+ [0.   0.   0.   ... 0.94 0.   0.  ]
+ [0.   0.   0.06 ... 0.   0.19 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.93]]
+[2022-11-23 22:23:25,798 INFO] model saved: ./saved_models/usb_cv/remixmatch_cifar100_400_0/latest_model.pth
+[2022-11-23 22:23:25,799 INFO] 22528 iteration, USE_EMA: False, {'train/sup_loss': 1.4300725139569606, 'train/unsup_loss': 2.2650377359346985, 'train/total_loss': 5.449780151153513, 'lr': 0.0004964148708551304, 'train/prefecth_time': 0.03759212875366211, 'train/run_time': 1.6936497802734376, 'eval/loss': 0.752661515390873, 'eval/top-1-acc': 0.8072, 'eval/balanced_acc': 0.8072000000000001, 'eval/precision': 0.8113376880632956, 'eval/recall': 0.8072000000000001, 'eval/F1': 0.8046651111048267}, BEST_EVAL_ACC: 0.8076, at 20480 iters
+[2022-11-23 22:38:44,859 INFO] 23040 iteration, USE_EMA: False, {'train/sup_loss': 1.6645860384340874, 'train/unsup_loss': 2.217203569020776, 'train/total_loss': 6.10956897969673, 'lr': 0.0004962011509571754, 'train/prefecth_time': 0.03887724685668945, 'train/run_time': 1.6960126953125}
