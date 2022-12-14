@@ -67,7 +67,10 @@ def get_cifar_os(args, alg, name, num_labels, num_classes, data_dir='./data', in
                                                                 include_lb_to_ulb=include_lb_to_ulb)
     
     lb_count = [0 for _ in range(num_classes)]
-    ulb_count = [0 for _ in range(num_classes)]
+    if name == "cifar10":
+        ulb_count = [0 for _ in range(10)]
+    else:
+        ulb_count = [0 for _ in range(100)]
     for c in lb_targets:
         lb_count[c] += 1
     for c in ulb_targets:
