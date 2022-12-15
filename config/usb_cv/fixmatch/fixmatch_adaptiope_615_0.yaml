@@ -1,8 +1,8 @@
 algorithm: fixmatch
 save_dir: ./saved_models/usb_cv/
-save_name: fixmatch_adaptiope_615_0
+save_name: fixmatch_adaptiope_615_0_da
 resume: True
-load_path: ./saved_models/usb_cv//fixmatch_adaptiope_615_0/latest_model.pth
+load_path: ./saved_models/usb_cv//fixmatch_adaptiope_615_0_da/latest_model.pth
 overwrite: True
 use_tensorboard: True
 epoch: 20
@@ -22,7 +22,7 @@ lr: 0.0005
 layer_decay: 0.5
 momentum: 0.9
 weight_decay: 0.0005
-amp: False
+amp: True
 clip: 0.0
 use_cat: True
 net: vit_small_patch16_224
@@ -38,6 +38,7 @@ rank: 0
 multiprocessing_distributed: False
 dist_url: tcp://127.0.0.1:10028
 dist_backend: nccl
-gpu: None
+gpu: 0
 use_pretrain: True
 pretrain_path: https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch16_224_mlp_im_1k_224.pth
+da_len: 32

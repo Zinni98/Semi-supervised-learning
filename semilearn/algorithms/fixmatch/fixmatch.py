@@ -5,7 +5,7 @@
 
 import torch
 from semilearn.core.algorithmbase import AlgorithmBase
-from semilearn.algorithms.hooks import PseudoLabelingHook, FixedThresholdingHook
+from semilearn.algorithms.hooks import PseudoLabelingHook, FixedThresholdingHook, DistAlignQueueHook
 from semilearn.algorithms.utils import ce_loss, consistency_loss,  SSL_Argument, str2bool
 
 
@@ -42,6 +42,7 @@ class FixMatch(AlgorithmBase):
     def set_hooks(self):
         self.register_hook(PseudoLabelingHook(), "PseudoLabelingHook")
         self.register_hook(FixedThresholdingHook(), "MaskingHook")
+        self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.args.da_len, p_target_type='uniform'), "DistAlignHook")
         super().set_hooks()
 
     def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s):
@@ -65,11 +66,12 @@ class FixMatch(AlgorithmBase):
 
             sup_loss = ce_loss(logits_x_lb, y_lb, reduction='mean')
             
+            probs_x_lb = torch.softmax(logits_x_lb, dim=-1)
             probs_x_ulb_w = torch.softmax(logits_x_ulb_w, dim=-1)
             # if distribution alignment hook is registered, call it 
             # this is implemented for imbalanced algorithm - CReST
             if self.registered_hook("DistAlignHook"):
-                probs_x_ulb_w = self.call_hook("dist_align", "DistAlignHook", probs_x_ulb=probs_x_ulb_w.detach())
+                probs_x_ulb_w = self.call_hook("dist_align", "DistAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb)
 
             # compute mask
             mask = self.call_hook("masking", "MaskingHook", logits_x_ulb=probs_x_ulb_w, softmax_x_ulb=False)
