@@ -1,0 +1,9 @@
+[2022-12-14 16:43:30,665 INFO] Use GPU: 0 for training
+[2022-12-14 16:43:45,998 INFO] unlabeled data number: 50000, labeled data number 200
+[2022-12-14 16:43:47,687 INFO] Create train and test data loaders
+[2022-12-14 16:43:47,719 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-12-14 16:44:00,196 INFO] Create optimizer and scheduler
+[2022-12-14 16:44:00,200 INFO] Number of Trainable Params: 21436900
+[2022-12-14 16:44:00,319 INFO] Arguments: Namespace(T=0.5, algorithm='fixmatch', amp=False, batch_size=8, c='config/usb_cv/fixmatch/fixmatch_cifar100_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifar100', dist_backend='nccl', dist_url='tcp://127.0.0.1:16641', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, hard_label=True, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//fixmatch_cifar100_200_0/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=100, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='fixmatch_cifar100_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=50000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-12-14 16:44:00,319 INFO] Resume load path ./saved_models/usb_cv//fixmatch_cifar100_200_0/latest_model.pth does not exist
+[2022-12-14 16:44:00,319 INFO] Model training

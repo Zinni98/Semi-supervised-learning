@@ -16,7 +16,7 @@ num_labels: 615
 uratio: 1
 ema_m: 0.0
 img_size: 224
-crop_ratio: 0.875
+crop_ratio: 0.875 
 optim: AdamW
 lr: 0.0005
 layer_decay: 0.5

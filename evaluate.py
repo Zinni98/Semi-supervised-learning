@@ -27,6 +27,13 @@ DATASET_IMGS = {
         "mean": [x / 255 for x in [129.3, 124.1, 112.4]],
         "std": [x / 255 for x in [68.2, 65.4, 70.4]]
     },
+    "adaptiope": {
+        "num_imgs": 2460, 
+        "img_size": 224, 
+        "num_classes": 123, 
+        "mean": [x for x in [0.4948, 0.4466, 0.4028]],
+        "std": [x for x in [0.2760, 0.2638, 0.2616]],
+    },
 }
 
 #! Default values. Change them to avoid using args,
@@ -34,9 +41,9 @@ DATASET_IMGS = {
 METHOD = "fixmatch"
 DATASET = "cifar100"
 DATASET_DIR = "data"
-NUM_LABELS = 400
+NUM_LABELS = 615
 SEED = 0
-NET = "vit_small_patch2_32"
+NET = "vit_small_patch16_224"
 CROP_RATIO = 1
 LB_IMB_RATIO = 1
 ULB_IMB_RATIO = 1
@@ -166,6 +173,10 @@ def get_labels(dataset):
         with open(os.path.join(DATASET_DIR, "cifar100/cifar-100-python/meta"), 'rb') as fp:
             ds = pickle.load(fp)
         return ds['fine_label_names']
+    if dataset == "adaptiope": 
+        with open(os.path.join(DATASET_DIR, "adaptiope/meta"), 'rb') as fp: 
+            ds = pickle.load(fp)
+        return ds['fine_label_names']
     else:
         raise NotImplementedError
 
@@ -177,6 +188,9 @@ def confusionmatrix(args, estimates, ground_truths, labels):
     """
     cm = MulticlassConfusionMatrix(num_classes=args.num_classes)
     conf_matrix = cm(estimates, ground_truths).numpy()
+
+    if args.dataset == "adaptiope": 
+        conf_matrix *= 5 # transpose results to cifar eval set size (100 imgs per class) 
 
     path = os.path.join(
         args.save_path,
@@ -204,12 +218,12 @@ def main(args):
 
     ds = get_dataset(args, args.method, args.dataset, args.num_labels, args.num_classes)
     val_ds = ds['eval']
-    val_dl = DataLoader(val_ds, batch_size=args.batch_size, 
-                         drop_last=False, shuffle=False, num_workers=args.num_workers)
+    val_dl = DataLoader(val_ds, batch_size=args.batch_size, drop_last=False, shuffle=False, num_workers=args.num_workers)
 
     try:
         labels = get_labels(args.dataset)
     except NotImplementedError:
+        print("Not implemented")
         labels = range(0, args.num_classes)
 
     acc, estimates, ground_truths = eval(args, model, val_dl, labels)
@@ -232,7 +246,7 @@ if __name__ == "__main__":
                         help="Path to weights.")
     parser.add_argument("--net", type=str, default=NET,
                         help="Architecture used, use the same as training.")
-    parser.add_argument("--crop_ratio", type=int, default=CROP_RATIO)
+    parser.add_argument("--crop_ratio", type=float, default=CROP_RATIO)
     parser.add_argument("--lb_imb_ratio", type=int, default=LB_IMB_RATIO)
     parser.add_argument("--ulb_imb_ratio", type=int, default=ULB_IMB_RATIO)
     parser.add_argument("--batch_size", type=int, default=BATCH_SIZE)
