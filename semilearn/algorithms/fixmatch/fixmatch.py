@@ -6,8 +6,8 @@
 import torch
 from semilearn.core.algorithmbase import AlgorithmBase
 from semilearn.algorithms.hooks import PseudoLabelingHook, FixedThresholdingHook
-from semilearn.algorithms.utils import ce_loss, consistency_loss, SSL_Argument, str2bool, contrastive_domain_discrepancy
-
+from semilearn.algorithms.utils import ce_loss, consistency_loss, SSL_Argument, str2bool, contrastive_domain_discrepancy, CDD
+import time
 
 class FixMatch(AlgorithmBase):
     """
@@ -46,6 +46,9 @@ class FixMatch(AlgorithmBase):
 
     def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s, y_ulb=None):
         num_lb = y_lb.shape[0]
+        num_classes = self.dataset_dict['train_lb'].num_classes
+        cdd = CDD(1, num_classes)
+        print(num_classes)
 
         # inference and calculate sup/unsup losses
         with self.amp_cm():
@@ -86,10 +89,16 @@ class FixMatch(AlgorithmBase):
                                           use_hard_label=self.use_hard_label,
                                           T=self.T,
                                           softmax=False)
-            cdd_loss = contrastive_domain_discrepancy(feat_x_lb, feat_x_ulb_w, 
-                                                      y_lb, pseudo_label, 
-                                                      list(range(self.dataset_dict['train_lb'].num_classes)),
-                                                      beta=0.3)
+            # cdd_loss = contrastive_domain_discrepancy(feat_x_lb, feat_x_ulb_w, 
+            #                                           y_lb, pseudo_label, 
+            #                                           list(range(self.dataset_dict['train_lb'].num_classes)),
+            #                                           beta=0.3)
+            start = time.time()
+            print(feat_x_lb.shape)
+            print(feat_x_ulb_w.shape)
+            cdd_loss = cdd.forward([feat_x_lb], [feat_x_ulb_w], y_lb, pseudo_label)['cdd'] 
+            print('cdd time: ', time.time()-start)
+            cdd_loss.backward()
 
             unsup_loss = consistency_loss(logits_x_ulb_s,
                                           pseudo_label,
