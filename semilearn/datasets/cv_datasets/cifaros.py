@@ -206,7 +206,7 @@ class CifarOSDataset(BasicDataset):
                  is_ulb=False,
                  strong_transform=None,
                  onehot=False,
-                 unknown_classes,
+                 unknown_classes=[],
                  *args, 
                  **kwargs):
         super().__init__(alg,
