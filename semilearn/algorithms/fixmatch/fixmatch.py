@@ -42,7 +42,7 @@ class FixMatch(AlgorithmBase):
     def set_hooks(self):
         self.register_hook(PseudoLabelingHook(), "PseudoLabelingHook")
         self.register_hook(FixedThresholdingHook(), "MaskingHook")
-        self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.args.da_len, p_target_type='uniform'), "DistAlignHook")
+        self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.args.da_len, p_target_type='uniform'), "DomainAlignHook")
         super().set_hooks()
 
     def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s):
@@ -70,8 +70,8 @@ class FixMatch(AlgorithmBase):
             probs_x_ulb_w = torch.softmax(logits_x_ulb_w, dim=-1)
             # if distribution alignment hook is registered, call it 
             # this is implemented for imbalanced algorithm - CReST
-            if self.registered_hook("DistAlignHook"):
-                probs_x_ulb_w = self.call_hook("dist_align", "DistAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb)
+            if self.registered_hook("DomainAlignHook"):
+                probs_x_ulb_w = self.call_hook("dist_align", "DomainAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb.detatch())
 
             # compute mask
             mask = self.call_hook("masking", "MaskingHook", logits_x_ulb=probs_x_ulb_w, softmax_x_ulb=False)
@@ -98,6 +98,21 @@ class FixMatch(AlgorithmBase):
         tb_dict['train/total_loss'] = total_loss.item()
         tb_dict['train/mask_ratio'] = mask.float().mean().item()
         return tb_dict
+
+    
+    def get_save_dict(self):
+        save_dict = super().get_save_dict()
+        if self.registered_hook("DomainAlignHook"):
+            save_dict['p_model'] = self.hooks_dict['DomainAlignHook'].p_model.cpu()
+            save_dict['p_target'] = self.hooks_dict['DomainAlignHook'].p_target.cpu()
+        return save_dict
+    
+    def load_model(self, load_path):
+        checkpoint =  super().load_model(load_path)
+        if self.registered_hook("DomainAlignHook"):
+            self.hooks_dict['DomainAlignHook'].p_model = checkpoint['p_model'].cuda(self.args.gpu)
+            self.hooks_dict['DomainAlignHook'].p_target = checkpoint['p_target'].cuda(self.args.gpu)
+        return checkpoint
 
     @staticmethod
     def get_argument():
