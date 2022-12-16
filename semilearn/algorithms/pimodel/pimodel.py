@@ -5,6 +5,7 @@ import torch
 import numpy as np
 from semilearn.core import AlgorithmBase
 from semilearn.algorithms.utils import ce_loss, consistency_loss, SSL_Argument, str2bool
+from semilearn.algorithms.hooks import  DistAlignQueueHook
 
 
 class PiModel(AlgorithmBase):
@@ -33,6 +34,10 @@ class PiModel(AlgorithmBase):
     def init(self, unsup_warm_up=0.4):
         self.unsup_warm_up = unsup_warm_up 
 
+    def set_hooks(self):
+        self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.args.da_len, p_target_type='uniform'), "DomainAlignHook")
+        super().set_hooks()
+
     def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s):
         # inference and calculate sup/unsup losses
         with self.amp_cm():
@@ -49,12 +54,12 @@ class PiModel(AlgorithmBase):
 
             if self.registered_hook("DomainAlignHook"):
                 probs_x_lb = torch.softmax(logits_x_lb, dim=-1)
+                probs_x_ulb_w = torch.softmax(logits_x_ulb_w, dim=-1)
                 probs_x_ulb_w = self.call_hook("dist_align", "DomainAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb.detach())
 
             sup_loss = ce_loss(logits_x_lb, y_lb, reduction='mean')
-            unsup_loss = consistency_loss(logits_x_ulb_s,
-                                          torch.softmax(logits_x_ulb_w.detach(), dim=-1),
-                                          'mse')
+            unsup_loss = consistency_loss(logits_x_ulb_s, probs_x_ulb_w, 'mse')
+
             # TODO: move this into masking
             unsup_warmup = np.clip(self.it / (self.unsup_warm_up * self.num_train_iter),  a_min=0.0, a_max=1.0)
             total_loss = sup_loss + self.lambda_u * unsup_loss * unsup_warmup
@@ -77,9 +82,8 @@ class PiModel(AlgorithmBase):
     
     def load_model(self, load_path):
         checkpoint =  super().load_model(load_path)
-        self.hooks_dict['DistAlignHook'].p_model = checkpoint['p_model'].cuda(self.args.gpu)
         if self.registered_hook("DomainAlignHook"):
-            self.hooks_dict['DomainAlignHook'].p_target = checkpoint['p_target'].cuda(self.args.gpu)
+            self.hooks_dict['DomainAlignHook'].p_model = checkpoint['p_model'].cuda(self.args.gpu)
             self.hooks_dict['DomainAlignHook'].p_target = checkpoint['p_target'].cuda(self.args.gpu)
         return checkpoint
 
