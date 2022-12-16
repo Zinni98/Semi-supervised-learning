@@ -8,7 +8,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from semilearn.core import AlgorithmBase
-from semilearn.algorithms.hooks import DistAlignEMAHook 
+from semilearn.algorithms.hooks import DistAlignEMAHook, DistAlignQueueHook
 from semilearn.algorithms.utils import ce_loss, SSL_Argument, str2bool, interleave, mixup_one_target
 
 
@@ -79,6 +79,10 @@ class ReMixMatch(AlgorithmBase):
         self.lambda_rot = args.rot_loss_ratio
         self.lambda_kl = args.kl_loss_ratio
         self.use_rot = self.lambda_rot > 0
+
+        self.domain_align = args.domain_align if hasattr(args, 'domain_align') else False
+        self.da_len = args.da_len if hasattr(args, 'da_len') else 0
+
         super().__init__(args, net_builder,  tb_log, logger)
         self.init(T=args.T, unsup_warm_up=args.unsup_warm_up, mixup_alpha=args.mixup_alpha, mixup_manifold=args.mixup_manifold)
 
@@ -97,6 +101,9 @@ class ReMixMatch(AlgorithmBase):
         self.register_hook(
             DistAlignEMAHook(num_classes=self.num_classes, p_target_type='gt', p_target=lb_class_dist), 
             "DistAlignHook")
+        if self.domain_align and self.da_len > 0:
+            self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.da_len, p_target_type='uniform'), "DomainAlignHook")
+
         super().set_hooks()
 
     def set_model(self):
@@ -139,6 +146,12 @@ class ReMixMatch(AlgorithmBase):
             outs_x_ulb_s_0 = self.model(x_ulb_s_0)
             outs_x_ulb_s_1 = self.model(x_ulb_s_1)
             self.bn_controller.unfreeze_bn(self.model)
+
+            probs_x_lb = torch.softmax(outs_x_lb['logits'], dim=1)
+            probs_x_ulb_w = torch.softmax(logits_x_ulb_w, dim=1)
+
+            if self.registered_hook("DomainAlignHook"):
+                probs_x_ulb_w = self.call_hook("dist_align", "DomainAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb.detach())
 
             # mix up
             # with torch.no_grad():
@@ -210,12 +223,18 @@ class ReMixMatch(AlgorithmBase):
         save_dict = super().get_save_dict()
         save_dict['p_model'] = self.hooks_dict['DistAlignHook'].p_model.cpu()
         save_dict['p_target'] = self.hooks_dict['DistAlignHook'].p_target.cpu()
+        if self.registered_hook("DomainAlignHook"):
+            save_dict['DomainAlign/p_model'] = self.hooks_dict['DomainAlignHook'].p_model.cpu()
+            save_dict['DomainAlign/p_target'] = self.hooks_dict['DomainAlignHook'].p_target.cpu()
         return save_dict
     
     def load_model(self, load_path):
         checkpoint =  super().load_model(load_path)
         self.hooks_dict['DistAlignHook'].p_model = checkpoint['p_model'].cuda(self.args.gpu)
         self.hooks_dict['DistAlignHook'].p_target = checkpoint['p_target'].cuda(self.args.gpu)
+        if self.registered_hook("DomainAlignHook"):
+            self.hooks_dict['DomainAlignHook'].p_model = checkpoint['DomainAlign/p_model'].cuda(self.args.gpu)    
+            self.hooks_dict['DomainAlignHook'].p_target = checkpoint['DomainAlign/p_target'].cuda(self.args.gpu)
         return checkpoint
 
     @staticmethod
