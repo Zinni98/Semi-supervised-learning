@@ -1,8 +1,8 @@
 algorithm: fixmatch
 save_dir: ./saved_models/usb_cv/
-save_name: fixmatch_adaptiope_615_0
+save_name: fixmatch_adaptiope_615_0_da
 resume: True
-load_path: ./saved_models/usb_cv//fixmatch_adaptiope_615_0/latest_model.pth
+load_path: ./saved_models/usb_cv//fixmatch_adaptiope_615_0_da/latest_model.pth
 overwrite: True
 use_tensorboard: True
 epoch: 20
@@ -41,3 +41,4 @@ dist_backend: nccl
 gpu: 0
 use_pretrain: True
 pretrain_path: https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch16_224_mlp_im_1k_224.pth
+da_len: 32

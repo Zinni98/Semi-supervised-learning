@@ -24,6 +24,9 @@ class PiModel(AlgorithmBase):
             Ramp up for weights for unsupervised loss
     """
     def __init__(self, args, net_builder, tb_log=None, logger=None, **kwargs):
+        self.domain_align = args.domain_align if hasattr(args, 'domain_align') else False
+        self.da_len = args.da_len if hasattr(args, 'da_len') else 0
+
         super().__init__(args, net_builder, tb_log, logger, **kwargs)
         self.init(unsup_warm_up=args.unsup_warm_up)
     
@@ -44,6 +47,9 @@ class PiModel(AlgorithmBase):
             logits_x_ulb_s = outs_x_ulb_s['logits']
             self.bn_controller.unfreeze_bn(self.model)
 
+            if self.registered_hook("DomainAlignHook"):
+                probs_x_lb = torch.softmax(logits_x_lb, dim=-1)
+                probs_x_ulb_w = self.call_hook("dist_align", "DomainAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb.detach())
 
             sup_loss = ce_loss(logits_x_lb, y_lb, reduction='mean')
             unsup_loss = consistency_loss(logits_x_ulb_s,
@@ -61,6 +67,21 @@ class PiModel(AlgorithmBase):
         tb_dict['train/unsup_loss'] = unsup_loss.item()
         tb_dict['train/total_loss'] = total_loss.item()
         return tb_dict
+
+    def get_save_dict(self):
+        save_dict = super().get_save_dict()
+        if self.registered_hook("DomainAlignHook"):
+            save_dict['p_model'] = self.hooks_dict['DomainAlignHook'].p_model.cpu()
+            save_dict['p_target'] = self.hooks_dict['DomainAlignHook'].p_target.cpu()
+        return save_dict
+    
+    def load_model(self, load_path):
+        checkpoint =  super().load_model(load_path)
+        self.hooks_dict['DistAlignHook'].p_model = checkpoint['p_model'].cuda(self.args.gpu)
+        if self.registered_hook("DomainAlignHook"):
+            self.hooks_dict['DomainAlignHook'].p_target = checkpoint['p_target'].cuda(self.args.gpu)
+            self.hooks_dict['DomainAlignHook'].p_target = checkpoint['p_target'].cuda(self.args.gpu)
+        return checkpoint
 
     @staticmethod
     def get_argument():
