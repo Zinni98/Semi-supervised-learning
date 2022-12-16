@@ -83,9 +83,11 @@ def get_cifar_os(args, alg, name, num_labels, num_classes, data_dir='./data', in
         lb_targets = targets
 
 
-    lb_dset = BasicDataset(alg, lb_data, lb_targets, num_classes, transform_weak, False, None, False)
+    target_diff = set(ulb_targets) - set(lb_targets)
 
-    ulb_dset = BasicDataset(alg, ulb_data, ulb_targets, num_classes, transform_weak, True, transform_strong, False)
+    lb_dset = CifarOSDataset(alg, lb_data, lb_targets, num_classes, transform_weak, False, None, False, target_diff)
+
+    ulb_dset = CifarOSDataset(alg, ulb_data, ulb_targets, num_classes, transform_weak, True, transform_strong, False, target_diff)
 
     dset = getattr(torchvision.datasets, name.upper())
     dset = dset(data_dir, train=False, download=True)
@@ -192,3 +194,33 @@ def sample_labeled_unlabeled_data(args, data, target, num_classes, name,
     np.save(ulb_dump_path, ulb_idx)
     
     return lb_idx, ulb_idx
+
+
+class CifarOSDataset(BasicDataset):
+    def __init__(self,
+                 alg,
+                 data,
+                 targets=None,
+                 num_classes=None,
+                 transform=None,
+                 is_ulb=False,
+                 strong_transform=None,
+                 onehot=False,
+                 unknown_classes,
+                 *args, 
+                 **kwargs):
+        super().__init__(alg,
+                         data,
+                         targets,
+                         num_classes,
+                         transform,
+                         is_ulb,
+                         strong_transform,
+                         onehot)
+        self.unknown_classes = unknown_classes
+    
+    def check_noisy_class(self, label):
+        """
+        Returns True if label isn't seen in the labeled samples
+        """
+        return False if label in unknown_classes else True
