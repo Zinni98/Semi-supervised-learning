@@ -90,8 +90,8 @@ def get_cifar_os(args, alg, name, num_labels, num_classes, data_dir='./data', in
     dset = getattr(torchvision.datasets, name.upper())
     dset = dset(data_dir, train=False, download=True)
     test_data, test_targets = dset.data, dset.targets
-    test_data = [data for idx, data in enumerate(dset.data) if targets[idx] < num_classes]
-    test_targets = [target for target in dset.targets if target < num_classes]
+    test_data = [data for idx, data in enumerate(test_data) if test_targets[idx] < num_classes]
+    test_targets = [target for target in test_targets if target < num_classes]
     eval_dset = BasicDataset(alg, test_data, test_targets, num_classes, transform_val, False, None, False)
 
     return lb_dset, ulb_dset, eval_dset
