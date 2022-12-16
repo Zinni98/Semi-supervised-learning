@@ -1,8 +1,8 @@
 algorithm: pimodel
 save_dir: ./saved_models/usb_cv/
-save_name: pimodel_adaptiope_615_0
+save_name: pimodel_adaptiope_615_0_domain_align
 resume: True
-load_path: ./saved_models/usb_cv//pimodel_adaptiope_615_0/latest_model.pth
+load_path: ./saved_models/usb_cv//pimodel_adaptiope_615_0_domain_align/latest_model.pth
 overwrite: True
 use_tensorboard: True
 epoch: 20
