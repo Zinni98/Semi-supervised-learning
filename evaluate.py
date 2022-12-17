@@ -27,12 +27,19 @@ DATASET_IMGS = {
         "mean": [x / 255 for x in [129.3, 124.1, 112.4]],
         "std": [x / 255 for x in [68.2, 65.4, 70.4]]
     },
+    "cifaros100":{
+        "num_imgs": 10000,
+        "img_size": 32,
+        "num_classes": 80,
+        "mean": [x / 255 for x in [129.3, 124.1, 112.4]],
+        "std": [x / 255 for x in [68.2, 65.4, 70.4]]
+    }
 }
 
 #! Default values. Change them to avoid using args,
 #! otherwise keep them as they are
 METHOD = "fixmatch"
-DATASET = "cifar100"
+DATASET = "cifaros100"
 DATASET_DIR = "data"
 NUM_LABELS = 400
 SEED = 0
@@ -119,23 +126,26 @@ def eval(args, model, dl, labels):
     imgs_to_return = None
 
     # indexes to track
-    pred_indx = labels.index(args.save_wrongs[1])
-    gt_index = labels.index(args.save_wrongs[0])
+    # pred_indx = labels.index(args.save_wrongs[1])
+    # gt_index = labels.index(args.save_wrongs[0])
 
     for data in tqdm(dl):
-        X = data['x_lb']
-        y = data['y_lb']
+        X = data['x_ulb_w']
+        # y = data['y_ulb']
 
         X = X.type(torch.FloatTensor).cuda()
-        y = y.cuda()
+        # y = y.cuda()
         logits = model(X)['logits']
-        y_hat = logits.argmax(1)
+        print(torch.softmax(logits, dim=1)[0])
+        print(logits.shape)
+        y_hat, _ = torch.softmax(logits, dim=1).max(1)
+        print(y_hat)
+        print(y_hat.shape)
+        # acc += y_hat.cpu().eq(y.cpu()).numpy().sum()
+        # count += y_hat.cpu().size(0)
 
-        acc += y_hat.cpu().eq(y.cpu()).numpy().sum()
-        count += y_hat.cpu().size(0)
-
-        estimates.extend(y_hat.cpu())
-        ground_truths.extend(y.cpu())
+        estimates.extend(y_hat.tolist())#.cpu())
+        # ground_truths.extend(y.cpu())
 
         if args.save_wrongs is not None:
             # get all predictions and labels that match indexes to track
@@ -152,8 +162,9 @@ def eval(args, model, dl, labels):
             break
 
     estimates = torch.tensor(estimates)
-    ground_truths = torch.tensor(ground_truths)
-
+    # ground_truths = torch.tensor(ground_truths)
+    estimates = (estimates >= 0.95).type(torch.float).mean()
+    print(estimates)
     if args.save_wrongs is not None:
         save(args, imgs_to_return)
 

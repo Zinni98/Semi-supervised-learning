@@ -10,4 +10,4 @@ from .stl10 import get_stl10
 from .svhn import get_svhn
 from .tinyimagenet import get_tinyimagenet
 from .adaptiope import get_adaptiope
-from .cifaros import get_cifar_os
+from .cifaros import get_cifar_os, get_cifar_os_outliers
