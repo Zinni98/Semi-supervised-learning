@@ -167,16 +167,17 @@ def eval(args, model, dl, labels):
     return acc / count, estimates, ground_truths
 
 
-def get_labels(dataset):
+def get_labels(dataset, ds = None):
     # open meta file and get cifar lables
     if dataset == "cifar100":
         with open(os.path.join(DATASET_DIR, "cifar100/cifar-100-python/meta"), 'rb') as fp:
             ds = pickle.load(fp)
         return ds['fine_label_names']
     if dataset == "adaptiope": 
-        with open(os.path.join(DATASET_DIR, "adaptiope/meta"), 'rb') as fp: 
-            ds = pickle.load(fp)
-        return ds['fine_label_names']
+        if hasattr(ds, "classes"):
+            return ds.classes
+        else:
+            ValueError("Dataset must have classes attribute")
     else:
         raise NotImplementedError
 
@@ -221,8 +222,8 @@ def main(args):
     val_dl = DataLoader(val_ds, batch_size=args.batch_size, drop_last=False, shuffle=False, num_workers=args.num_workers)
 
     try:
-        labels = get_labels(args.dataset)
-    except NotImplementedError:
+        labels = get_labels(args.dataset, val_ds)
+    except NotImplementedError, ValueError:
         print("Not implemented")
         labels = range(0, args.num_classes)
 
