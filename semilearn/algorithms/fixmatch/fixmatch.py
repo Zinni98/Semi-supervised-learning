@@ -30,6 +30,7 @@ class FixMatch(AlgorithmBase):
                 If True, targets have [Batch size] shape with int values. If False, the target is vector
     """
     def __init__(self, args, net_builder, tb_log=None, logger=None):
+        self.da_len = args.da_len if hasattr(args, 'da_len') else 0
         super().__init__(args, net_builder, tb_log, logger) 
         # fixmatch specificed arguments
         self.init(T=args.T, p_cutoff=args.p_cutoff, hard_label=args.hard_label)
@@ -42,7 +43,8 @@ class FixMatch(AlgorithmBase):
     def set_hooks(self):
         self.register_hook(PseudoLabelingHook(), "PseudoLabelingHook")
         self.register_hook(FixedThresholdingHook(), "MaskingHook")
-        self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.args.da_len, p_target_type='uniform'), "DomainAlignHook")
+        if self.da_len > 0:
+            self.register_hook(DistAlignQueueHook(num_classes=self.num_classes, queue_length=self.da_len, p_target_type='uniform'), "DomainAlignHook")
         super().set_hooks()
 
     def train_step(self, x_lb, y_lb, x_ulb_w, x_ulb_s):
