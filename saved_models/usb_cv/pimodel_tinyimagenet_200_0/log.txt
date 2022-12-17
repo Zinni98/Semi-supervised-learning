@@ -1,0 +1,279 @@
+[2022-11-23 13:31:10,845 INFO] Use GPU: 0 for training
+[2022-11-23 13:31:11,453 INFO] unlabeled data number: 100000, labeled data number 4000
+[2022-11-23 13:31:30,819 INFO] Create train and test data loaders
+[2022-11-23 13:31:30,884 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 13:31:46,145 INFO] Create optimizer and scheduler
+[2022-11-23 13:31:46,147 INFO] Number of Trainable Params: 21402250
+[2022-11-23 13:31:46,382 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:19928', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=64, layer_decay=1.0, lb_dest_len=4000, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=10, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=0, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 13:31:46,383 INFO] Resume load path ./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth does not exist
+[2022-11-23 13:31:46,383 INFO] Model training
+[2022-11-23 13:36:34,645 INFO] Use GPU: 0 for training
+[2022-11-23 13:36:35,288 INFO] unlabeled data number: 100000, labeled data number 4000
+[2022-11-23 13:36:36,879 INFO] Create train and test data loaders
+[2022-11-23 13:36:36,880 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 13:36:37,556 INFO] Create optimizer and scheduler
+[2022-11-23 13:36:37,558 INFO] Number of Trainable Params: 21402250
+[2022-11-23 13:36:37,635 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:18818', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=64, layer_decay=1.0, lb_dest_len=4000, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=10, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 13:36:37,635 INFO] Resume load path ./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth does not exist
+[2022-11-23 13:36:37,635 INFO] Model training
+[2022-11-23 13:54:46,458 INFO] Use GPU: 0 for training
+[2022-11-23 13:54:47,084 INFO] unlabeled data number: 100000, labeled data number 4000
+[2022-11-23 13:54:48,610 INFO] Create train and test data loaders
+[2022-11-23 13:54:48,611 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 13:54:49,266 INFO] Create optimizer and scheduler
+[2022-11-23 13:54:49,268 INFO] Number of Trainable Params: 21402250
+[2022-11-23 13:54:49,345 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:26222', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=4000, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=10, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 13:54:49,346 INFO] Resume load path ./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth does not exist
+[2022-11-23 13:54:49,346 INFO] Model training
+[2022-11-23 13:56:41,479 INFO] Use GPU: 0 for training
+[2022-11-23 13:56:42,077 INFO] unlabeled data number: 100000, labeled data number 4000
+[2022-11-23 13:56:43,664 INFO] Create train and test data loaders
+[2022-11-23 13:56:43,665 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 13:56:44,306 INFO] Create optimizer and scheduler
+[2022-11-23 13:56:44,308 INFO] Number of Trainable Params: 21402250
+[2022-11-23 13:56:44,385 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:21638', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=4000, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=10, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 13:56:44,385 INFO] Resume load path ./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth does not exist
+[2022-11-23 13:56:44,386 INFO] Model training
+[2022-11-23 14:02:16,046 INFO] Use GPU: 0 for training
+[2022-11-23 14:02:16,646 INFO] unlabeled data number: 100000, labeled data number 4000
+[2022-11-23 14:02:18,153 INFO] Create train and test data loaders
+[2022-11-23 14:02:18,154 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 14:02:18,807 INFO] Create optimizer and scheduler
+[2022-11-23 14:02:18,809 INFO] Number of Trainable Params: 21402250
+[2022-11-23 14:02:18,895 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:18176', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=4000, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=10, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 14:02:18,895 INFO] Resume load path ./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth does not exist
+[2022-11-23 14:02:18,895 INFO] Model training
+[2022-11-23 14:16:57,049 INFO] Use GPU: 0 for training
+[2022-11-23 14:16:57,645 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-23 14:16:59,166 INFO] Create train and test data loaders
+[2022-11-23 14:16:59,167 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 14:16:59,814 INFO] Create optimizer and scheduler
+[2022-11-23 14:16:59,816 INFO] Number of Trainable Params: 21475400
+[2022-11-23 14:16:59,894 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:17324', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 14:16:59,894 INFO] Resume load path ./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth does not exist
+[2022-11-23 14:16:59,894 INFO] Model training
+[2022-11-23 14:22:19,687 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 6.292259693145752, 'train/unsup_loss': 1.4024195479578339e-05, 'train/total_loss': 6.292260646820068, 'lr': 5e-06, 'train/prefecth_time': 0.03774892807006836, 'train/run_time': 0.5591759643554688}
+[2022-11-23 14:27:26,754 INFO] 1024 iteration, USE_EMA: False, {'train/sup_loss': 5.250724792480469, 'train/unsup_loss': 1.886374593595974e-05, 'train/total_loss': 5.25072717666626, 'lr': 1e-05, 'train/prefecth_time': 0.036061248779296874, 'train/run_time': 0.5587919921875}
+[2022-11-23 14:32:50,010 INFO] 1536 iteration, USE_EMA: False, {'train/sup_loss': 4.31620454788208, 'train/unsup_loss': 1.878685907286126e-05, 'train/total_loss': 4.3162078857421875, 'lr': 1.5e-05, 'train/prefecth_time': 0.03847635269165039, 'train/run_time': 0.5593749389648438}
+[2022-11-23 14:37:56,797 INFO] validating...
+[2022-11-23 14:39:45,234 INFO] confusion matrix:
+[[0.0039 0.0053 0.0044 ... 0.0138 0.0033 0.0145]
+ [0.     0.     0.     ... 0.     0.     0.    ]
+ [0.     0.     0.     ... 0.     0.     0.    ]
+ ...
+ [0.     0.     0.     ... 0.     0.     0.    ]
+ [0.     0.     0.     ... 0.     0.     0.    ]
+ [0.     0.     0.     ... 0.     0.     0.    ]]
+[2022-11-23 14:39:45,770 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-23 14:39:46,296 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-23 14:39:46,296 INFO] 2048 iteration, USE_EMA: False, {'train/sup_loss': 3.234053611755371, 'train/unsup_loss': 1.888724000309594e-05, 'train/total_loss': 3.234058380126953, 'lr': 2e-05, 'train/prefecth_time': 0.03669305419921875, 'train/run_time': 0.5574476318359375, 'eval/loss': 5.50759568862915, 'eval/top-1-acc': 0.0039, 'eval/balanced_acc': 0.0039, 'eval/precision': 0.005154639175257732, 'eval/recall': 2.0103092783505153e-05, 'eval/F1': 4.004999060365605e-05}, BEST_EVAL_ACC: 0.0039, at 2048 iters
+[2022-11-23 14:45:08,776 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 2.5922586917877197, 'train/unsup_loss': 1.648695433686953e-05, 'train/total_loss': 2.59226393699646, 'lr': 2.5e-05, 'train/prefecth_time': 0.03481673431396484, 'train/run_time': 0.5600406494140625}
+[2022-11-23 14:50:15,357 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 1.3748297691345215, 'train/unsup_loss': 2.2606876882491633e-05, 'train/total_loss': 1.3748382329940796, 'lr': 3e-05, 'train/prefecth_time': 0.0409978256225586, 'train/run_time': 0.5554842529296875}
+[2022-11-23 17:41:56,701 INFO] Use GPU: 0 for training
+[2022-11-23 17:43:28,148 INFO] Use GPU: 0 for training
+[2022-11-23 17:53:51,597 INFO] Use GPU: 0 for training
+[2022-11-23 17:57:13,527 INFO] Use GPU: 0 for training
+[2022-11-23 17:57:14,134 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-23 18:05:13,608 INFO] Use GPU: 0 for training
+[2022-11-23 18:08:42,256 INFO] Use GPU: 0 for training
+[2022-11-23 18:15:49,023 INFO] Use GPU: 0 for training
+[2022-11-23 18:18:53,505 INFO] Use GPU: 0 for training
+[2022-11-23 18:22:43,571 INFO] Use GPU: 0 for training
+[2022-11-23 18:25:24,128 INFO] Use GPU: 0 for training
+[2022-11-23 18:25:24,737 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-23 18:25:26,248 INFO] Create train and test data loaders
+[2022-11-23 18:25:26,319 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 18:25:45,057 INFO] Create optimizer and scheduler
+[2022-11-23 18:25:45,059 INFO] Number of Trainable Params: 21475400
+[2022-11-23 18:25:45,140 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='./config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:29382', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 18:25:59,615 INFO] model loaded
+[2022-11-23 18:25:59,616 INFO] Model training
+[2022-11-23 18:31:33,194 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 1.9222744703292847, 'train/unsup_loss': 2.0526975276879966e-05, 'train/total_loss': 1.9222809076309204, 'lr': 2.5e-05, 'train/prefecth_time': 0.03587417602539063, 'train/run_time': 0.5776762084960938}
+[2022-11-23 18:45:43,153 INFO] Use GPU: 0 for training
+[2022-11-23 18:45:43,741 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-23 18:45:45,267 INFO] Create train and test data loaders
+[2022-11-23 18:45:45,268 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 18:45:45,931 INFO] Create optimizer and scheduler
+[2022-11-23 18:45:45,933 INFO] Number of Trainable Params: 21475400
+[2022-11-23 18:45:46,011 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='./config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:20268', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 18:45:46,328 INFO] model loaded
+[2022-11-23 18:45:46,329 INFO] Model training
+[2022-11-23 18:51:15,164 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 1.9222744703292847, 'train/unsup_loss': 2.0526975276879966e-05, 'train/total_loss': 1.9222809076309204, 'lr': 2.5e-05, 'train/prefecth_time': 0.03667007827758789, 'train/run_time': 0.5843067016601563}
+[2022-11-23 18:56:29,140 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 0.864980161190033, 'train/unsup_loss': 2.2137726773507893e-05, 'train/total_loss': 0.8649884462356567, 'lr': 3e-05, 'train/prefecth_time': 0.03714739227294922, 'train/run_time': 0.5694306030273437}
+[2022-11-23 19:01:57,161 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 1.0231958627700806, 'train/unsup_loss': 3.486589412204921e-05, 'train/total_loss': 1.023211121559143, 'lr': 3.5e-05, 'train/prefecth_time': 0.036230945587158205, 'train/run_time': 0.565161865234375}
+[2022-11-23 19:07:09,987 INFO] validating...
+[2022-11-23 19:48:53,554 INFO] Use GPU: 0 for training
+[2022-11-23 19:48:54,150 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-23 19:48:55,697 INFO] Create train and test data loaders
+[2022-11-23 19:48:55,698 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 19:48:56,349 INFO] Create optimizer and scheduler
+[2022-11-23 19:48:56,351 INFO] Number of Trainable Params: 21475400
+[2022-11-23 19:48:56,429 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='./config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:29749', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 19:48:56,743 INFO] model loaded
+[2022-11-23 19:48:56,744 INFO] Model training
+[2022-11-23 19:54:22,749 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 1.9222744703292847, 'train/unsup_loss': 2.0526975276879966e-05, 'train/total_loss': 1.9222809076309204, 'lr': 2.5e-05, 'train/prefecth_time': 0.038757823944091795, 'train/run_time': 0.5726024780273438}
+[2022-11-23 20:26:58,631 INFO] Use GPU: 0 for training
+[2022-11-23 20:27:01,799 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-23 20:27:21,277 INFO] Create train and test data loaders
+[2022-11-23 20:27:21,318 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-23 20:27:37,571 INFO] Create optimizer and scheduler
+[2022-11-23 20:27:37,573 INFO] Number of Trainable Params: 21475400
+[2022-11-23 20:27:37,778 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:24968', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-23 20:27:52,352 INFO] model loaded
+[2022-11-23 20:27:52,353 INFO] Model training
+[2022-11-23 20:33:03,743 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 1.9222744703292847, 'train/unsup_loss': 2.0526975276879966e-05, 'train/total_loss': 1.9222809076309204, 'lr': 2.5e-05, 'train/prefecth_time': 0.03452358245849609, 'train/run_time': 0.544154052734375}
+[2022-11-23 20:38:01,060 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 0.864980161190033, 'train/unsup_loss': 2.2137726773507893e-05, 'train/total_loss': 0.8649884462356567, 'lr': 3e-05, 'train/prefecth_time': 0.03531788635253906, 'train/run_time': 0.5466668701171875}
+[2022-11-23 20:43:16,307 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 1.0231958627700806, 'train/unsup_loss': 3.486589412204921e-05, 'train/total_loss': 1.023211121559143, 'lr': 3.5e-05, 'train/prefecth_time': 0.038109825134277346, 'train/run_time': 0.55160205078125}
+[2022-11-23 20:48:19,250 INFO] validating...
+[2022-11-23 20:50:04,100 INFO] confusion matrix:
+[[0.         0.         0.         ... 0.10204082 0.         0.        ]
+ [0.         0.         0.         ... 0.06122449 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.        ]
+ ...
+ [0.         0.         0.         ... 0.         0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.        ]]
+[2022-11-23 20:50:09,586 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-23 20:50:15,860 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-23 20:50:15,861 INFO] 4096 iteration, USE_EMA: False, {'train/sup_loss': 0.4877103269100189, 'train/unsup_loss': 5.538832920137793e-05, 'train/total_loss': 0.4877380132675171, 'lr': 4e-05, 'train/prefecth_time': 0.03444688034057617, 'train/run_time': 0.5527188110351563, 'eval/loss': 5.81274778054685, 'eval/top-1-acc': 0.004591836734693878, 'eval/balanced_acc': 0.004591836734693877, 'eval/precision': 0.003771140230336915, 'eval/recall': 0.004591836734693877, 'eval/F1': 0.0038268757678070558}, BEST_EVAL_ACC: 0.004591836734693878, at 4096 iters
+[2022-11-24 10:50:49,305 INFO] Use GPU: 0 for training
+[2022-11-24 10:50:50,019 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-24 10:50:51,530 INFO] Create train and test data loaders
+[2022-11-24 10:50:51,564 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-24 15:19:39,581 INFO] Use GPU: 0 for training
+[2022-11-24 15:19:41,775 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-24 15:20:02,802 INFO] Create train and test data loaders
+[2022-11-24 15:20:02,850 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-24 15:20:20,818 INFO] Create optimizer and scheduler
+[2022-11-24 15:20:20,820 INFO] Number of Trainable Params: 21475400
+[2022-11-24 15:20:21,068 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:26632', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=4, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-24 15:20:37,119 INFO] model loaded
+[2022-11-24 15:20:37,120 INFO] Model training
+[2022-11-24 15:26:13,376 INFO] 4608 iteration, USE_EMA: False, {'train/sup_loss': 0.10145962238311768, 'train/unsup_loss': 3.49133915733546e-05, 'train/total_loss': 0.10147925466299057, 'lr': 4.5e-05, 'train/prefecth_time': 0.03713113784790039, 'train/run_time': 0.5885850830078125}
+[2022-11-24 15:31:32,297 INFO] 5120 iteration, USE_EMA: False, {'train/sup_loss': 0.10083912312984467, 'train/unsup_loss': 5.683854396920651e-05, 'train/total_loss': 0.1008746400475502, 'lr': 5e-05, 'train/prefecth_time': 0.03709836959838867, 'train/run_time': 0.5881676635742188}
+[2022-11-24 15:37:06,855 INFO] 5632 iteration, USE_EMA: False, {'train/sup_loss': 0.19221705198287964, 'train/unsup_loss': 9.947794023901224e-05, 'train/total_loss': 0.1922854334115982, 'lr': 4.9999689496710696e-05, 'train/prefecth_time': 0.03448739242553711, 'train/run_time': 0.5854066772460937}
+[2022-11-24 15:42:25,304 INFO] validating...
+[2022-11-24 15:44:16,815 INFO] confusion matrix:
+[[0.02040816 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.28571429 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.16326531 ... 0.         0.         0.        ]
+ ...
+ [0.         0.         0.         ... 0.42857143 0.         0.        ]
+ [0.         0.         0.         ... 0.51020408 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.02040816]]
+[2022-11-24 15:44:22,356 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 15:44:28,283 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 15:44:28,283 INFO] 6144 iteration, USE_EMA: False, {'train/sup_loss': 0.08567017316818237, 'train/unsup_loss': 0.0001270702196052298, 'train/total_loss': 0.08576545864343643, 'lr': 4.9998757990699265e-05, 'train/prefecth_time': 0.03417804718017578, 'train/run_time': 0.5896348876953125, 'eval/loss': 4.699568488062645, 'eval/top-1-acc': 0.12581632653061225, 'eval/balanced_acc': 0.12581632653061223, 'eval/precision': 0.1411693384202733, 'eval/recall': 0.12581632653061223, 'eval/F1': 0.12342216146104935}, BEST_EVAL_ACC: 0.12581632653061225, at 6144 iters
+[2022-11-24 15:50:01,677 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 0.23971901834011078, 'train/unsup_loss': 8.412072929786518e-05, 'train/total_loss': 0.23978735506534576, 'lr': 4.9997205493535134e-05, 'train/prefecth_time': 0.034443614959716796, 'train/run_time': 0.58677392578125}
+[2022-11-24 15:55:19,555 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 0.08314765244722366, 'train/unsup_loss': 0.00010272443614667282, 'train/total_loss': 0.08323752135038376, 'lr': 4.999503202450052e-05, 'train/prefecth_time': 0.03337302398681641, 'train/run_time': 0.5852327880859375}
+[2022-11-24 15:55:33,071 INFO] Use GPU: 0 for training
+[2022-11-24 15:55:33,635 INFO] unlabeled data number: 100000, labeled data number 200
+[2022-11-24 15:55:35,069 INFO] Create train and test data loaders
+[2022-11-24 15:55:35,070 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-24 15:55:35,702 INFO] Create optimizer and scheduler
+[2022-11-24 15:55:35,704 INFO] Number of Trainable Params: 21475400
+[2022-11-24 15:55:35,779 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_200_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:21687', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=200, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=200, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=3, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-24 15:55:36,063 INFO] model loaded
+[2022-11-24 15:55:36,064 INFO] Model training
+[2022-11-24 16:01:03,867 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 0.015243008732795715, 'train/unsup_loss': 0.0005296634626574814, 'train/total_loss': 0.01567329652607441, 'lr': 4.9997205493535134e-05, 'train/prefecth_time': 0.03490569686889648, 'train/run_time': 0.5842380981445312}
+[2022-11-24 16:06:21,679 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 0.020984303206205368, 'train/unsup_loss': 0.00012531393440440297, 'train/total_loss': 0.021093938499689102, 'lr': 4.999503202450052e-05, 'train/prefecth_time': 0.03443119812011719, 'train/run_time': 0.5840789794921875}
+[2022-11-24 16:11:50,843 INFO] 7680 iteration, USE_EMA: False, {'train/sup_loss': 0.04787760227918625, 'train/unsup_loss': 0.000183429365279153, 'train/total_loss': 0.04804954677820206, 'lr': 4.9992237610590205e-05, 'train/prefecth_time': 0.034224544525146484, 'train/run_time': 0.5840101318359375}
+[2022-11-24 16:17:08,019 INFO] validating...
+[2022-11-24 16:18:56,663 INFO] confusion matrix:
+[[0.02040816 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.32653061 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.16326531 ... 0.         0.         0.02040816]
+ ...
+ [0.         0.         0.         ... 0.46938776 0.         0.        ]
+ [0.         0.         0.         ... 0.51020408 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.        ]]
+[2022-11-24 16:19:02,614 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 16:19:08,835 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 16:19:08,836 INFO] 8192 iteration, USE_EMA: False, {'train/sup_loss': 0.02299632877111435, 'train/unsup_loss': 0.00016266254533547908, 'train/total_loss': 0.023158971220254898, 'lr': 4.998882228651117e-05, 'train/prefecth_time': 0.03304057693481445, 'train/run_time': 0.586133544921875, 'eval/loss': 4.636746010488394, 'eval/top-1-acc': 0.1380612244897959, 'eval/balanced_acc': 0.1380612244897959, 'eval/precision': 0.1534474933965844, 'eval/recall': 0.1380612244897959, 'eval/F1': 0.13510408472220814}, BEST_EVAL_ACC: 0.1380612244897959, at 8192 iters
+[2022-11-24 16:24:37,958 INFO] 8704 iteration, USE_EMA: False, {'train/sup_loss': 0.10282778739929199, 'train/unsup_loss': 0.00018694461323320866, 'train/total_loss': 0.1030263900756836, 'lr': 4.998478609468219e-05, 'train/prefecth_time': 0.0405904655456543, 'train/run_time': 0.5847345581054687}
+[2022-11-24 16:29:55,203 INFO] 9216 iteration, USE_EMA: False, {'train/sup_loss': 0.027461577206850052, 'train/unsup_loss': 0.00016591366147622466, 'train/total_loss': 0.027648210525512695, 'lr': 4.99801290852333e-05, 'train/prefecth_time': 0.033395679473876956, 'train/run_time': 0.5861904296875}
+[2022-11-24 16:35:22,834 INFO] 9728 iteration, USE_EMA: False, {'train/sup_loss': 0.004993836861103773, 'train/unsup_loss': 9.682295058155432e-05, 'train/total_loss': 0.005108802113682032, 'lr': 4.9974851316005164e-05, 'train/prefecth_time': 0.03622979354858399, 'train/run_time': 0.5839378051757812}
+[2022-11-24 16:40:39,642 INFO] validating...
+[2022-11-24 16:42:28,238 INFO] confusion matrix:
+[[0.02040816 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.34693878 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.18367347 ... 0.         0.         0.02040816]
+ ...
+ [0.         0.         0.         ... 0.42857143 0.         0.        ]
+ [0.         0.         0.         ... 0.46938776 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.06122449]]
+[2022-11-24 16:42:33,450 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 16:42:39,380 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 16:42:39,380 INFO] 10240 iteration, USE_EMA: False, {'train/sup_loss': 0.009142550639808178, 'train/unsup_loss': 0.0003461640444584191, 'train/total_loss': 0.009575213305652142, 'lr': 4.996895285254838e-05, 'train/prefecth_time': 0.03459104156494141, 'train/run_time': 0.5846112060546875, 'eval/loss': 4.551959333127859, 'eval/top-1-acc': 0.1476530612244898, 'eval/balanced_acc': 0.1476530612244898, 'eval/precision': 0.1613052779317784, 'eval/recall': 0.1476530612244898, 'eval/F1': 0.1434817989031153}, BEST_EVAL_ACC: 0.1476530612244898, at 10240 iters
+[2022-11-24 16:48:07,714 INFO] 10752 iteration, USE_EMA: False, {'train/sup_loss': 0.013147735968232155, 'train/unsup_loss': 0.00038101570680737495, 'train/total_loss': 0.013647772371768951, 'lr': 4.996243376812264e-05, 'train/prefecth_time': 0.033965248107910156, 'train/run_time': 0.5819147338867188}
+[2022-11-24 16:53:24,854 INFO] 11264 iteration, USE_EMA: False, {'train/sup_loss': 0.0020417552441358566, 'train/unsup_loss': 6.753823981853202e-05, 'train/total_loss': 0.002134612062945962, 'lr': 4.995529414369582e-05, 'train/prefecth_time': 0.0337344970703125, 'train/run_time': 0.5887802734375}
+[2022-11-24 16:58:53,063 INFO] 11776 iteration, USE_EMA: False, {'train/sup_loss': 0.0031097927130758762, 'train/unsup_loss': 0.0001130837481468916, 'train/total_loss': 0.003272336907684803, 'lr': 4.994753406794301e-05, 'train/prefecth_time': 0.03626432037353516, 'train/run_time': 0.586381103515625}
+[2022-11-24 17:04:10,451 INFO] validating...
+[2022-11-24 17:05:58,478 INFO] confusion matrix:
+[[0.02040816 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.32653061 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.28571429 ... 0.         0.         0.02040816]
+ ...
+ [0.         0.         0.         ... 0.48979592 0.         0.        ]
+ [0.         0.         0.         ... 0.51020408 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.06122449]]
+[2022-11-24 17:06:04,003 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 17:06:09,090 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 17:06:09,090 INFO] 12288 iteration, USE_EMA: False, {'train/sup_loss': 0.023208241909742355, 'train/unsup_loss': 9.415350359631702e-05, 'train/total_loss': 0.02334946021437645, 'lr': 4.993915363724536e-05, 'train/prefecth_time': 0.03463484954833984, 'train/run_time': 0.583286376953125, 'eval/loss': 4.537241626856279, 'eval/top-1-acc': 0.15591836734693879, 'eval/balanced_acc': 0.15591836734693876, 'eval/precision': 0.17433143618137908, 'eval/recall': 0.15591836734693876, 'eval/F1': 0.15306303651730158}, BEST_EVAL_ACC: 0.15591836734693879, at 12288 iters
+[2022-11-24 17:11:37,313 INFO] 12800 iteration, USE_EMA: False, {'train/sup_loss': 0.0011828382266685367, 'train/unsup_loss': 0.00014331701095215976, 'train/total_loss': 0.001406753552146256, 'lr': 4.993015295568891e-05, 'train/prefecth_time': 0.03394268798828125, 'train/run_time': 0.5849269409179687}
+[2022-11-24 17:16:55,422 INFO] 13312 iteration, USE_EMA: False, {'train/sup_loss': 0.0005726450472138822, 'train/unsup_loss': 0.00021846310119144619, 'train/total_loss': 0.0009276209166273475, 'lr': 4.992053213506334e-05, 'train/prefecth_time': 0.033761985778808595, 'train/run_time': 0.5851316528320313}
+[2022-11-24 17:22:24,927 INFO] 13824 iteration, USE_EMA: False, {'train/sup_loss': 0.0007124402327463031, 'train/unsup_loss': 0.00022020493634045124, 'train/total_loss': 0.0010840091854333878, 'lr': 4.991029129486048e-05, 'train/prefecth_time': 0.03461321640014649, 'train/run_time': 0.584003662109375}
+[2022-11-24 17:27:42,003 INFO] validating...
+[2022-11-24 17:29:30,493 INFO] confusion matrix:
+[[0.06122449 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.34693878 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.2244898  ... 0.         0.         0.        ]
+ ...
+ [0.02040816 0.         0.         ... 0.53061224 0.         0.        ]
+ [0.         0.         0.         ... 0.53061224 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.08163265]]
+[2022-11-24 17:29:32,720 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 17:29:38,821 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 17:29:38,821 INFO] 14336 iteration, USE_EMA: False, {'train/sup_loss': 0.005987701006233692, 'train/unsup_loss': 0.00015151663683354855, 'train/total_loss': 0.006252836436033249, 'lr': 4.989943056227294e-05, 'train/prefecth_time': 0.034752670288085936, 'train/run_time': 0.58504931640625, 'eval/loss': 4.55655623314332, 'eval/top-1-acc': 0.1576530612244898, 'eval/balanced_acc': 0.1576530612244898, 'eval/precision': 0.16660825468200172, 'eval/recall': 0.1576530612244898, 'eval/F1': 0.15004742317424205}, BEST_EVAL_ACC: 0.1576530612244898, at 14336 iters
+[2022-11-24 17:35:07,692 INFO] 14848 iteration, USE_EMA: False, {'train/sup_loss': 0.002328460570424795, 'train/unsup_loss': 0.0001747414789861068, 'train/total_loss': 0.0026451582089066505, 'lr': 4.988795007219242e-05, 'train/prefecth_time': 0.034655071258544924, 'train/run_time': 0.5798689575195313}
+[2022-11-24 17:40:24,956 INFO] 15360 iteration, USE_EMA: False, {'train/sup_loss': 0.0005309584084898233, 'train/unsup_loss': 0.00014059231034480035, 'train/total_loss': 0.0007945518009364605, 'lr': 4.9875849967208134e-05, 'train/prefecth_time': 0.03364691162109375, 'train/run_time': 0.5861091918945313}
+[2022-11-24 17:45:53,414 INFO] 15872 iteration, USE_EMA: False, {'train/sup_loss': 0.0007594576454721391, 'train/unsup_loss': 0.00038645940367132425, 'train/total_loss': 0.001508175628259778, 'lr': 4.9863130397604966e-05, 'train/prefecth_time': 0.04034643173217774, 'train/run_time': 0.5823401489257812}
+[2022-11-24 17:51:10,241 INFO] validating...
+[2022-11-24 17:52:58,588 INFO] confusion matrix:
+[[0.08163265 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.36734694 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.14285714 ... 0.         0.         0.02040816]
+ ...
+ [0.02040816 0.         0.         ... 0.46938776 0.         0.        ]
+ [0.         0.         0.         ... 0.44897959 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.04081633]]
+[2022-11-24 17:53:00,975 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 17:53:05,691 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 17:53:05,691 INFO] 16384 iteration, USE_EMA: False, {'train/sup_loss': 0.0034440404269844294, 'train/unsup_loss': 0.0003131618141196668, 'train/total_loss': 0.004070325754582882, 'lr': 4.984979152136166e-05, 'train/prefecth_time': 0.03429315185546875, 'train/run_time': 0.5857203369140624, 'eval/loss': 4.587563582050557, 'eval/top-1-acc': 0.15948979591836734, 'eval/balanced_acc': 0.15948979591836734, 'eval/precision': 0.1748622307100255, 'eval/recall': 0.15948979591836734, 'eval/F1': 0.1527676760450272}, BEST_EVAL_ACC: 0.15948979591836734, at 16384 iters
+[2022-11-24 17:58:33,811 INFO] 16896 iteration, USE_EMA: False, {'train/sup_loss': 0.0004621125990524888, 'train/unsup_loss': 0.0003335546643938869, 'train/total_loss': 0.0011500283144414425, 'lr': 4.9835833504148804e-05, 'train/prefecth_time': 0.034512096405029294, 'train/run_time': 0.5839972534179687}
+[2022-11-24 18:03:50,919 INFO] 17408 iteration, USE_EMA: False, {'train/sup_loss': 0.0008278018212877214, 'train/unsup_loss': 0.00023809660342521966, 'train/total_loss': 0.0013337279669940472, 'lr': 4.9821256519326806e-05, 'train/prefecth_time': 0.03429593658447266, 'train/run_time': 0.5807012329101563}
+[2022-11-24 18:09:18,705 INFO] 17920 iteration, USE_EMA: False, {'train/sup_loss': 0.0001803291670512408, 'train/unsup_loss': 0.00021271170407999307, 'train/total_loss': 0.0006456100381910801, 'lr': 4.980606074794375e-05, 'train/prefecth_time': 0.0338359375, 'train/run_time': 0.5837658081054687}
+[2022-11-24 18:14:34,804 INFO] validating...
+[2022-11-24 18:16:22,293 INFO] confusion matrix:
+[[0.06122449 0.         0.         ... 0.         0.         0.        ]
+ [0.         0.36734694 0.         ... 0.         0.         0.        ]
+ [0.         0.         0.2244898  ... 0.         0.         0.04081633]
+ ...
+ [0.02040816 0.         0.         ... 0.3877551  0.         0.        ]
+ [0.         0.         0.         ... 0.40816327 0.         0.        ]
+ [0.         0.         0.         ... 0.         0.         0.10204082]]
+[2022-11-24 18:16:26,834 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/latest_model.pth
+[2022-11-24 18:16:30,418 INFO] model saved: ./saved_models/usb_cv/pimodel_tinyimagenet_200_0/model_best.pth
+[2022-11-24 18:16:30,419 INFO] 18432 iteration, USE_EMA: False, {'train/sup_loss': 0.00040232454193755984, 'train/unsup_loss': 0.0005907973973080516, 'train/total_loss': 0.0017315465956926346, 'lr': 4.979024637873309e-05, 'train/prefecth_time': 0.03298175811767578, 'train/run_time': 0.5809400024414062, 'eval/loss': 4.574570799263157, 'eval/top-1-acc': 0.1657142857142857, 'eval/balanced_acc': 0.16571428571428573, 'eval/precision': 0.17440629131916602, 'eval/recall': 0.16571428571428573, 'eval/F1': 0.1572882569564403}, BEST_EVAL_ACC: 0.1657142857142857, at 18432 iters
+[2022-11-24 18:21:58,209 INFO] 18944 iteration, USE_EMA: False, {'train/sup_loss': 0.00014089439355302602, 'train/unsup_loss': 0.0003064070187974721, 'train/total_loss': 0.0008494232315570116, 'lr': 4.977381360811139e-05, 'train/prefecth_time': 0.0410294075012207, 'train/run_time': 0.5814793090820313}
+[2022-11-24 18:27:14,951 INFO] 19456 iteration, USE_EMA: False, {'train/sup_loss': 0.00012666088878177106, 'train/unsup_loss': 0.00016596345813013613, 'train/total_loss': 0.0005208038492128253, 'lr': 4.9756762640175826e-05, 'train/prefecth_time': 0.037001537322998046, 'train/run_time': 0.5778507690429687}
+[2022-11-24 18:32:43,112 INFO] 19968 iteration, USE_EMA: False, {'train/sup_loss': 0.00019221790716983378, 'train/unsup_loss': 0.00017601149738766253, 'train/total_loss': 0.0006212244043126702, 'lr': 4.973909368670166e-05, 'train/prefecth_time': 0.10048761749267578, 'train/run_time': 0.5830001831054688}
+[2022-11-24 18:40:12,358 INFO] Use GPU: 0 for training
+[2022-11-24 18:40:12,920 INFO] unlabeled data number: 100000, labeled data number 400
+[2022-11-24 18:40:14,373 INFO] Create train and test data loaders
+[2022-11-24 18:40:14,374 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-11-24 18:40:14,981 INFO] Create optimizer and scheduler
+[2022-11-24 18:40:14,982 INFO] Number of Trainable Params: 21475400
+[2022-11-24 18:40:15,057 INFO] Arguments: Namespace(algorithm='pimodel', amp=False, batch_size=8, c='config/usb_cv/pimodel/pimodel_tinyimagenet_400_0.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='tinyimagenet', dist_backend='nccl', dist_url='tcp://127.0.0.1:19875', distributed=True, ema_m=0.0, epoch=200, eval_batch_size=16, gpu=0, imb_algorithm=None, img_size=32, layer_decay=1.0, lb_dest_len=400, lb_imb_ratio=1, load_path='./saved_models/usb_cv//pimodel_tinyimagenet_200_0/latest_model.pth', lr=5e-05, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, num_classes=200, num_eval_iter=2048, num_labels=400, num_log_iter=512, num_train_iter=204800, num_warmup_iter=5120, num_workers=3, optim='AdamW', overwrite=True, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='pimodel_tinyimagenet_200_0', seed=1, train_sampler='RandomSampler', ulb_dest_len=100000, ulb_imb_ratio=1, ulb_loss_ratio=10, ulb_num_labels=None, unsup_warm_up=0.4, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-11-24 18:40:15,348 INFO] model loaded
+[2022-11-24 18:40:15,349 INFO] Model training
