@@ -206,7 +206,7 @@ class CifarOSDataset(BasicDataset):
                  is_ulb=False,
                  strong_transform=None,
                  onehot=False,
-                 unknown_classes,
+                 unknown_classes=None,
                  *args, 
                  **kwargs):
         super().__init__(alg,
@@ -223,4 +223,4 @@ class CifarOSDataset(BasicDataset):
         """
         Returns True if label isn't seen in the labeled samples
         """
-        return False if label in unknown_classes else True
+        return False if label in self.unknown_classes else True
