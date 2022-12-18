@@ -1,0 +1,173 @@
+[2022-12-17 14:33:59,507 INFO] Use GPU: 0 for training
+[2022-12-17 14:34:11,166 INFO] unlabeled data number: 40000, labeled data number 320
+[2022-12-17 14:34:43,557 INFO] Create train and test data loaders
+[2022-12-17 14:34:43,559 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-12-17 14:35:05,000 INFO] Create optimizer and scheduler
+[2022-12-17 14:37:59,201 INFO] Use GPU: 0 for training
+[2022-12-17 14:38:01,003 INFO] unlabeled data number: 40000, labeled data number 320
+[2022-12-17 14:38:02,513 INFO] Create train and test data loaders
+[2022-12-17 14:38:02,514 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-12-17 14:38:03,377 INFO] Create optimizer and scheduler
+[2022-12-17 14:38:53,051 INFO] Use GPU: 0 for training
+[2022-12-17 14:38:54,858 INFO] unlabeled data number: 40000, labeled data number 320
+[2022-12-17 14:38:56,311 INFO] Create train and test data loaders
+[2022-12-17 14:38:56,312 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-12-17 14:38:57,201 INFO] Create optimizer and scheduler
+[2022-12-17 14:40:03,256 INFO] Use GPU: 0 for training
+[2022-12-17 14:40:05,079 INFO] unlabeled data number: 40000, labeled data number 320
+[2022-12-17 14:40:06,533 INFO] Create train and test data loaders
+[2022-12-17 14:40:06,534 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval'])
+[2022-12-17 14:40:07,464 INFO] Create optimizer and scheduler
+[2022-12-17 14:40:07,467 INFO] Number of Trainable Params: 21429200
+[2022-12-17 14:40:07,551 INFO] Arguments: Namespace(T=0.5, algorithm='fixmatch', amp=False, batch_size=8, c='config/usb_cv/fixmatch/fixmatch_cifaros100_400_0_no_outliers.yaml', clip=0.0, clip_grad=0, crop_ratio=0.875, data_dir='./data', dataset='cifaros100', dist_backend='nccl', dist_url='tcp://127.0.0.1:29212', distributed=True, ema_m=0.0, epoch=20, eval_batch_size=16, gpu=0, hard_label=True, imb_algorithm=None, img_size=32, layer_decay=0.5, lb_dest_len=320, lb_imb_ratio=1, load_path='./saved_models/usb_cv//fixmatch_cifaros100_400_0_no_outliers/latest_model.pth', lr=0.0005, max_length=512, max_length_seconds=4.0, momentum=0.9, multiprocessing_distributed=True, net='vit_small_patch2_32', net_from_name=False, no_outliers=True, num_classes=80, num_eval_iter=2048, num_labels=320, num_log_iter=512, num_train_iter=20480, num_warmup_iter=2560, num_workers=4, optim='AdamW', overwrite=True, p_cutoff=0.95, pretrain_path='https://github.com/microsoft/Semi-supervised-learning/releases/download/v.0.0.0/vit_small_patch2_32_mlp_im_1k_32.pth', rank=0, resume=True, sample_rate=16000, save_dir='./saved_models/usb_cv/', save_name='fixmatch_cifaros100_400_0_no_outliers', seed=0, train_sampler='RandomSampler', ulb_dest_len=40000, ulb_imb_ratio=1, ulb_loss_ratio=1.0, ulb_num_labels=None, uratio=1, use_amp=False, use_cat=True, use_pretrain=True, use_tensorboard=True, weight_decay=0.0005, world_size=1)
+[2022-12-17 14:40:07,551 INFO] Resume load path ./saved_models/usb_cv//fixmatch_cifaros100_400_0_no_outliers/latest_model.pth does not exist
+[2022-12-17 14:40:07,551 INFO] Model training
+[2022-12-17 14:46:22,546 INFO] 512 iteration, USE_EMA: False, {'train/sup_loss': 3.701045036315918, 'train/unsup_loss': 0.0, 'train/total_loss': 3.701045036315918, 'train/mask_ratio': 0.0, 'lr': 0.0001, 'train/prefecth_time': 0.03674323272705078, 'train/run_time': 0.637166015625}
+[2022-12-17 14:52:08,776 INFO] 1024 iteration, USE_EMA: False, {'train/sup_loss': 0.9192522168159485, 'train/unsup_loss': 0.0, 'train/total_loss': 0.9192522168159485, 'train/mask_ratio': 0.0, 'lr': 0.0002, 'train/prefecth_time': 0.036468639373779296, 'train/run_time': 0.6402061157226563}
+[2022-12-17 14:58:23,547 INFO] 1536 iteration, USE_EMA: False, {'train/sup_loss': 0.286554753780365, 'train/unsup_loss': 0.5236997008323669, 'train/total_loss': 0.8102544546127319, 'train/mask_ratio': 0.25, 'lr': 0.0003, 'train/prefecth_time': 0.03609884643554687, 'train/run_time': 0.6458724975585938}
+[2022-12-17 15:04:10,951 INFO] validating...
+[2022-12-17 15:05:35,706 INFO] confusion matrix:
+[[0.86 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.95 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.7  ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.94 0.   0.01]
+ [0.   0.   0.   ... 0.   0.94 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.99]]
+[2022-12-17 15:05:36,230 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 15:05:36,755 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/model_best.pth
+[2022-12-17 15:05:36,755 INFO] 2048 iteration, USE_EMA: False, {'train/sup_loss': 0.07040581107139587, 'train/unsup_loss': 0.009438705630600452, 'train/total_loss': 0.07984451949596405, 'train/mask_ratio': 0.5, 'lr': 0.0004, 'train/prefecth_time': 0.041409278869628904, 'train/run_time': 0.6465750732421875, 'eval/loss': 1.000301213800907, 'eval/top-1-acc': 0.73275, 'eval/balanced_acc': 0.7327499999999999, 'eval/precision': 0.7358933418252459, 'eval/recall': 0.7327499999999999, 'eval/F1': 0.719622480033819}, BEST_EVAL_ACC: 0.73275, at 2048 iters
+[2022-12-17 15:11:51,131 INFO] 2560 iteration, USE_EMA: False, {'train/sup_loss': 0.14239653944969177, 'train/unsup_loss': 0.025662753731012344, 'train/total_loss': 0.16805928945541382, 'train/mask_ratio': 0.25, 'lr': 0.0005, 'train/prefecth_time': 0.03390009689331055, 'train/run_time': 0.6417449951171875}
+[2022-12-17 15:17:39,031 INFO] 3072 iteration, USE_EMA: False, {'train/sup_loss': 0.09290337562561035, 'train/unsup_loss': 0.0014902397524565458, 'train/total_loss': 0.09439361840486526, 'train/mask_ratio': 0.25, 'lr': 0.0004996145181203615, 'train/prefecth_time': 0.0323642578125, 'train/run_time': 0.6445403442382812}
+[2022-12-17 15:23:54,278 INFO] 3584 iteration, USE_EMA: False, {'train/sup_loss': 0.002208148827776313, 'train/unsup_loss': 0.004238612484186888, 'train/total_loss': 0.006446761079132557, 'train/mask_ratio': 0.75, 'lr': 0.0004984586668665639, 'train/prefecth_time': 0.03462854385375977, 'train/run_time': 0.6417025146484375}
+[2022-12-17 15:29:43,806 INFO] validating...
+[2022-12-17 15:31:08,378 INFO] confusion matrix:
+[[0.98 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.92 0.   ... 0.01 0.   0.  ]
+ [0.01 0.   0.65 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.95 0.   0.01]
+ [0.   0.   0.   ... 0.   0.89 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.98]]
+[2022-12-17 15:31:14,527 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 15:31:19,590 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/model_best.pth
+[2022-12-17 15:31:19,591 INFO] 4096 iteration, USE_EMA: False, {'train/sup_loss': 0.026093097403645515, 'train/unsup_loss': 0.660183310508728, 'train/total_loss': 0.6862764358520508, 'train/mask_ratio': 0.5, 'lr': 0.0004965342284774632, 'train/prefecth_time': 0.03526700973510742, 'train/run_time': 0.6482477416992187, 'eval/loss': 1.148788887694478, 'eval/top-1-acc': 0.749, 'eval/balanced_acc': 0.7489999999999999, 'eval/precision': 0.7641302621873438, 'eval/recall': 0.7489999999999999, 'eval/F1': 0.729340463331189}, BEST_EVAL_ACC: 0.749, at 4096 iters
+[2022-12-17 15:37:34,298 INFO] 4608 iteration, USE_EMA: False, {'train/sup_loss': 0.00043314427603036165, 'train/unsup_loss': 0.12849102914333344, 'train/total_loss': 0.1289241760969162, 'train/mask_ratio': 0.625, 'lr': 0.0004938441702975689, 'train/prefecth_time': 0.03493395233154297, 'train/run_time': 0.6484678344726562}
+[2022-12-17 15:43:22,531 INFO] 5120 iteration, USE_EMA: False, {'train/sup_loss': 0.05928794667124748, 'train/unsup_loss': 0.8791217803955078, 'train/total_loss': 0.9384097456932068, 'train/mask_ratio': 0.5, 'lr': 0.0004903926402016152, 'train/prefecth_time': 0.03449516677856445, 'train/run_time': 0.6442593383789063}
+[2022-12-17 15:49:38,712 INFO] 5632 iteration, USE_EMA: False, {'train/sup_loss': 0.0003382256836630404, 'train/unsup_loss': 0.18701088428497314, 'train/total_loss': 0.1873491108417511, 'train/mask_ratio': 0.625, 'lr': 0.00048618496019883827, 'train/prefecth_time': 0.03509942245483398, 'train/run_time': 0.6438634033203126}
+[2022-12-17 15:55:27,784 INFO] validating...
+[2022-12-17 15:56:52,330 INFO] confusion matrix:
+[[0.97 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.65 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.9  0.   0.01]
+ [0.   0.   0.   ... 0.   0.9  0.  ]
+ [0.   0.   0.   ... 0.   0.   0.93]]
+[2022-12-17 15:56:57,174 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 15:57:00,660 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/model_best.pth
+[2022-12-17 15:57:00,661 INFO] 6144 iteration, USE_EMA: False, {'train/sup_loss': 0.0005145912291482091, 'train/unsup_loss': 0.000126627302961424, 'train/total_loss': 0.0006412185030058026, 'train/mask_ratio': 0.25, 'lr': 0.00048122761822682366, 'train/prefecth_time': 0.03583561706542969, 'train/run_time': 0.6437479858398437, 'eval/loss': 1.2708435329124332, 'eval/top-1-acc': 0.75375, 'eval/balanced_acc': 0.7537499999999999, 'eval/precision': 0.7734400724339382, 'eval/recall': 0.7537499999999999, 'eval/F1': 0.733286224466174}, BEST_EVAL_ACC: 0.75375, at 6144 iters
+[2022-12-17 16:03:15,544 INFO] 6656 iteration, USE_EMA: False, {'train/sup_loss': 0.01686367765069008, 'train/unsup_loss': 0.08597547560930252, 'train/total_loss': 0.1028391569852829, 'train/mask_ratio': 0.875, 'lr': 0.0004755282581475768, 'train/prefecth_time': 0.034974720001220705, 'train/run_time': 0.6482677001953125}
+[2022-12-17 16:09:05,706 INFO] 7168 iteration, USE_EMA: False, {'train/sup_loss': 0.0038676403928548098, 'train/unsup_loss': 0.08792214840650558, 'train/total_loss': 0.09178978949785233, 'train/mask_ratio': 0.625, 'lr': 0.0004690956679612421, 'train/prefecth_time': 0.03478927993774414, 'train/run_time': 0.6484590454101562}
+[2022-12-17 16:15:21,537 INFO] 7680 iteration, USE_EMA: False, {'train/sup_loss': 0.0019553122110664845, 'train/unsup_loss': 1.2106958627700806, 'train/total_loss': 1.2126511335372925, 'train/mask_ratio': 0.625, 'lr': 0.0004619397662556434, 'train/prefecth_time': 0.034820480346679686, 'train/run_time': 0.6433638305664062}
+[2022-12-17 16:21:11,002 INFO] validating...
+[2022-12-17 16:22:35,859 INFO] confusion matrix:
+[[1.   0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.01 0.   0.56 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.01]
+ [0.   0.   0.   ... 0.   0.93 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.98]]
+[2022-12-17 16:22:39,479 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 16:22:39,480 INFO] 8192 iteration, USE_EMA: False, {'train/sup_loss': 0.0013829270610585809, 'train/unsup_loss': 0.008586916141211987, 'train/total_loss': 0.009969843551516533, 'train/mask_ratio': 0.25, 'lr': 0.00045407158691254066, 'train/prefecth_time': 0.03516867065429687, 'train/run_time': 0.6442284545898438, 'eval/loss': 1.512427141085267, 'eval/top-1-acc': 0.742625, 'eval/balanced_acc': 0.742625, 'eval/precision': 0.7826910608429788, 'eval/recall': 0.742625, 'eval/F1': 0.7163386247581658}, BEST_EVAL_ACC: 0.75375, at 6144 iters
+[2022-12-17 16:28:54,981 INFO] 8704 iteration, USE_EMA: False, {'train/sup_loss': 0.0003980420297011733, 'train/unsup_loss': 0.03678877651691437, 'train/total_loss': 0.037186820060014725, 'train/mask_ratio': 0.625, 'lr': 0.00044550326209418396, 'train/prefecth_time': 0.03496419143676758, 'train/run_time': 0.64548779296875}
+[2022-12-17 16:34:44,148 INFO] 9216 iteration, USE_EMA: False, {'train/sup_loss': 0.04086164012551308, 'train/unsup_loss': 0.38442716002464294, 'train/total_loss': 0.4252887964248657, 'train/mask_ratio': 0.75, 'lr': 0.0004362480035363986, 'train/prefecth_time': 0.0346195182800293, 'train/run_time': 0.6465654296875}
+[2022-12-17 16:41:00,343 INFO] 9728 iteration, USE_EMA: False, {'train/sup_loss': 0.005364798009395599, 'train/unsup_loss': 0.4937376379966736, 'train/total_loss': 0.4991024434566498, 'train/mask_ratio': 0.5, 'lr': 0.0004263200821770461, 'train/prefecth_time': 0.034630977630615234, 'train/run_time': 0.6423140869140626}
+[2022-12-17 16:46:50,116 INFO] validating...
+[2022-12-17 16:48:14,771 INFO] confusion matrix:
+[[0.84 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.51 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.01]
+ [0.   0.   0.   ... 0.   0.92 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.96]]
+[2022-12-17 16:48:18,851 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 16:48:23,895 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/model_best.pth
+[2022-12-17 16:48:23,896 INFO] 10240 iteration, USE_EMA: False, {'train/sup_loss': 0.0009012468508444726, 'train/unsup_loss': 0.5275176763534546, 'train/total_loss': 0.5284188985824585, 'train/mask_ratio': 0.625, 'lr': 0.00041573480615127265, 'train/prefecth_time': 0.035361888885498044, 'train/run_time': 0.6464273071289063, 'eval/loss': 1.416294788889587, 'eval/top-1-acc': 0.757125, 'eval/balanced_acc': 0.757125, 'eval/precision': 0.792050204988993, 'eval/recall': 0.757125, 'eval/F1': 0.7355873523748974}, BEST_EVAL_ACC: 0.757125, at 10240 iters
+[2022-12-17 16:54:39,525 INFO] 10752 iteration, USE_EMA: False, {'train/sup_loss': 0.0003589832631405443, 'train/unsup_loss': 0.5717462301254272, 'train/total_loss': 0.5721052289009094, 'train/mask_ratio': 0.375, 'lr': 0.00040450849718747374, 'train/prefecth_time': 0.04234112167358398, 'train/run_time': 0.6447025146484375}
+[2022-12-17 17:00:29,457 INFO] 11264 iteration, USE_EMA: False, {'train/sup_loss': 0.004191835876554251, 'train/unsup_loss': 0.026651006191968918, 'train/total_loss': 0.030842842534184456, 'train/mask_ratio': 0.75, 'lr': 0.0003926584654403725, 'train/prefecth_time': 0.03484681701660156, 'train/run_time': 0.6471373901367188}
+[2022-12-17 17:06:46,545 INFO] 11776 iteration, USE_EMA: False, {'train/sup_loss': 0.0003030857478734106, 'train/unsup_loss': 0.03996393084526062, 'train/total_loss': 0.04026701673865318, 'train/mask_ratio': 0.25, 'lr': 0.0003802029828000155, 'train/prefecth_time': 0.03470419311523437, 'train/run_time': 0.6397025756835938}
+[2022-12-17 17:12:36,411 INFO] validating...
+[2022-12-17 17:14:01,240 INFO] confusion matrix:
+[[0.9  0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.72 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.95 0.   0.01]
+ [0.   0.   0.   ... 0.   0.91 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.95]]
+[2022-12-17 17:14:05,780 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 17:14:08,875 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/model_best.pth
+[2022-12-17 17:14:08,876 INFO] 12288 iteration, USE_EMA: False, {'train/sup_loss': 0.021769190207123756, 'train/unsup_loss': 0.297807902097702, 'train/total_loss': 0.31957709789276123, 'train/mask_ratio': 0.5, 'lr': 0.00036716125471784286, 'train/prefecth_time': 0.034972576141357424, 'train/run_time': 0.6449805297851563, 'eval/loss': 1.3760663787620142, 'eval/top-1-acc': 0.772, 'eval/balanced_acc': 0.772, 'eval/precision': 0.800506774054571, 'eval/recall': 0.772, 'eval/F1': 0.7494928968616674}, BEST_EVAL_ACC: 0.772, at 12288 iters
+[2022-12-17 17:20:24,845 INFO] 12800 iteration, USE_EMA: False, {'train/sup_loss': 0.005113713443279266, 'train/unsup_loss': 0.6702401638031006, 'train/total_loss': 0.6753538846969604, 'train/mask_ratio': 0.5, 'lr': 0.0003535533905932738, 'train/prefecth_time': 0.042359424591064454, 'train/run_time': 0.6421569213867188}
+[2022-12-17 17:26:13,785 INFO] 13312 iteration, USE_EMA: False, {'train/sup_loss': 0.0009177482570521533, 'train/unsup_loss': 0.09358205646276474, 'train/total_loss': 0.09449980407953262, 'train/mask_ratio': 0.625, 'lr': 0.0003394003727664709, 'train/prefecth_time': 0.034457630157470706, 'train/run_time': 0.6497503662109375}
+[2022-12-17 17:32:30,020 INFO] 13824 iteration, USE_EMA: False, {'train/sup_loss': 0.0015263090608641505, 'train/unsup_loss': 0.1329798549413681, 'train/total_loss': 0.13450616598129272, 'train/mask_ratio': 0.5, 'lr': 0.00032472402416509183, 'train/prefecth_time': 0.03403558349609375, 'train/run_time': 0.6446978149414062}
+[2022-12-17 17:38:20,094 INFO] validating...
+[2022-12-17 17:39:44,906 INFO] confusion matrix:
+[[0.86 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.77 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.94 0.   0.01]
+ [0.   0.   0.   ... 0.   0.89 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.97]]
+[2022-12-17 17:39:49,550 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 17:39:49,550 INFO] 14336 iteration, USE_EMA: False, {'train/sup_loss': 0.015233960002660751, 'train/unsup_loss': 0.35120439529418945, 'train/total_loss': 0.3664383590221405, 'train/mask_ratio': 0.875, 'lr': 0.000309546974654917, 'train/prefecth_time': 0.03501708984375, 'train/run_time': 0.65135498046875, 'eval/loss': 1.4150842433646322, 'eval/top-1-acc': 0.757375, 'eval/balanced_acc': 0.7573749999999999, 'eval/precision': 0.7906115113525758, 'eval/recall': 0.7573749999999999, 'eval/F1': 0.7344435090545213}, BEST_EVAL_ACC: 0.772, at 12288 iters
+[2022-12-17 17:46:05,065 INFO] 14848 iteration, USE_EMA: False, {'train/sup_loss': 0.00015847946633584797, 'train/unsup_loss': 0.030042631551623344, 'train/total_loss': 0.030201110988855362, 'train/mask_ratio': 0.75, 'lr': 0.00029389262614623656, 'train/prefecth_time': 0.03480390548706055, 'train/run_time': 0.6418485717773438}
+[2022-12-17 17:51:54,620 INFO] 15360 iteration, USE_EMA: False, {'train/sup_loss': 0.14324454963207245, 'train/unsup_loss': 0.14613260328769684, 'train/total_loss': 0.2893771529197693, 'train/mask_ratio': 0.25, 'lr': 0.00027778511650980117, 'train/prefecth_time': 0.03468979263305664, 'train/run_time': 0.6420631103515625}
+[2022-12-17 17:58:11,122 INFO] 15872 iteration, USE_EMA: False, {'train/sup_loss': 0.028690163046121597, 'train/unsup_loss': 0.5234962701797485, 'train/total_loss': 0.5521864295005798, 'train/mask_ratio': 0.625, 'lr': 0.0002612492823579745, 'train/prefecth_time': 0.043299903869628904, 'train/run_time': 0.6468565063476562}
+[2022-12-17 18:04:00,623 INFO] validating...
+[2022-12-17 18:05:25,458 INFO] confusion matrix:
+[[0.83 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.56 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.01]
+ [0.   0.   0.   ... 0.   0.91 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.97]]
+[2022-12-17 18:05:29,805 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 18:05:29,806 INFO] 16384 iteration, USE_EMA: False, {'train/sup_loss': 0.00014480415848083794, 'train/unsup_loss': 0.006657486781477928, 'train/total_loss': 0.006802291143685579, 'train/mask_ratio': 0.625, 'lr': 0.0002443106207484775, 'train/prefecth_time': 0.03563721466064453, 'train/run_time': 0.6493833618164062, 'eval/loss': 1.469748460404575, 'eval/top-1-acc': 0.7625, 'eval/balanced_acc': 0.7625, 'eval/precision': 0.799968605362376, 'eval/recall': 0.7625, 'eval/F1': 0.7391439442156802}, BEST_EVAL_ACC: 0.772, at 12288 iters
+[2022-12-17 18:11:45,568 INFO] 16896 iteration, USE_EMA: False, {'train/sup_loss': 0.0017017376376315951, 'train/unsup_loss': 0.007126056123524904, 'train/total_loss': 0.008827793411910534, 'train/mask_ratio': 1.0, 'lr': 0.0002269952498697734, 'train/prefecth_time': 0.035117664337158204, 'train/run_time': 0.6525018920898438}
+[2022-12-17 18:17:35,884 INFO] 17408 iteration, USE_EMA: False, {'train/sup_loss': 0.0006344083230942488, 'train/unsup_loss': 0.21751439571380615, 'train/total_loss': 0.21814879775047302, 'train/mask_ratio': 0.625, 'lr': 0.00020932986876871407, 'train/prefecth_time': 0.03513590240478515, 'train/run_time': 0.643396240234375}
+[2022-12-17 18:23:53,481 INFO] 17920 iteration, USE_EMA: False, {'train/sup_loss': 6.658599886577576e-05, 'train/unsup_loss': 0.06674416363239288, 'train/total_loss': 0.06681074947118759, 'train/mask_ratio': 0.875, 'lr': 0.00019134171618254492, 'train/prefecth_time': 0.03610476684570312, 'train/run_time': 0.6503424072265624}
+[2022-12-17 18:29:42,985 INFO] validating...
+[2022-12-17 18:31:07,782 INFO] confusion matrix:
+[[0.75 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.58 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.01]
+ [0.   0.   0.   ... 0.   0.9  0.  ]
+ [0.   0.   0.   ... 0.   0.   0.98]]
+[2022-12-17 18:31:12,787 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 18:31:12,788 INFO] 18432 iteration, USE_EMA: False, {'train/sup_loss': 0.00010255757661070675, 'train/unsup_loss': 0.12744545936584473, 'train/total_loss': 0.12754802405834198, 'train/mask_ratio': 0.75, 'lr': 0.0001730585285387465, 'train/prefecth_time': 0.035045951843261716, 'train/run_time': 0.6465435791015625, 'eval/loss': 1.4747598873712122, 'eval/top-1-acc': 0.76675, 'eval/balanced_acc': 0.76675, 'eval/precision': 0.7964411673571036, 'eval/recall': 0.76675, 'eval/F1': 0.7416800726723544}, BEST_EVAL_ACC: 0.772, at 12288 iters
+[2022-12-17 18:37:28,530 INFO] 18944 iteration, USE_EMA: False, {'train/sup_loss': 0.0016756830736994743, 'train/unsup_loss': 0.21002212166786194, 'train/total_loss': 0.2116978019475937, 'train/mask_ratio': 0.75, 'lr': 0.00015450849718747373, 'train/prefecth_time': 0.03467839813232422, 'train/run_time': 0.6527435302734375}
+[2022-12-17 18:43:18,047 INFO] 19456 iteration, USE_EMA: False, {'train/sup_loss': 0.0005830373265780509, 'train/unsup_loss': 0.7463484406471252, 'train/total_loss': 0.7469314932823181, 'train/mask_ratio': 0.75, 'lr': 0.00013572022493253715, 'train/prefecth_time': 0.03526351928710938, 'train/run_time': 0.6585573120117187}
+[2022-12-17 18:49:35,440 INFO] 19968 iteration, USE_EMA: False, {'train/sup_loss': 0.000509904115460813, 'train/unsup_loss': 0.07522280514240265, 'train/total_loss': 0.07573270797729492, 'train/mask_ratio': 0.625, 'lr': 0.00011672268192795274, 'train/prefecth_time': 0.036323776245117186, 'train/run_time': 0.6423701171875}
+[2022-12-17 18:55:25,012 INFO] validating...
+[2022-12-17 18:56:49,734 INFO] confusion matrix:
+[[0.74 0.   0.   ... 0.   0.   0.  ]
+ [0.   0.98 0.   ... 0.   0.   0.  ]
+ [0.   0.   0.59 ... 0.   0.   0.  ]
+ ...
+ [0.   0.   0.   ... 0.96 0.   0.01]
+ [0.   0.   0.   ... 0.   0.94 0.  ]
+ [0.   0.   0.   ... 0.   0.   0.99]]
+[2022-12-17 18:56:51,896 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth
+[2022-12-17 18:56:56,051 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/model_best.pth
+[2022-12-17 18:56:56,052 INFO] 20480 iteration, USE_EMA: False, {'train/sup_loss': 0.0002564388560131192, 'train/unsup_loss': 0.7018783092498779, 'train/total_loss': 0.7021347284317017, 'train/mask_ratio': 0.625, 'lr': 9.754516100806417e-05, 'train/prefecth_time': 0.035187969207763674, 'train/run_time': 0.6478749389648437, 'eval/loss': 1.4126747221481055, 'eval/top-1-acc': 0.775625, 'eval/balanced_acc': 0.775625, 'eval/precision': 0.8117993863044829, 'eval/recall': 0.775625, 'eval/F1': 0.7522512039172151}, BEST_EVAL_ACC: 0.775625, at 20480 iters
+[2022-12-17 18:56:57,034 INFO] Model result - eval/best_acc : 0.775625
+[2022-12-17 18:56:57,034 INFO] Model result - eval/best_it : 20479
+[2022-12-17 18:56:58,969 INFO] model saved: ./saved_models/usb_cv/fixmatch_cifaros100_400_0_no_outliers/latest_model.pth

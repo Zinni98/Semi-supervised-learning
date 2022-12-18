@@ -174,15 +174,17 @@ def sample_labeled_unlabeled_data(args, data, target, num_classes, name,
         else:
             ulb_idx.extend(idx[lb_samples_per_class[c]:lb_samples_per_class[c]+ulb_samples_per_class[c]])
     
-    # Set the remaining classes as 
-    if name == "cifar100":
-        for c in range(num_classes, 100):
-            idx = np.where(target == c)[0]
-            ulb_idx.extend(idx)
-    else:
-        for c in range(num_classes, 10):
-            idx = np.where(target == c)[0]
-            ulb_idx.extend(idx)
+    if not hasattr(args, "no_outliers") or not args.no_outliers:
+        print("No outliers.")
+        # Set the remaining classes as 
+        if name == "cifar100":
+            for c in range(num_classes, 100):
+                idx = np.where(target == c)[0]
+                ulb_idx.extend(idx)
+        else:
+            for c in range(num_classes, 10):
+                idx = np.where(target == c)[0]
+                ulb_idx.extend(idx)
 
     
     if isinstance(lb_idx, list):
