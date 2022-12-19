@@ -175,7 +175,7 @@ def confusionmatrix(args, estimates, ground_truths, labels):
     Compute confusion matrix from :estimates: and :ground_truths:
     using :labels: as ticks.
     """
-    cm = MulticlassConfusionMatrix(num_classes=args.num_classes)
+    cm = MulticlassConfusionMatrix(num_classes=args.num_classes, normalize='true')
     conf_matrix = cm(estimates, ground_truths).numpy()
 
     path = os.path.join(
