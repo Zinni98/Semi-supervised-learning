@@ -116,11 +116,11 @@ def eval(args, model, dl, labels):
     estimates = []
     ground_truths = []
 
-    imgs_to_return = None
-
     # indexes to track
-    pred_indx = labels.index(args.save_wrongs[1])
-    gt_index = labels.index(args.save_wrongs[0])
+    if args.save_wrongs is not None:
+        pred_indx = labels.index(args.save_wrongs[1])
+        gt_index = labels.index(args.save_wrongs[0])
+        imgs_to_return = None
 
     for data in tqdm(dl):
         X = data['x_lb']
