@@ -230,7 +230,8 @@ def sample_labeled_unlabeled_data(args, data, target, num_classes, name,
 
     lb_idx = []
     ulb_idx = []
-    
+
+
     for c in range(num_classes):
         idx = np.where(target == c)[0]
         np.random.shuffle(idx)
@@ -318,5 +319,5 @@ class CifarOSDataset(BasicDataset):
                 elif self.alg == 'comatch':
                     return {'idx_ulb': idx, 'x_ulb_w': img_w, 'x_ulb_s_0': self.strong_transform(img), 'x_ulb_s_1':self.strong_transform(img)} 
                 else:
-                    return {'idx_ulb': idx, 'x_ulb_w': img_w} 
+                    return {'idx_ulb': idx, 'x_ulb_w': img_w, 'y_ulb': target} 
 

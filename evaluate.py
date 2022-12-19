@@ -17,6 +17,7 @@ from torchmetrics.classification import MulticlassConfusionMatrix
 from torchvision import transforms
 from torchvision.utils import save_image
 from tqdm import tqdm
+from collections import defaultdict, Counter
 
 #! Insert here new datasets, follow the format of cifar100
 DATASET_IMGS = {
@@ -128,25 +129,22 @@ def eval(args, model, dl, labels):
     # indexes to track
     # pred_indx = labels.index(args.save_wrongs[1])
     # gt_index = labels.index(args.save_wrongs[0])
-
+    correct_y = []
     for data in tqdm(dl):
         X = data['x_ulb_w']
-        # y = data['y_ulb']
+        y = data['y_ulb']
 
         X = X.type(torch.FloatTensor).cuda()
         # y = y.cuda()
         logits = model(X)['logits']
-        print(torch.softmax(logits, dim=1)[0])
-        print(logits.shape)
-        y_hat, _ = torch.softmax(logits, dim=1).max(1)
-        print(y_hat)
-        print(y_hat.shape)
+        y_hat, predictions_cls = torch.softmax(logits, dim=1).max(1)
         # acc += y_hat.cpu().eq(y.cpu()).numpy().sum()
         # count += y_hat.cpu().size(0)
 
-        estimates.extend(y_hat.tolist())#.cpu())
+        # estimates.extend(y_hat.tolist())#.cpu())
         # ground_truths.extend(y.cpu())
-
+        estimates.extend(predictions_cls.tolist())
+        correct_y.extend(y.tolist())
         if args.save_wrongs is not None:
             # get all predictions and labels that match indexes to track
             pred_match = (y_hat == pred_indx)
@@ -162,9 +160,21 @@ def eval(args, model, dl, labels):
             break
 
     estimates = torch.tensor(estimates)
-    # ground_truths = torch.tensor(ground_truths)
-    estimates = (estimates >= 0.95).type(torch.float).mean()
-    print(estimates)
+    
+    # keep only high confidence results
+    mask = (estimates >= 0.95) # .type(torch.float).mean()
+    estimates = torch.masked_select(estimates, mask).tolist()
+    
+    res = defaultdict(list)
+    for idx, el in enumerate(estimates):
+        res[labels[correct_y[idx]]].append(el)
+
+    for key in res.keys():
+        c = Counter(res[key])
+        res[key] = [(labels[t[0]], t[1]) for t in c.most_common(3)]# labels[c.most_common(3)[0]]
+    
+    print(res)
+    
     if args.save_wrongs is not None:
         save(args, imgs_to_return)
 
@@ -173,7 +183,7 @@ def eval(args, model, dl, labels):
 
 def get_labels(dataset):
     # open meta file and get cifar lables
-    if dataset == "cifar100":
+    if dataset == "cifar100" or dataset == "cifaros100":
         with open(os.path.join(DATASET_DIR, "cifar100/cifar-100-python/meta"), 'rb') as fp:
             ds = pickle.load(fp)
         return ds['fine_label_names']
