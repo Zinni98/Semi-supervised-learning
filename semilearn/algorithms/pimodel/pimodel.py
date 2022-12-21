@@ -53,15 +53,13 @@ class PiModel(AlgorithmBase):
             self.bn_controller.unfreeze_bn(self.model)
 
             probs_x_ulb_w = torch.softmax(logits_x_ulb_w, dim=-1)
-            probs_x_ulb_s = torch.softmax(logits_x_ulb_s, dim=-1)
 
             if self.registered_hook("DomainAlignHook"):
                 probs_x_lb = torch.softmax(logits_x_lb, dim=-1)
                 probs_x_ulb_w = self.call_hook("dist_align", "DomainAlignHook", probs_x_ulb=probs_x_ulb_w.detach(), probs_x_lb=probs_x_lb.detach())
-                probs_x_ulb_s = self.call_hook("dist_align", "DomainAlignHook", probs_x_ulb=probs_x_ulb_s.detach(), probs_x_lb=probs_x_lb.detach())
 
             sup_loss = ce_loss(logits_x_lb, y_lb, reduction='mean')
-            unsup_loss = consistency_loss(probs_x_ulb_s, probs_x_ulb_w, 'mse')
+            unsup_loss = consistency_loss(logits_x_ulb_s, probs_x_ulb_w, 'mse')
 
             # TODO: move this into masking
             unsup_warmup = np.clip(self.it / (self.unsup_warm_up * self.num_train_iter),  a_min=0.0, a_max=1.0)
