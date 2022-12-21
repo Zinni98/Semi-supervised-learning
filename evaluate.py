@@ -116,11 +116,11 @@ def eval(args, model, dl, labels):
     estimates = []
     ground_truths = []
 
-    imgs_to_return = None
-
     # indexes to track
-    pred_indx = labels.index(args.save_wrongs[1])
-    gt_index = labels.index(args.save_wrongs[0])
+    if args.save_wrongs is not None:
+        pred_indx = labels.index(args.save_wrongs[1])
+        gt_index = labels.index(args.save_wrongs[0])
+        imgs_to_return = None
 
     for data in tqdm(dl):
         X = data['x_lb']
@@ -175,7 +175,7 @@ def confusionmatrix(args, estimates, ground_truths, labels):
     Compute confusion matrix from :estimates: and :ground_truths:
     using :labels: as ticks.
     """
-    cm = MulticlassConfusionMatrix(num_classes=args.num_classes)
+    cm = MulticlassConfusionMatrix(num_classes=args.num_classes, normalize='true')
     conf_matrix = cm(estimates, ground_truths).numpy()
 
     path = os.path.join(
